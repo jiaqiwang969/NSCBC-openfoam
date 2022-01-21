@@ -1,0 +1,87 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      T;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 1 0 0 0];
+
+internalField   uniform 273;
+
+boundaryField
+{
+    codedPatch
+    {
+	type            codedMixed;
+
+	refValue        uniform 0;
+	refGradient     uniform 0;
+	valueFraction   uniform 1;
+
+	name    codedPatchBC;   // name of generated BC
+
+	code
+        #{
+        	const scalar t = this->db().time().value();
+		const scalar pi= constant::mathematical::pi;
+		
+		const fvPatch& patchs = this->patch();  // Actual boundary/patch
+    		label mixedPatchID = patchs.patch().boundaryMesh().findPatchID("codePatchBC"); // Desired patch ID
+                const fvPatch& MixedPatch = patchs.boundaryMesh()[mixedPatchID]; // Desired patch
+
+    	        const volScalarField& tMixed = this->db().objectRegistry::template lookupObject<volScalarField>("T");//Desired field 1
+    	        const scalarField& tPatchField = tMixed.boundaryField()[mixedPatchID];// Desired field on desired patch
+                
+                
+
+                if (t<=1)
+		{
+			this->refValue()=273.0+100*sin(0.5*pi*t);
+			this->refGrad()=0;
+			this->valueFraction() = 1;                   
+		}
+		else
+		{
+			this->valueFraction()= 1;
+		        this->refGrad()=0;
+			this->refValue()=0;
+			
+		}
+
+	#};
+
+	// codeInclude
+	//#{
+	//    #include "fvCFD.H"
+	//#};
+
+	// codeOptions
+	//#{
+	//    -I$(LIB_SRC)/finiteVolume/lnInclude
+        //#};
+    }
+
+    lrbpatch
+    {
+        type            fixedValue;
+        value           uniform 273;
+    }
+
+
+    frontAndBack
+    {
+        type            empty;
+    }
+}
+
+// ************************************************************************* //

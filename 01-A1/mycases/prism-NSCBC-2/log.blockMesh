@@ -1,0 +1,137 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.x                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : 4.x-d214c8dfd5ba
+Exec   : blockMesh
+Date   : Jan 21 2022
+Time   : 10:37:24
+Host   : "wjq"
+PID    : 2364
+Case   : /home/wjq/Desktop/NSCBC-openfoam/01-A1/mycases/prism-NSCBC-2
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Creating block mesh from
+    "/home/wjq/Desktop/NSCBC-openfoam/01-A1/mycases/prism-NSCBC-2/system/blockMeshDict"
+Creating curved edges
+Creating topology blocks
+Creating topology patches
+
+Creating block mesh topology
+--> FOAM Warning : 
+    From function Foam::polyMesh::polyMesh(const Foam::IOobject&, const Foam::Xfer<Foam::Field<Foam::Vector<double> > >&, const cellShapeList&, const faceListList&, const wordList&, const Foam::PtrList<Foam::dictionary>&, const Foam::word&, const Foam::word&, bool)
+    in file meshes/polyMesh/polyMeshFromShapeMesh.C at line 871
+    Found 26 undefined faces in mesh; adding to default patch.
+
+Check topology
+
+	Basic statistics
+		Number of internal faces : 17
+		Number of boundary faces : 44
+		Number of defined boundary faces : 44
+		Number of undefined boundary faces : 0
+	Checking patch -> block consistency
+
+Creating block offsets
+Creating merge list .
+
+Creating polyMesh from blockMesh
+Creating patches
+Creating cells
+Creating points with scale 0.01
+    Block 0 cell size :
+        i : 0.0206088 .. 0.00412176
+        j : 0.01 .. 0.01
+        k : 0.08 .. 0.08
+
+    Block 1 cell size :
+        i : 0.0206088 .. 0.00412176
+        j : 0.0199843 .. 0.00399686
+        k : 0.08 .. 0.08
+
+    Block 2 cell size :
+        i : 0.0021875 .. 0.0021875
+        j : 0.0200719 .. 0.00401439
+        k : 0.08 .. 0.08
+
+    Block 3 cell size :
+        i : 0.0021875 .. 0.0021875
+        j : 0.01 .. 0.01
+        k : 0.08 .. 0.08
+
+    Block 4 cell size :
+        i : 0.00129469 .. 0.00906283
+        j : 0.01 .. 0.01
+        k : 0.08 .. 0.08
+
+    Block 5 cell size :
+        i : 0.00129469 .. 0.00906283
+        j : 0.0187353 .. 0.00374706
+        k : 0.08 .. 0.08
+
+    Block 6 cell size :
+        i : 0.00129469 .. 0.00906283
+        j : 0.001 .. 0.001
+        k : 0.08 .. 0.08
+
+    Block 7 cell size :
+        i : 0.00129469 .. 0.00906283
+        j : 0.00374706 .. 0.0187353
+        k : 0.08 .. 0.08
+
+    Block 8 cell size :
+        i : 0.00129469 .. 0.00906283
+        j : 0.01 .. 0.01
+        k : 0.08 .. 0.08
+
+    Block 9 cell size :
+        i : 0.0021875 .. 0.0021875
+        j : 0.01 .. 0.01
+        k : 0.08 .. 0.08
+
+    Block 10 cell size :
+        i : 0.00139754 .. 0.00139754
+        j : 0.00401439 .. 0.0200719
+        k : 0.08 .. 0.08
+
+    Block 11 cell size :
+        i : 0.0224823 .. 0.00449647
+        j : 0.00399686 .. 0.0199843
+        k : 0.08 .. 0.08
+
+    Block 12 cell size :
+        i : 0.0206088 .. 0.00412176
+        j : 0.01 .. 0.01
+        k : 0.08 .. 0.08
+
+
+Writing polyMesh
+----------------
+Mesh Information
+----------------
+  boundingBox: (0 0 0) (1 0.8 0.08)
+  nPoints: 46972
+  nCells: 23120
+  nFaces: 92846
+  nInternalFaces: 45874
+----------------
+Patches
+----------------
+  patch 0 (start: 45874 size: 80) name: inlet
+  patch 1 (start: 45954 size: 120) name: outlet
+  patch 2 (start: 46074 size: 214) name: bottomWall
+  patch 3 (start: 46288 size: 214) name: topWall
+  patch 4 (start: 46502 size: 104) name: prismWall
+  patch 5 (start: 46606 size: 46240) name: defaultFaces
+
+End
+

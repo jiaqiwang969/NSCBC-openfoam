@@ -1,0 +1,43 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : v1912 OPENFOAM=1912
+Arch   : "LSB;label=32;scalar=64"
+Exec   : rhoPimpleAdiabaticAcousticFoam-NSCBC
+Date   : Jan 20 2022
+Time   : 23:25:50
+Host   : wjq
+PID    : 31779
+I/O    : uncollated
+Case   : /home/wjq/Desktop/NSCBC-openfoam/01-A1/mycases/prism-NSCBC
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+
+PIMPLE: no residual control data found. Calculations will employ 2 corrector loops
+
+Reading thermophysical properties
+
+Selecting thermodynamics package 
+{
+    type            hePsiThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          hConst;
+    equationOfState perfectGas;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
+
+rhoPimpleAdiabaticAcousticFoam-NSCBC: symbol lookup error: /home/wjq/OpenDTEF/wjq-v1912/platforms/linux64GccDPInt32Opt/lib/libNSCBC.so: undefined symbol: _ZN4Foam17NSCBCFvPatchFieldIdEC1ERKNS_7fvPatchERKNS_16DimensionedFieldIdNS_7volMeshEEERKNS_10dictionaryEb
