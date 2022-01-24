@@ -2,22 +2,8 @@ Paper1: 公式：
 
 ### 可压N-S方程
 
-连续性方程：
-$$
-\frac{\partial \rho}{\partial t}+d_{1}+\frac{\partial \rho u_{2}}{\partial \eta}+\frac{\partial \rho u_{3}}{\partial \zeta}=0
-$$
-动量方程:
-$$
-\begin{array}{lr}
-\frac{\partial \rho u_{1}}{\partial t}+u_{1} d_{1}+\rho d_{3}+\frac{\partial \rho u_{1} u_{2}}{\partial \eta}+\frac{\partial \rho u_{1} u_{3}}{\partial \zeta}= & \frac{\partial \tau_{1 j}}{\partial x_{j}} \\
-\frac{\partial \rho u_{2}}{\partial t}+u_{2} d_{1}+\rho d_{4}+\frac{\partial \rho u_{2} u_{2}}{\partial \eta}+\frac{\partial \rho u_{2} u_{3}}{\partial \zeta}= & -\frac{\partial p}{\partial \eta}+\frac{\partial \tau_{2 j}}{\partial x_{j}} \\
-\frac{\partial \rho u_{3}}{\partial t}+u_{3} d_{1}+\rho d_{5}+\frac{\partial \rho u_{3} u_{2}}{\partial \eta}+\frac{\partial \rho u_{3} u_{3}}{\partial \zeta}= & -\frac{\partial p}{\partial \zeta}+\frac{\partial \tau_{3 j}}{\partial x_{j}}
-\end{array}
-$$
-能量方程：
-$$
-\frac{\partial \rho E}{\partial t}+\frac{1}{2}\left(u_{k} \cdot u_{k}\right) d_{1}+\frac{d_{2}}{\gamma-1}+\rho u_{1} d_{3}+\rho u_{2} d_{4}+\rho u_{3} d_{5}+\frac{\partial\left[(\rho E+p) u_{2}\right]}{\partial \eta}+\frac{\partial\left[(\rho E+p) u_{3}\right]}{\partial \zeta}=-\nabla \cdot q+\frac{\partial \mu_{j} \tau_{i j}}{\partial x_{i}}
-$$
+
+
 主控方程，
 
 笛卡尔坐标系：
@@ -405,6 +391,8 @@ P_{face}^{n+1}= valueFraction*refVlaue+(1-valueFraction)*(P_{centre}^{n+1}+refGr
 $$
 通过，观察就能发现，和上面的关系是一一对应的。
 
+$P_{centre}^{n+1}$ 是因为，solver要先进行计算，然后再更新边界条件，更新边界条件之前，centre已经算到n+1了
+
 
 
 ### 将NSCBC转化成混合边界的表达形式
@@ -483,7 +471,53 @@ $$
 
 ![image-20220121203322316](/Users/wjq/Library/Application Support/typora-user-images/image-20220121203322316.png)
 
-### 静止流场-声学
+
+
+### 1. 波动方程的NSCBC
+
+代码实现举例-openfoam中的advection和waveTransmissive边界条件。
+
+在openfoam中，日本博主的[博文](http://caefn.com/openfoam/bc-advective-wavetransmissive)和陈十七的[博客](https://blog.csdn.net/weixin_39124457/article/details/120152679?spm=1001.2014.3001.5502)完整介绍了advective边界条件。
+$$
+\frac{D \phi}{D t} \approx \frac{\partial \phi}{\partial t}+U_{n} \cdot \frac{\partial \phi}{\partial \mathbf{n}}=0
+$$
+数值化：
+$$
+\frac{\phi_{\text {face }}^{n+1}-\phi_{\text {face }}^{n}}{d t}+U_n \frac{\phi_{\text {face }}^{n+1}-\phi_{\text {centre }}^{n+1}}{d x}=0
+$$
+
+$$
+\rightarrow \begin{aligned}
+\phi_{\text {face }}^{n+1}\left(1+U_n \frac{d t}{d x}\right) &=\phi_{\text {face }}^{n}+U_n \frac{d t}{d x} \phi_{\text {centre }}^{n+1}
+\end{aligned}
+$$
+
+$$
+\rightarrow \quad \phi_{f a c e}^{n+1} =\frac{1}{1+U_n \frac{d t}{d x}} [P_{f a c e}^{n}]+\frac{U_n \frac{d t}{d x}}{1+U_n \frac{d t}{d x}} [P_{\text {centre }}^{n+1} ]
+$$
+
+$$
+P_{face}^{n+1}= valueFraction*refVlaue+(1-valueFraction)*(P_{centre}^{n+1}+refGrad* Delta)
+$$
+
+源代码：advectiveFvPatchField.C
+
+```
+const scalarField w(Foam::max(advectionSpeed(), scalar(0)));
+const scalarField alpha(w*deltaT*this->patch().deltaCoeffs());
+
+this->refValue() =(field.oldTime().boundaryField()[patchi] + k*fieldInf_)/(1.0 + k);
+this->valueFraction() = (1.0 + k)/(1.0 + alpha + k);
+this->refGrad() =zero;
+```
+
+k是和松弛有关的参数，可以不考虑。
+
+
+
+### 2. 线性欧拉方程的NSCBC(不考虑速度)-ref1
+
+waveTransmissive可以看成最简单的波动方程，而现在我们考虑联系欧拉方程的情况。
 
 如果不考虑进口的初始速度，则梯度项为0，lambda3 和lambda4为0，L3、L4项可以忽略，着重考虑L1、L2和L5项的影响。
 
@@ -550,41 +584,229 @@ $$
 P_{face}^{n+1}= valueFraction*refVlaue+(1-valueFraction)*(P_{centre}^{n+1}+refGrad* Delta)
 $$
 
-#### 举例-openfoam中的advection和waveTransmissive边界条件。
+**2. Outlet Pressure**
+$$
+\frac{\partial p}{\partial t}+\frac{1}{2}\left(L_{5}+L_{1}\right)=0
+$$
 
-在openfoam中，日本博主的[博文](http://caefn.com/openfoam/bc-advective-wavetransmissive)和陈十七的[博客](https://blog.csdn.net/weixin_39124457/article/details/120152679?spm=1001.2014.3001.5502)完整介绍了advective边界条件。
 $$
-\frac{D \phi}{D t} \approx \frac{\partial \phi}{\partial t}+U_{n} \cdot \frac{\partial \phi}{\partial \mathbf{n}}=0
+L_{5}=\frac{1}{2}\left[(u+c)\left(\frac{\partial p}{\partial x}+\rho c \frac{\partial u}{\partial x}\right)\right] \quad \text { and } \quad L_{1}=\frac{\sigma}{\rho c}\left[p-\rho c\left(f_{d}+g_{x}\right)-p_{\infty}\right]+2 \frac{\partial g_{x}}{\partial t}
 $$
+
+$$
+\frac{\partial p}{\partial t}+\frac{1}{2}\left[(u+c)\left(\frac{\partial p}{\partial x}+\rho c \frac{\partial u}{\partial x}\right)+\frac{\sigma}{\rho c}\left(p-\rho c\left(f_{d}+g_{x}\right)-p_{\infty}\right)+2 \frac{\partial g_{x}}{\partial t}\right]=0
+$$
+
+$$
+\frac{\partial p}{\partial t}+\frac{u+c}{2} \frac{\partial p}{\partial x}+\rho c \frac{u+c}{2} \frac{\partial u}{\partial x}+\frac{\sigma}{2 \rho c}\left(p-p_{\infty}\right)-\frac{\sigma}{2}\left(f_{d}+g_{x}\right)+\frac{\partial g_{x}}{\partial t}=0
+$$
+
 数值化：
 $$
-\frac{\phi_{\text {face }}^{n+1}-\phi_{\text {face }}^{n}}{d t}+U_n \frac{\phi_{\text {face }}^{n+1}-\phi_{\text {centre }}^{n+1}}{d x}=0
+\frac{P_{f a c e}^{n+1}-P_{f a c e}^{n}}{d t}+\frac{u+c}{2} \frac{P_{f a c e}^{n+1}-P_{c e n t r e}^{n+1}}{d x}+\rho c \frac{u+c}{2} \frac{\partial u}{\partial x}+\frac{\sigma}{2 \rho c}\left(P_{f a c e}^{n+1}-p_{\infty}\right)-\frac{\sigma}{2}\left(f_{d}+g x\right)+\frac{\partial g_{x}}{\partial t}=0
 $$
 
 $$
-\rightarrow \begin{aligned}
-\phi_{\text {face }}^{n+1}\left(1+U_n \frac{d t}{d x}\right) &=\phi_{\text {face }}^{n}+U_n \frac{d t}{d x} \phi_{\text {centre }}^{n+1}
+\begin{aligned}
+&P_{f a c e}^{n+1}-P_{f a c e}^{n}+\frac{u+c}{2} \frac{d t}{d x}\left(P_{f a c e}^{n+1}-P_{c e n t r e}^{n+1}\right)+\rho c \frac{u+c}{2} d t \frac{\partial u}{\partial x}+\frac{\sigma}{2 \rho c} d t\left(P_{f a c e}^{n+1}-p_{\infty}\right)-\frac{\sigma}{2} d t\left(f_{d}+g_{x}\right)+ \\
+&+\frac{\partial g_{x}}{\partial t} d t=0
 \end{aligned}
 $$
 
 $$
-\rightarrow \quad \phi_{f a c e}^{n+1} =\frac{1}{1+U_n \frac{d t}{d x}} [P_{f a c e}^{n}]+\frac{U_n \frac{d t}{d x}}{1+U_n \frac{d t}{d x}} [P_{\text {centre }}^{n+1} ]
+\begin{aligned}
+&P_{\text {face }}^{n+1}\left(1+\frac{u+c}{2} \frac{d t}{d x}+\frac{\sigma}{2 \rho c} d t\right)=P_{\text {face }}^{n}+\frac{u+c}{2} \frac{d t}{d x} P_{\text {centre }}^{n+1}-\rho c \frac{u+c}{2} d t \frac{\partial u}{\partial x}+\frac{\sigma}{2} d t\left(f_{d}+g_{x}\right)+\frac{\sigma}{2 \rho c} d t p_{\infty}- \\
+&-\frac{\partial g_{x}}{\partial t} d t
+\end{aligned}
 $$
 
 $$
-P_{face}^{n+1}= valueFraction*refVlaue+(1-valueFraction)*(P_{centre}^{n+1}+refGrad* Delta)
+\begin{aligned}
+&P_{f a c e}^{n+1}=\frac{1+\frac{\sigma d t}{2 \rho c}}{1+\frac{u+c}{2} \frac{d t}{d x}+\frac{\sigma d t}{2 \rho c}}\left[\frac{P_{f a c e}^{n}+\frac{\sigma d t}{2 \rho c} p_{\infty}+\frac{\sigma d t}{2}\left(f_{d}+g x\right)-d t \frac{\partial g_{x}}{\partial t}}{1+\frac{\sigma d t}{2 \rho c}}\right]+\frac{\frac{u+c}{2} \frac{d t}{d x}}{1+\frac{u+c}{2} \frac{d t}{d x}+\frac{\sigma d t}{2 \rho c}}\left[P_{c e n t r e}^{n+1}+\right. \\
+&\left.+\left(-\rho c \frac{\partial u}{\partial x} d x\right)\right]
+\end{aligned}
 $$
 
-源代码：advectiveFvPatchField.C
+$$
+\begin{aligned}
+&P_{f a c e}^{n+1}=\underbrace{\frac{1+\frac{\sigma d t}{2 \rho c}}{1+\frac{u+c}{2} \frac{d t}{d x}+\frac{\sigma d t}{2 \rho c}}}_{f} \underbrace{\left[\frac{P_{f a c e}^{n}+\frac{\sigma d t}{2 \rho c} p_{\infty}+\frac{\sigma d t}{2}\left(f_{d}+g_{x}\right)-d t \frac{\partial g_{x}}{\partial t}}{1+\frac{\sigma d t}{2 \rho c}}\right]}_{\text {valueExpr }}+\\
+&+\underbrace{\frac{\frac{u+c}{2} \frac{d t}{d x}}{1+\frac{u+c}{2} \frac{d t}{d x}+\frac{\sigma d t}{2 \rho c}}}_{1-f}\left[P_{\text {centre }}^{n+1}+(\underbrace{-\rho c \frac{\partial u}{\partial x}}_{\text {gradExpr }} d x)\right]
+\end{aligned}
+$$
 
-```
-const scalarField w(Foam::max(advectionSpeed(), scalar(0)));
-const scalarField alpha(w*deltaT*this->patch().deltaCoeffs());
+**3. Inlet Temperature**
+$$
+\frac{\partial T}{\partial t}+\frac{T}{\rho c^{2}}\left[-L_{2}+\frac{1}{2}(\gamma-1)\left(L_{5}+L_{1}\right)\right]=0
+$$
 
-this->refValue() =(field.oldTime().boundaryField()[patchi] + k*fieldInf_)/(1.0 + k);
-this->valueFraction() = (1.0 + k)/(1.0 + alpha + k);
-this->refGrad() =zero;
-```
+$$
+\left.L_{1}=(u-c)\left[\frac{\partial p}{\partial x}-\rho c \frac{\partial u}{\partial x}\right] \quad \text { and } \quad L_{5}=-\sigma_{5}\left[u-\left(f_{x}-g_{u}\right)-u_{t}\right]-2 \rho c \frac{\partial f_{x}}{\partial t} \quad \text { and } \quad L_{2}=-\sigma_{2}\left[\left(T-T_{t}\right)-\frac{\gamma-1}{\gamma} \frac{c}{R}(f+g)\right)\right]
+$$
 
-k是和松弛有关的参数，可以不考虑。
+$$
+\begin{aligned}
+&\frac{\partial T}{\partial t}+\frac{T}{\rho c^{2}}\left[\sigma_{2}\left(\left(T-T_{t}\right)-\frac{\gamma-1}{\gamma} \frac{c}{R}(f+g)\right)+\frac{1}{2}(\gamma-1)\left(-\sigma_{5}\left(u-(f-g)-u_{t}\right)-2 \rho c \frac{\partial f}{\partial t}+\right.\right. \\
+&\left.\left.\quad+(u-c)\left(\frac{\partial p}{\partial x}-\rho c \frac{\partial u}{\partial x}\right)\right)\right]=0
+\end{aligned}
+$$
+
+$$
+\text { as } \quad \frac{T}{\rho c^{2}}=\frac{1}{\gamma \rho R}
+$$
+
+$$
+\begin{aligned}
+\frac{\partial T}{\partial t} &+\sigma_{2} \frac{1}{\gamma \rho R}\left(T-T_{t}\right)-\sigma_{2} \frac{\gamma-1}{\gamma} \frac{1}{\gamma \rho R} \frac{c}{R}(f+g)-\sigma_{5} \frac{\gamma-1}{\gamma} \frac{1}{2 \rho R}\left(u-(f-g)-u_{t}\right)-\\
+&-\frac{\gamma-1}{\gamma} \frac{c}{R} \frac{\partial f}{\partial t}+\frac{\gamma-1}{\gamma} \frac{u-c}{2 \rho R}\left(\frac{\partial p}{\partial x}-\rho c \frac{\partial u}{\partial x}\right)=0
+\end{aligned}
+$$
+
+数值化：
+$$
+\begin{aligned}
+\frac{T_{\text {face }}^{n+1}-T_{\text {face }}^{n}}{d t} &+\frac{\sigma_{2}}{\gamma \rho R}\left(T_{\text {face }}^{n+1}-T_{t}\right)-\sigma_{2} \frac{\gamma-1}{\gamma} \frac{1}{\gamma \rho R} \frac{c}{R}(f+g)-\sigma_{5} \frac{\gamma-1}{\gamma} \frac{1}{2 \rho R}\left(u-(f-g)-u_{t}\right)-\\
+&-\frac{\gamma-1}{\gamma} \frac{c}{R} \frac{\partial f}{\partial t}+\frac{\gamma-1}{\gamma} \frac{u-c}{2 \rho R}\left(\frac{\partial p}{\partial x}-\rho c \frac{\partial u}{\partial x}\right)=0
+\end{aligned}
+$$
+
+$$
+\begin{gathered}
+T_{\text {face }}^{n+1}\left(1+\frac{\sigma_{2} d t}{\gamma \rho R}\right)-T_{\text {face }}^{n}-\frac{\sigma_{2} d t}{\gamma \rho R} T_{t}-\sigma_{2} \frac{\gamma-1}{\gamma} \frac{d t}{\gamma \rho R} \frac{c}{R}(f+g)-\sigma_{5} \frac{\gamma-1}{\gamma} \frac{d t}{2 \rho R}\left(u-(f-g)-u_{t}\right)- \\
+-\frac{\gamma-1}{\gamma} \frac{c}{R} d t \frac{\partial f}{\partial t}+\frac{\gamma-1}{\gamma} \frac{u-c}{2 \rho R} d t\left(\frac{\partial p}{\partial x}-\rho c \frac{\partial u}{\partial x}\right)=0
+\end{gathered}
+$$
+
+$$
+\begin{aligned}
+\rightarrow \quad T_{f a c e}^{n+1} &=\left[T_{f a c e}^{n}+\frac{\sigma_{2} d t}{\gamma \rho R} T_{t}+\sigma_{2} \frac{\gamma-1}{\gamma} \frac{d t}{\gamma \rho R} \frac{c}{R}(f+g)+\sigma_{5} \frac{\gamma-1}{\gamma} \frac{d t}{2 \rho R}\left(u-(f-g)-u_{t}\right)+\right.\\
+&\left.+\frac{\gamma-1}{\gamma} \frac{c}{R} d t \frac{\partial f}{\partial t}-\frac{\gamma-1}{\gamma} \frac{u-c}{2 \rho R} d t\left(\frac{\partial p}{\partial x}-\rho c \frac{\partial u}{\partial x}\right)\right] /\left[1+\frac{\sigma_{2} d t}{\gamma \rho R}\right]
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\Rightarrow 
+T_{\text {face }}^{n+1}=&\left[T_{\text {face }}^{n}+\frac{\sigma_{2} d t}{\gamma \rho R} T_{t}+\frac{\gamma-1}{\gamma}\left[\frac{c}{R} d t \frac{\partial f}{\partial t}-\frac{u-c}{2 \rho R} d t\left(\frac{\partial p}{\partial x}-\rho c \frac{\partial u}{\partial x}\right)+\right.\right.\\
+&\left.\left.\sigma_{5} \frac{d t}{2 \rho R}\left(u-(f-g)-u_{t}\right)+\sigma_{2} \frac{d t}{\gamma \rho R} \frac{c}{R}(f+g)\right]\right] /\left[1+\frac{\sigma_{2} d t}{\gamma \rho R}\right]
+\end{aligned}
+$$
+
+$$
+T_{face}^{n+1}= valueFraction*refVlaue+0
+$$
+
+**3. Outlet Temperature**
+$$
+\frac{\partial T}{\partial t}+\frac{T}{\rho c^{2}}\left[-L_{2}+\frac{1}{2}(\gamma-1)\left(L_{5}+L_{1}\right)\right]=0
+$$
+
+$$
+L_{2}=u\left(c^{2} \frac{\partial \rho}{\partial x}-\frac{\partial p}{\partial x}\right) \quad \text { and } \quad L_{5}=(u+c)\left(\frac{\partial p}{\partial x}+\rho c \frac{\partial u}{\partial x}\right) \quad \text { and } \quad L_{1}=\frac{\sigma}{\rho c}\left[p-\rho c\left(f_{d}+g_{x}\right)-p_{\infty}\right]+2 \frac{\partial g_{x}}{\partial t}
+$$
+
+$$
+\frac{\partial T}{\partial t}+\frac{T}{\rho c^{2}}\left[-u\left(c^{2} \frac{\partial \rho}{\partial x}-\frac{\partial p}{\partial x}\right)+\frac{1}{2}(\gamma-1)\left(L_{5}+L_{1}\right)\right]=0
+$$
+
+$$
+\frac{\partial T}{\partial t}-\frac{u c^{2} T}{\rho c^{2}} \frac{\partial \rho}{\partial x}+\frac{u T}{\rho c^{2}} \frac{\partial p}{\partial x}+\frac{T(\gamma-1)}{2 \rho c^{2}}\left(L_{5}+L_{1}\right)=0
+$$
+
+$$
+\frac{\partial T}{\partial t}-\frac{u T}{\rho}\left(\frac{\rho}{p} \frac{\partial p}{\partial x}-\frac{\rho}{T} \frac{\partial T}{\partial x}\right)+\frac{u T}{\rho c^{2}} \frac{\partial p}{\partial x}+\frac{T(\gamma-1)}{2 \rho c^{2}}\left(L_{5}+L_{1}\right)=0
+$$
+
+$$
+\frac{\partial T}{\partial t}-\frac{u T}{p} \frac{\partial p}{\partial x}+u \frac{\partial T}{\partial x}+\frac{u T}{\rho c^{2}} \frac{\partial p}{\partial x}+\frac{T(\gamma-1)}{2 \rho c^{2}}\left(L_{5}+L_{1}\right)=0
+$$
+
+$$
+\frac{\partial T}{\partial t}+u \frac{\partial T}{\partial x}+u\left(\frac{T}{\rho c^{2}}-\frac{T}{p}\right) \frac{\partial p}{\partial x}+\frac{T(\gamma-1)}{2 \rho c^{2}}\left(L_{5}+L_{1}\right)=0
+$$
+
+$$
+\frac{\partial T}{\partial t}+u \frac{\partial T}{\partial x}+u \frac{1-\gamma}{\rho R \gamma} \frac{\partial p}{\partial x}+\frac{\gamma-1}{2 \rho R \gamma}\left(L_{5}+L_{1}\right)=0
+$$
+
+数值化：
+$$
+\frac{T_{\text {face }}^{n+1}-T_{\text {face }}^{n}}{d t}+u \frac{T_{\text {face }}^{n+1}-T_{\text {centre }}^{n+1}}{d x}+u \frac{1-\gamma}{\rho R \gamma} \frac{\partial p}{\partial x}+\frac{\gamma-1}{2 \rho r \gamma}\left(L_{5}-L_{1}\right)=0
+$$
+
+$$
+T_{\text {face }}^{n+1}-T_{\text {face }}^{n}+\frac{u d t}{d x}\left(T_{\text {face }}^{n+1}-T_{\text {centre }}^{n+1}\right)+u d t \frac{1-\gamma}{\rho R \gamma} \frac{\partial p}{\partial x}+\frac{(\gamma-1) d t}{2 \rho R \gamma}\left(L_{5}+L_{1}\right)=0
+$$
+
+$$
+\rightarrow T_{f a c e}^{n+1}\left(1-\frac{u d t}{d x}\right)=T_{f a c e}^{n}+\frac{u d t}{d x} T_{c e n t r e}^{n+1}-u d t \frac{1-\gamma}{\rho R \gamma} \frac{\partial p}{\partial x}-\frac{(\gamma-1) d t}{2 \rho R \gamma}\left(L_{5}+L_{1}\right)
+$$
+
+$$
+\Rightarrow \quad T_{f a c e}^{n+1}=\underbrace{\frac{1}{1-\frac{u d t}{d x}}}_{f} \underbrace{\left[T_{f a c e}^{n}-\frac{(\gamma-1) d t}{2 \rho R \gamma}\left(L_{5}+L_{1}\right)\right]}_{\text {valueExpr }}+\underbrace{\frac{\frac{u d t}{d x}}{1-\frac{u d t}{d x}}}_{1-f}[T_{c e n t r e}^{n+1}+\underbrace{\frac{\gamma-1}{\rho R \gamma} \frac{\partial p}{\partial x}}_{\text {gradExpr }} d x]
+$$
+
+$$
+T_{face}^{n+1}= valueFraction*refVlaue+(1-valueFraction)*(T_{centre}^{n+1}+refGrad* Delta)
+$$
+
+
+
+### 3. 更加一般化的形式推导（适用于叶轮机械）-ref2
+
+在压气机的仿真过程中，不同于一般的边界条件处理，一般会使用总压，总温作为进口边界，这主要是为了和实验的测量结果保持一致性。但，这个边界条件的无反射条件，在目前市面上的所有仿真软件中，都是看不到的。另外，相比上面的方程，速度项被加了进来，包含方向。因此，是欧拉方程的一般化形式，甚至在燃烧🔥领域，可以把组分也考虑进来。
+
+总压：Ps为静压，其他参数之前都提到过。
+$$
+P_{t}=P_{S}\left(1+\frac{\gamma-1}{2} M^{2}\right)^{\frac{\gamma}{\gamma-1}}
+$$
+总温：Ts为静温，其他参数之前都提到过。
+$$
+T_{t}=T_{S}\left(1+\frac{\gamma-1}{2} M^{2}\right)
+$$
+
+
+4. 从简单的波动方程----》 逐步过渡到---〉》管道的特征值求解-----〉
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+～～～～～～～～～～～～～～～～
+
+其他参数的推导过程举例：
+
+（2.63）
+$$
+\frac{\partial \rho}{\partial t}+\frac{1}{c^{2}}\left[L_{2}+\frac{1}{2}\left(L_{5}+L_{1}\right)\right]=0
+$$
+（2.65）
+$$
+\frac{\partial u_{1}}{\partial t}+\frac{1}{2 \rho c}\left(L_{5}-L_{1}\right)=0
+$$
+
+$$
+m_{1}=\rho u_{1}
+$$
+
+$$
+{\partial m_1\over\partial t} =u_1 {\partial \rho \over \partial t} + \rho {\partial u_1\over \partial t} = u_1 \frac{1}{c^{2}}\left[L_{2}+\frac{1}{2}\left(L_{5}+L_{1}\right)\right] + \rho\frac{1}{2 \rho c}\left(L_{5}-L_{1}\right) \\
+=
+\frac{1}{c}\left[M L_{2}+\frac{1}{2}\left\{(M-1) L_{1}+(M+1) L_{5}\right\}\right]
+$$
+
+即(2.69)
+
+
+
+
 

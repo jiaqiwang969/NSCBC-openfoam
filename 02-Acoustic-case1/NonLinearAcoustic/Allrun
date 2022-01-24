@@ -1,0 +1,9 @@
+#!/bin/sh
+
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+runApplication blockMesh
+runApplication decomposePar
+runParallel $(getApplication)
+runApplication reconstructPar
+
