@@ -56,19 +56,17 @@ echo "Executing blockMesh"
 singularity exec $theImage blockMesh 2>&1 | tee $logsDir/log.blockMesh.$SLURM_JOBID
 
 
-# 创建虚拟文档
 #mkdir processor{0..$foam_numberOfSubdomains}
 
-
+echo "setFeilds"
+#srun -n 1 -N 1
+singularity exec $theImage setFields 2>&1 | tee $logsDir/log.setFields.$SLURM_JOBID
 
 echo "Executing decomposePar"
 #srun -n 1 -N 1 
 singularity exec $theImage decomposePar -cellDist -force 2>&1 | tee $logsDir/log.decomposePar.$SLURM_JOBID
 
 
-echo "setFeilds"
-#srun -n 1 -N 1
-singularity exec $theImage setFields 2>&1 | tee $logsDir/log.decomposePar.$SLURM_JOBID
 
 #X. Final step
 echo "Script done"
