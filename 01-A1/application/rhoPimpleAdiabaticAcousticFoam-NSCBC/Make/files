@@ -1,3 +1,0 @@
-rhoPimpleAdiabaticAcousticFoam-NSCBC.C
-
-EXE = $(FOAM_USER_APPBIN)/rhoPimpleAdiabaticAcousticFoam-NSCBC

@@ -65,6 +65,7 @@ Description
         \psi_p  | patch compressibility
         Sf      | patch face area vector
         \gamma  | ratio of specific heats
+        \etaAc  | ratio of modified terms 
     \endvartable
 Usage
     \table
@@ -73,6 +74,7 @@ Usage
         rho          | density field name      | no          | rho
         psi          | compressibility field name | no       | thermo:psi
         gamma        | ratio of specific heats (Cp/Cv) | yes |
+        etaAc        |
     \endtable
 
     Example of the boundary condition specification:
@@ -83,6 +85,7 @@ Usage
         phi             phi;
         psi             psi;
         gamma           1.4;
+        etaAc           0.1;
     }
     \endverbatim
 Usage
@@ -145,6 +148,9 @@ protected:
         //- Field value of the far-field
         Type fieldInf_;
 
+        //- Field value of unit one
+        Type fieldOne_;
+
         //- Relaxation length-scale
         scalar lInf_;
 
@@ -153,6 +159,9 @@ protected:
 
         //- Heat capacity ratio
 	scalar gamma_;
+
+        // - etaAc ratio for NSCBC boundary 
+        scalar etaAc_;
 
 public:
 
@@ -238,6 +247,13 @@ public:
                 return fieldInf_;
             }
 
+	    //- Return the field of unit one
+	    const Type& fieldOne() const
+	    {
+		return fieldOne_;
+	    }
+
+
             //- Return the relaxation length-scale
             scalar lInf() const
             {
@@ -262,6 +278,18 @@ public:
 	    {
                 return gamma_;
             }
+
+	    //- Return the etaAc NSCBC ratio
+	    scalar etaAc() const
+	    {
+		return etaAc_;
+            }
+
+            //- Return reference to the etaAc NSCBC ratio
+            scalar& etaAc()
+	    {
+		return etaAc_;
+	    }
 
         // Evaluation functions
 

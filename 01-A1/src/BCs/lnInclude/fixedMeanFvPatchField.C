@@ -1,1 +1,0 @@
-../fixedMean/fixedMeanFvPatchField.C

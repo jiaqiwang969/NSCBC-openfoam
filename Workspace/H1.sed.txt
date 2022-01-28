@@ -1,0 +1,2 @@
+#!/bin/bash -l
+sed -i 's,sod_shock_tube-waveTransmition-p,sod_shock_tube,g' *.sh

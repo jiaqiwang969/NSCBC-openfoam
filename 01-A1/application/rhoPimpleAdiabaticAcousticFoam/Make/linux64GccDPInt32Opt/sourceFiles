@@ -1,4 +1,0 @@
-SOURCE = \
-rhoPimpleAdiabaticAcousticFoam.C \
-
-# sources

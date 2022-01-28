@@ -46,8 +46,10 @@ Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField
     phiName_("phi"),
     rhoName_("rho"),
     psiName_("thermo:psi"),
-    gamma_(0.0), 
+    gamma_(0.0),
+    etaAc_(0.1), 
     fieldInf_(Zero),
+    fieldOne_(Zero),
     lInf_(-great)
 {
     this->refValue() = Zero;
@@ -69,9 +71,11 @@ Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField
     phiName_(ptf.phiName_),
     rhoName_(ptf.rhoName_),
     fieldInf_(ptf.fieldInf_),
+    fieldOne_(ptf.fieldOne_),
     lInf_(ptf.lInf_),
     psiName_(ptf.psiName_),
-    gamma_(ptf.gamma_)
+    gamma_(ptf.gamma_),
+    etaAc_(ptf.etaAc_)
 {}
 
 
@@ -88,7 +92,9 @@ Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField
     rhoName_(dict.lookupOrDefault<word>("rho", "rho")),
     psiName_(dict.lookupOrDefault<word>("psi", "thermo:psi")),
     gamma_(readScalar(dict.lookup("gamma"))), 
+    etaAc_(readScalar(dict.lookup("etaAc"))),
     fieldInf_(Zero),
+    fieldOne_(zero),
     lInf_(-great)
 {
     if (dict.found("value"))
@@ -137,7 +143,9 @@ Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField
     rhoName_(ptpsf.rhoName_),
     psiName_(ptpsf.psiName_),
     gamma_(ptpsf.gamma_),
+    etaAc_(ptpsf.etaAc_),
     fieldInf_(ptpsf.fieldInf_),
+    fieldOne_(ptpsf.fieldOne_),
     lInf_(ptpsf.lInf_)
 {}
 
@@ -154,7 +162,9 @@ Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField
     rhoName_(ptpsf.rhoName_),
     psiName_(ptpsf.psiName_),
     gamma_(ptpsf.gamma_),
+    etaAc_(ptpsf.etaAc_),
     fieldInf_(ptpsf.fieldInf_),
+    fieldOne_(ptpsf.fieldOne_),
     lInf_(ptpsf.lInf_)
 {}
 
@@ -178,10 +188,8 @@ Foam::pressureInletNSCBCFvPatchField<Type>::advectionSpeed() const
     if (phi.dimensions() == dimDensity*dimVelocity*dimArea)
     {
         const fvPatchScalarField& rhop =
-            this->patch().template lookupPatchField<volScalarField, scalar>
-            (
-                rhoName_
-            );
+            this->patch().template 
+	    lookupPatchField<volScalarField, scalar>(rhoName_);
 
         return phip/(rhop*this->patch().magSf());
     }
@@ -194,12 +202,11 @@ Foam::pressureInletNSCBCFvPatchField<Type>::advectionSpeed() const
 
 template<class Type>
 Foam::tmp<Foam::scalarField>
-Foam::waveTransmissiveFvPatchField<Type>::soundSpeed() const
+Foam::pressureInletNSCBCFvPatchField<Type>::soundSpeed() const
 {
-	// Lookup the velocity and compressibility of the patch
-	fvsPatchField<scalar> phip =
-		this->patch().template
-		lookupPatchField<surfaceScalarField, scalar>(this->phiName_);
+        const fvPatchField<scalar>& psip =
+           this->patch().template
+                lookupPatchField<volScalarField, scalar>(psiName_);
 
 	return  sqrt(gamma_/psip);
 }
@@ -231,10 +238,26 @@ void Foam::pressureInletNSCBCFvPatchField<Type>::updateCoeffs()
 
     // Calculate the advection speed of the field wave
     // If the wave is incoming set the speed to 0.
-    const scalarField w(Foam::max(advectionSpeed(), scalar(0)));
+    // -: const scalarField w(Foam::max(advectionSpeed(), scalar(0)));
+    const  scalarField cP(soundSpeed());
+    const  scalarField aP(advectionSpeed());
 
-    // Calculate the field wave coefficient alpha (See notes)
+    // (u-c)/2
+    const scalarField w((aP-cP)/2.0);
+    // Calculate the field wave coefficient alpha (See ref01-A.2.1)
     const scalarField alpha(w*deltaT*this->patch().deltaCoeffs());
+ 
+    const fvPatchScalarField& rhop =
+            this->patch().template lookupPatchField<volScalarField, scalar>
+            (
+                rhoName_
+            );
+  
+
+    // Calculate NSCBC modified terms
+    //const scalarField valueExpr(etaAc * rhop * sqr(cP) * (1.0 - sqr(aP/cP))/2.0/lInf_*deltaT*[(this->patch.nf() & (Up - uInf)) + f - g] + rhop * cP * (f-f0));
+    
+    const scalarField valueExpr(0.0);
 
     label patchi = this->patch().index();
 
@@ -242,8 +265,9 @@ void Foam::pressureInletNSCBCFvPatchField<Type>::updateCoeffs()
     // If lInf_ defined setup relaxation to the value fieldInf_.
     if (lInf_ > 0)
     {
-        // Calculate the field relaxation coefficient k (See notes)
-        const scalarField k(w*deltaT/lInf_);
+        // Calculate the field relaxation coefficient k (See A2.2.2)
+        // const scalarField k(w*deltaT/lInf_);
+        const scalarField k(etaAc*rhop*sqr(cP)*(1.0-sqr(aP/cP))/2.0/lInf_*deltaT);
 
         if
         (
@@ -253,10 +277,11 @@ void Foam::pressureInletNSCBCFvPatchField<Type>::updateCoeffs()
         {
             this->refValue() =
             (
-                field.oldTime().boundaryField()[patchi] + k*fieldInf_
-            )/(1.0 + k);
-
-            this->valueFraction() = (1.0 + k)/(1.0 + alpha + k);
+                field.oldTime().boundaryField()[patchi] 
+              + k *fieldInf_
+            )/(1.0 + k) ;
+            // 1/(1+(u-c)/2*dt/dx)
+            this->valueFraction() = (1.0)/(1.0 + alpha ) ;
         }
         else if (ddtScheme == fv::backwardDdtScheme<scalar>::typeName)
         {
@@ -265,9 +290,10 @@ void Foam::pressureInletNSCBCFvPatchField<Type>::updateCoeffs()
                 2.0*field.oldTime().boundaryField()[patchi]
               - 0.5*field.oldTime().oldTime().boundaryField()[patchi]
               + k*fieldInf_
-            )/(1.5 + k);
+            )/(1.5 + k); 
 
-            this->valueFraction() = (1.5 + k)/(1.5 + alpha + k);
+
+            this->valueFraction() = (1.5)/(1.5 + alpha);
         }
         else if
         (
@@ -284,14 +310,15 @@ void Foam::pressureInletNSCBCFvPatchField<Type>::updateCoeffs()
             );
 
             // Calculate the field relaxation coefficient k (See notes)
-            const scalarField k(w/(rDeltaT.boundaryField()[patchi]*lInf_));
-
+            // const scalarField k(w/(rDeltaT.boundaryField()[patchi]*lInf_));
+            const scalarField k(etaAc*rhop*sqr(cP)*(1.0-sqr(aP/cP))/2.0/lInf_/rDeltaT.boundaryField()[patchi]);
             this->refValue() =
             (
-                field.oldTime().boundaryField()[patchi] + k*fieldInf_
-            )/(1.0 + k);
+                field.oldTime().boundaryField()[patchi] 
+              + k*fieldInf_
+            )/(1.0 + k) ;
 
-            this->valueFraction() = (1.0 + k)/(1.0 + alpha + k);
+            this->valueFraction() = (1.0)/(1.0 + alpha);
         }
         else
         {
@@ -321,7 +348,7 @@ void Foam::pressureInletNSCBCFvPatchField<Type>::updateCoeffs()
             (
                 2.0*field.oldTime().boundaryField()[patchi]
               - 0.5*field.oldTime().oldTime().boundaryField()[patchi]
-            )/1.5;
+            )/1.5 ;
 
             this->valueFraction() = 1.5/(1.5 + alpha);
         }
@@ -365,8 +392,10 @@ void Foam::pressureInletNSCBCFvPatchField<Type>::write(Ostream& os) const
 
     writeEntryIfDifferent<word>(os, "phi", "phi", phiName_);
     writeEntryIfDifferent<word>(os, "rho", "rho", rhoName_);
-
-    if (lInf_ > 0)
+    writeEntry(os, "gamma", gamma_);
+    writeEntry(os, "etaAc", etaAc_);
+    writeEntry(os, "fieldOne", fieldOne_);
+    if (lInf_ > small)
     {
         writeEntry(os, "fieldInf", fieldInf_);
         writeEntry(os, "lInf", lInf_);

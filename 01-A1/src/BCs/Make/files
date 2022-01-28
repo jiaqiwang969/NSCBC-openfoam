@@ -1,3 +1,0 @@
-NSCBC/NSCBCFvPatchFields.C
-
-LIB = $(FOAM_USER_LIBBIN)/libNSCBC
