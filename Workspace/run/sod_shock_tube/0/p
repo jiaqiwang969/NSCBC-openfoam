@@ -5025,9 +5025,23 @@ internalField   nonuniform List<scalar>
 
 boundaryField
 {
-    sides
+    leftSide
     {
-        type            zeroGradient;
+        type            pressureInletNSCBC;
+        UInf            0;
+        gamma           1.4;
+        etaAc           0.1;
+        fieldInf        1;
+        lInf            1;
+        value           uniform 120000;
+    }
+    rightSide
+    {
+        type            waveTransmissive;
+        gamma           1.4;
+        fieldInf        0;
+        lInf            1000;
+        value           uniform 100000;
     }
     emptywalls
     {

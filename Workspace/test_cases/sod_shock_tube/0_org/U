@@ -23,15 +23,7 @@ boundaryField
 {
     leftSide
     {
-        type            waveTransmissive;
-        field           p;
-        phi             phi;
-        rho             rho;
-        psi             thermo:psi;
-        gamma           1.4;
-        fieldInf        (0 0 0);
-        lInf            1;
-        value           uniform (0 0 0);
+        type            zeroGradient;
     }
     rightSide
     {
@@ -42,7 +34,7 @@ boundaryField
         psi             thermo:psi;
         gamma           1.4;
         fieldInf        (0 0 0);
-        lInf            1;
+        lInf            1000;
         value           uniform (0 0 0);
     }
     emptywalls

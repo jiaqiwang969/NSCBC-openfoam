@@ -39,15 +39,24 @@ edges
 
 boundary
 (
-    sides
+    leftSide
+    {
+        type patch;
+        faces
+        (
+            (0 4 7 3)
+        );
+    }
+
+    rightSide
     {
         type patch;
         faces
         (
             (1 2 6 5)
-            (0 4 7 3)
         );
     }
+
     emptywalls
     {
         type empty;

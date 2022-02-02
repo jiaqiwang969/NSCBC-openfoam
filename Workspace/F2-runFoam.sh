@@ -1,6 +1,6 @@
 #!/bin/bash -l
 #SBATCH --job-name=sod_shock_tube
-#SBATCH --partition=debug
+#SBATCH --partition=small
 #SBATCH -n 4
 #SBATCH --ntasks-per-node=40
 #SBATCH --output=%j.out
@@ -54,7 +54,7 @@ foam_startFrom=startTime
 #foam_startFrom=latestTime
 foam_startTime=0
 #foam_startTime=15
-foam_endTime=0.0035
+foam_endTime=0.0265
 #foam_endTime=30
 foam_writeInterval=1.0e-5
 foam_purgeWrite=0

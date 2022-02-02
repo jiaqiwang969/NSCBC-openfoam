@@ -22,7 +22,7 @@ startTime    0;
 
 stopAt          endTime;
 
-endTime    0.0035;
+endTime    0.0265;
 
 deltaT     1.0e-7;
 
@@ -48,6 +48,8 @@ runTimeModifiable    true;
 adjustTimeStep  yes;
 maxCo           0.2;
 maxDeltaT       0.01;
+
+libs ("libpressureOutletNSCBC.so" "libpressureInletNSCBC.so")
 
 // ************************************************************************* //
 

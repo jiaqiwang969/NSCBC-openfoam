@@ -49,6 +49,8 @@ adjustTimeStep  yes;
 maxCo           0.2;
 maxDeltaT       0.01;
 
+libs ("libpressureOutletNSCBC.so" "libpressureInletNSCBC.so")
+
 // ************************************************************************* //
 
 functions

@@ -1,27 +1,20 @@
 wmake libso .
 wmakeLnInclude: linking include files to ./lnInclude
 Making dependency list for source file pressureInletNSCBCFvPatchFields.C
-g++ -std=c++11 -m64 -Dlinux64 -DWM_ARCH_OPTION=64 -DWM_DP -DWM_LABEL_SIZE=32 -Wall -Wextra -Wold-style-cast -Wnon-virtual-dtor -Wno-unused-parameter -Wno-invalid-offsetof -Wno-attributes -O3  -DNoRepository -ftemplate-depth-100 -I/opt/OpenFOAM/OpenFOAM-7/src/finiteVolume/lnInclude -I/opt/OpenFOAM/OpenFOAM-7/src/meshTools/lnInclude -IlnInclude -I. -I/opt/OpenFOAM/OpenFOAM-7/src/OpenFOAM/lnInclude -I/opt/OpenFOAM/OpenFOAM-7/src/OSspecific/POSIX/lnInclude   -fPIC -c pressureInletNSCBCFvPatchFields.C -o Make/linux64GccDPInt32Opt/pressureInletNSCBCFvPatchFields.o
-In file included from pressureInletNSCBCFvPatchField.H:318:0,
-                 from pressureInletNSCBCFvPatchFields.H:29,
-                 from pressureInletNSCBCFvPatchFields.C:26:
-pressureInletNSCBCFvPatchField.C: In constructor 'Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField(const Foam::fvPatch&, const Foam::DimensionedField<Type, Foam::volMesh>&, const Foam::dictionary&)':
-pressureInletNSCBCFvPatchField.C:97:19: error: expected primary-expression before ')' token
-     fieldOne_(zero),
-                   ^
+g++ -std=c++11 -m64 -Dlinux64 -DWM_ARCH_OPTION=64 -DWM_DP -DWM_LABEL_SIZE=32 -Wall -Wextra -Wold-style-cast -Wnon-virtual-dtor -Wno-unused-parameter -Wno-invalid-offsetof -Wno-attributes -O3  -DNoRepository -ftemplate-depth-100 -g 	-I/opt/OpenFOAM/OpenFOAM-7/src/finiteVolume/lnInclude -I/opt/OpenFOAM/OpenFOAM-7/src/meshTools/lnInclude -IlnInclude -I. -I/opt/OpenFOAM/OpenFOAM-7/src/OpenFOAM/lnInclude -I/opt/OpenFOAM/OpenFOAM-7/src/OSspecific/POSIX/lnInclude   -fPIC -c pressureInletNSCBCFvPatchFields.C -o Make/linux64GccDPInt32Opt/pressureInletNSCBCFvPatchFields.o
 In file included from pressureInletNSCBCFvPatchFields.H:29:0,
                  from pressureInletNSCBCFvPatchFields.C:26:
 pressureInletNSCBCFvPatchField.C: In instantiation of 'Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField(const Foam::fvPatch&, const Foam::DimensionedField<Type, Foam::volMesh>&) [with Type = double]':
 /opt/OpenFOAM/OpenFOAM-7/src/finiteVolume/lnInclude/fvPatchField.H:125:9:   required from 'static Foam::tmp<Foam::fvPatchField<Type> > Foam::fvPatchField<Type>::addpatchConstructorToTable<fvPatchFieldType>::New(const Foam::fvPatch&, const Foam::DimensionedField<Type, Foam::volMesh>&) [with fvPatchFieldType = Foam::pressureInletNSCBCFvPatchField<double>; Type = double]'
 /opt/OpenFOAM/OpenFOAM-7/src/finiteVolume/lnInclude/fvPatchField.H:125:9:   required from 'Foam::fvPatchField<Type>::addpatchConstructorToTable<fvPatchFieldType>::addpatchConstructorToTable(const Foam::word&) [with fvPatchFieldType = Foam::pressureInletNSCBCFvPatchField<double>; Type = double]'
 pressureInletNSCBCFvPatchFields.C:36:1:   required from here
-pressureInletNSCBCFvPatchField.H:164:16: warning: 'Foam::pressureInletNSCBCFvPatchField<double>::etaAc_' will be initialized after [-Wreorder]
+pressureInletNSCBCFvPatchField.H:167:16: warning: 'Foam::pressureInletNSCBCFvPatchField<double>::etaAc_' will be initialized after [-Wreorder]
          scalar etaAc_;
                 ^~~~~~
-pressureInletNSCBCFvPatchField.H:149:14: warning:   'double Foam::pressureInletNSCBCFvPatchField<double>::fieldInf_' [-Wreorder]
+pressureInletNSCBCFvPatchField.H:151:14: warning:   'double Foam::pressureInletNSCBCFvPatchField<double>::fieldInf_' [-Wreorder]
          Type fieldInf_;
               ^~~~~~~~~
-In file included from pressureInletNSCBCFvPatchField.H:318:0,
+In file included from pressureInletNSCBCFvPatchField.H:329:0,
                  from pressureInletNSCBCFvPatchFields.H:29,
                  from pressureInletNSCBCFvPatchFields.C:26:
 pressureInletNSCBCFvPatchField.C:39:1: warning:   when initialized here [-Wreorder]
@@ -33,16 +26,16 @@ pressureInletNSCBCFvPatchField.C: In instantiation of 'Foam::pressureInletNSCBCF
 /opt/OpenFOAM/OpenFOAM-7/src/finiteVolume/lnInclude/fvPatchField.H:151:9:   required from 'static Foam::tmp<Foam::fvPatchField<Type> > Foam::fvPatchField<Type>::adddictionaryConstructorToTable<fvPatchFieldType>::New(const Foam::fvPatch&, const Foam::DimensionedField<Type, Foam::volMesh>&, const Foam::dictionary&) [with fvPatchFieldType = Foam::pressureInletNSCBCFvPatchField<double>; Type = double]'
 /opt/OpenFOAM/OpenFOAM-7/src/finiteVolume/lnInclude/fvPatchField.H:151:9:   required from 'Foam::fvPatchField<Type>::adddictionaryConstructorToTable<fvPatchFieldType>::adddictionaryConstructorToTable(const Foam::word&) [with fvPatchFieldType = Foam::pressureInletNSCBCFvPatchField<double>; Type = double]'
 pressureInletNSCBCFvPatchFields.C:36:1:   required from here
-pressureInletNSCBCFvPatchField.H:164:16: warning: 'Foam::pressureInletNSCBCFvPatchField<double>::etaAc_' will be initialized after [-Wreorder]
+pressureInletNSCBCFvPatchField.H:167:16: warning: 'Foam::pressureInletNSCBCFvPatchField<double>::etaAc_' will be initialized after [-Wreorder]
          scalar etaAc_;
                 ^~~~~~
-pressureInletNSCBCFvPatchField.H:149:14: warning:   'double Foam::pressureInletNSCBCFvPatchField<double>::fieldInf_' [-Wreorder]
+pressureInletNSCBCFvPatchField.H:151:14: warning:   'double Foam::pressureInletNSCBCFvPatchField<double>::fieldInf_' [-Wreorder]
          Type fieldInf_;
               ^~~~~~~~~
-In file included from pressureInletNSCBCFvPatchField.H:318:0,
+In file included from pressureInletNSCBCFvPatchField.H:329:0,
                  from pressureInletNSCBCFvPatchFields.H:29,
                  from pressureInletNSCBCFvPatchFields.C:26:
-pressureInletNSCBCFvPatchField.C:83:1: warning:   when initialized here [-Wreorder]
+pressureInletNSCBCFvPatchField.C:85:1: warning:   when initialized here [-Wreorder]
  Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField
  ^~~~
 In file included from pressureInletNSCBCFvPatchFields.H:29:0,
@@ -51,13 +44,13 @@ pressureInletNSCBCFvPatchField.C: In instantiation of 'Foam::pressureInletNSCBCF
 /opt/OpenFOAM/OpenFOAM-7/src/finiteVolume/lnInclude/fvPatchField.H:125:9:   required from 'static Foam::tmp<Foam::fvPatchField<Type> > Foam::fvPatchField<Type>::addpatchConstructorToTable<fvPatchFieldType>::New(const Foam::fvPatch&, const Foam::DimensionedField<Type, Foam::volMesh>&) [with fvPatchFieldType = Foam::pressureInletNSCBCFvPatchField<Foam::Vector<double> >; Type = Foam::Vector<double>]'
 /opt/OpenFOAM/OpenFOAM-7/src/finiteVolume/lnInclude/fvPatchField.H:125:9:   required from 'Foam::fvPatchField<Type>::addpatchConstructorToTable<fvPatchFieldType>::addpatchConstructorToTable(const Foam::word&) [with fvPatchFieldType = Foam::pressureInletNSCBCFvPatchField<Foam::Vector<double> >; Type = Foam::Vector<double>]'
 pressureInletNSCBCFvPatchFields.C:36:1:   required from here
-pressureInletNSCBCFvPatchField.H:164:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::Vector<double> >::etaAc_' will be initialized after [-Wreorder]
+pressureInletNSCBCFvPatchField.H:167:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::Vector<double> >::etaAc_' will be initialized after [-Wreorder]
          scalar etaAc_;
                 ^~~~~~
-pressureInletNSCBCFvPatchField.H:149:14: warning:   'Foam::Vector<double> Foam::pressureInletNSCBCFvPatchField<Foam::Vector<double> >::fieldInf_' [-Wreorder]
+pressureInletNSCBCFvPatchField.H:151:14: warning:   'Foam::Vector<double> Foam::pressureInletNSCBCFvPatchField<Foam::Vector<double> >::fieldInf_' [-Wreorder]
          Type fieldInf_;
               ^~~~~~~~~
-In file included from pressureInletNSCBCFvPatchField.H:318:0,
+In file included from pressureInletNSCBCFvPatchField.H:329:0,
                  from pressureInletNSCBCFvPatchFields.H:29,
                  from pressureInletNSCBCFvPatchFields.C:26:
 pressureInletNSCBCFvPatchField.C:39:1: warning:   when initialized here [-Wreorder]
@@ -69,16 +62,16 @@ pressureInletNSCBCFvPatchField.C: In instantiation of 'Foam::pressureInletNSCBCF
 /opt/OpenFOAM/OpenFOAM-7/src/finiteVolume/lnInclude/fvPatchField.H:151:9:   required from 'static Foam::tmp<Foam::fvPatchField<Type> > Foam::fvPatchField<Type>::adddictionaryConstructorToTable<fvPatchFieldType>::New(const Foam::fvPatch&, const Foam::DimensionedField<Type, Foam::volMesh>&, const Foam::dictionary&) [with fvPatchFieldType = Foam::pressureInletNSCBCFvPatchField<Foam::Vector<double> >; Type = Foam::Vector<double>]'
 /opt/OpenFOAM/OpenFOAM-7/src/finiteVolume/lnInclude/fvPatchField.H:151:9:   required from 'Foam::fvPatchField<Type>::adddictionaryConstructorToTable<fvPatchFieldType>::adddictionaryConstructorToTable(const Foam::word&) [with fvPatchFieldType = Foam::pressureInletNSCBCFvPatchField<Foam::Vector<double> >; Type = Foam::Vector<double>]'
 pressureInletNSCBCFvPatchFields.C:36:1:   required from here
-pressureInletNSCBCFvPatchField.H:164:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::Vector<double> >::etaAc_' will be initialized after [-Wreorder]
+pressureInletNSCBCFvPatchField.H:167:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::Vector<double> >::etaAc_' will be initialized after [-Wreorder]
          scalar etaAc_;
                 ^~~~~~
-pressureInletNSCBCFvPatchField.H:149:14: warning:   'Foam::Vector<double> Foam::pressureInletNSCBCFvPatchField<Foam::Vector<double> >::fieldInf_' [-Wreorder]
+pressureInletNSCBCFvPatchField.H:151:14: warning:   'Foam::Vector<double> Foam::pressureInletNSCBCFvPatchField<Foam::Vector<double> >::fieldInf_' [-Wreorder]
          Type fieldInf_;
               ^~~~~~~~~
-In file included from pressureInletNSCBCFvPatchField.H:318:0,
+In file included from pressureInletNSCBCFvPatchField.H:329:0,
                  from pressureInletNSCBCFvPatchFields.H:29,
                  from pressureInletNSCBCFvPatchFields.C:26:
-pressureInletNSCBCFvPatchField.C:83:1: warning:   when initialized here [-Wreorder]
+pressureInletNSCBCFvPatchField.C:85:1: warning:   when initialized here [-Wreorder]
  Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField
  ^~~~
 In file included from pressureInletNSCBCFvPatchFields.H:29:0,
@@ -87,13 +80,13 @@ pressureInletNSCBCFvPatchField.C: In instantiation of 'Foam::pressureInletNSCBCF
 /opt/OpenFOAM/OpenFOAM-7/src/finiteVolume/lnInclude/fvPatchField.H:125:9:   required from 'static Foam::tmp<Foam::fvPatchField<Type> > Foam::fvPatchField<Type>::addpatchConstructorToTable<fvPatchFieldType>::New(const Foam::fvPatch&, const Foam::DimensionedField<Type, Foam::volMesh>&) [with fvPatchFieldType = Foam::pressureInletNSCBCFvPatchField<Foam::SphericalTensor<double> >; Type = Foam::SphericalTensor<double>]'
 /opt/OpenFOAM/OpenFOAM-7/src/finiteVolume/lnInclude/fvPatchField.H:125:9:   required from 'Foam::fvPatchField<Type>::addpatchConstructorToTable<fvPatchFieldType>::addpatchConstructorToTable(const Foam::word&) [with fvPatchFieldType = Foam::pressureInletNSCBCFvPatchField<Foam::SphericalTensor<double> >; Type = Foam::SphericalTensor<double>]'
 pressureInletNSCBCFvPatchFields.C:36:1:   required from here
-pressureInletNSCBCFvPatchField.H:164:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::SphericalTensor<double> >::etaAc_' will be initialized after [-Wreorder]
+pressureInletNSCBCFvPatchField.H:167:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::SphericalTensor<double> >::etaAc_' will be initialized after [-Wreorder]
          scalar etaAc_;
                 ^~~~~~
-pressureInletNSCBCFvPatchField.H:149:14: warning:   'Foam::SphericalTensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::SphericalTensor<double> >::fieldInf_' [-Wreorder]
+pressureInletNSCBCFvPatchField.H:151:14: warning:   'Foam::SphericalTensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::SphericalTensor<double> >::fieldInf_' [-Wreorder]
          Type fieldInf_;
               ^~~~~~~~~
-In file included from pressureInletNSCBCFvPatchField.H:318:0,
+In file included from pressureInletNSCBCFvPatchField.H:329:0,
                  from pressureInletNSCBCFvPatchFields.H:29,
                  from pressureInletNSCBCFvPatchFields.C:26:
 pressureInletNSCBCFvPatchField.C:39:1: warning:   when initialized here [-Wreorder]
@@ -105,16 +98,16 @@ pressureInletNSCBCFvPatchField.C: In instantiation of 'Foam::pressureInletNSCBCF
 /opt/OpenFOAM/OpenFOAM-7/src/finiteVolume/lnInclude/fvPatchField.H:151:9:   required from 'static Foam::tmp<Foam::fvPatchField<Type> > Foam::fvPatchField<Type>::adddictionaryConstructorToTable<fvPatchFieldType>::New(const Foam::fvPatch&, const Foam::DimensionedField<Type, Foam::volMesh>&, const Foam::dictionary&) [with fvPatchFieldType = Foam::pressureInletNSCBCFvPatchField<Foam::SphericalTensor<double> >; Type = Foam::SphericalTensor<double>]'
 /opt/OpenFOAM/OpenFOAM-7/src/finiteVolume/lnInclude/fvPatchField.H:151:9:   required from 'Foam::fvPatchField<Type>::adddictionaryConstructorToTable<fvPatchFieldType>::adddictionaryConstructorToTable(const Foam::word&) [with fvPatchFieldType = Foam::pressureInletNSCBCFvPatchField<Foam::SphericalTensor<double> >; Type = Foam::SphericalTensor<double>]'
 pressureInletNSCBCFvPatchFields.C:36:1:   required from here
-pressureInletNSCBCFvPatchField.H:164:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::SphericalTensor<double> >::etaAc_' will be initialized after [-Wreorder]
+pressureInletNSCBCFvPatchField.H:167:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::SphericalTensor<double> >::etaAc_' will be initialized after [-Wreorder]
          scalar etaAc_;
                 ^~~~~~
-pressureInletNSCBCFvPatchField.H:149:14: warning:   'Foam::SphericalTensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::SphericalTensor<double> >::fieldInf_' [-Wreorder]
+pressureInletNSCBCFvPatchField.H:151:14: warning:   'Foam::SphericalTensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::SphericalTensor<double> >::fieldInf_' [-Wreorder]
          Type fieldInf_;
               ^~~~~~~~~
-In file included from pressureInletNSCBCFvPatchField.H:318:0,
+In file included from pressureInletNSCBCFvPatchField.H:329:0,
                  from pressureInletNSCBCFvPatchFields.H:29,
                  from pressureInletNSCBCFvPatchFields.C:26:
-pressureInletNSCBCFvPatchField.C:83:1: warning:   when initialized here [-Wreorder]
+pressureInletNSCBCFvPatchField.C:85:1: warning:   when initialized here [-Wreorder]
  Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField
  ^~~~
 In file included from pressureInletNSCBCFvPatchFields.H:29:0,
@@ -123,13 +116,13 @@ pressureInletNSCBCFvPatchField.C: In instantiation of 'Foam::pressureInletNSCBCF
 /opt/OpenFOAM/OpenFOAM-7/src/finiteVolume/lnInclude/fvPatchField.H:125:9:   required from 'static Foam::tmp<Foam::fvPatchField<Type> > Foam::fvPatchField<Type>::addpatchConstructorToTable<fvPatchFieldType>::New(const Foam::fvPatch&, const Foam::DimensionedField<Type, Foam::volMesh>&) [with fvPatchFieldType = Foam::pressureInletNSCBCFvPatchField<Foam::SymmTensor<double> >; Type = Foam::SymmTensor<double>]'
 /opt/OpenFOAM/OpenFOAM-7/src/finiteVolume/lnInclude/fvPatchField.H:125:9:   required from 'Foam::fvPatchField<Type>::addpatchConstructorToTable<fvPatchFieldType>::addpatchConstructorToTable(const Foam::word&) [with fvPatchFieldType = Foam::pressureInletNSCBCFvPatchField<Foam::SymmTensor<double> >; Type = Foam::SymmTensor<double>]'
 pressureInletNSCBCFvPatchFields.C:36:1:   required from here
-pressureInletNSCBCFvPatchField.H:164:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::SymmTensor<double> >::etaAc_' will be initialized after [-Wreorder]
+pressureInletNSCBCFvPatchField.H:167:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::SymmTensor<double> >::etaAc_' will be initialized after [-Wreorder]
          scalar etaAc_;
                 ^~~~~~
-pressureInletNSCBCFvPatchField.H:149:14: warning:   'Foam::SymmTensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::SymmTensor<double> >::fieldInf_' [-Wreorder]
+pressureInletNSCBCFvPatchField.H:151:14: warning:   'Foam::SymmTensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::SymmTensor<double> >::fieldInf_' [-Wreorder]
          Type fieldInf_;
               ^~~~~~~~~
-In file included from pressureInletNSCBCFvPatchField.H:318:0,
+In file included from pressureInletNSCBCFvPatchField.H:329:0,
                  from pressureInletNSCBCFvPatchFields.H:29,
                  from pressureInletNSCBCFvPatchFields.C:26:
 pressureInletNSCBCFvPatchField.C:39:1: warning:   when initialized here [-Wreorder]
@@ -141,16 +134,16 @@ pressureInletNSCBCFvPatchField.C: In instantiation of 'Foam::pressureInletNSCBCF
 /opt/OpenFOAM/OpenFOAM-7/src/finiteVolume/lnInclude/fvPatchField.H:151:9:   required from 'static Foam::tmp<Foam::fvPatchField<Type> > Foam::fvPatchField<Type>::adddictionaryConstructorToTable<fvPatchFieldType>::New(const Foam::fvPatch&, const Foam::DimensionedField<Type, Foam::volMesh>&, const Foam::dictionary&) [with fvPatchFieldType = Foam::pressureInletNSCBCFvPatchField<Foam::SymmTensor<double> >; Type = Foam::SymmTensor<double>]'
 /opt/OpenFOAM/OpenFOAM-7/src/finiteVolume/lnInclude/fvPatchField.H:151:9:   required from 'Foam::fvPatchField<Type>::adddictionaryConstructorToTable<fvPatchFieldType>::adddictionaryConstructorToTable(const Foam::word&) [with fvPatchFieldType = Foam::pressureInletNSCBCFvPatchField<Foam::SymmTensor<double> >; Type = Foam::SymmTensor<double>]'
 pressureInletNSCBCFvPatchFields.C:36:1:   required from here
-pressureInletNSCBCFvPatchField.H:164:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::SymmTensor<double> >::etaAc_' will be initialized after [-Wreorder]
+pressureInletNSCBCFvPatchField.H:167:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::SymmTensor<double> >::etaAc_' will be initialized after [-Wreorder]
          scalar etaAc_;
                 ^~~~~~
-pressureInletNSCBCFvPatchField.H:149:14: warning:   'Foam::SymmTensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::SymmTensor<double> >::fieldInf_' [-Wreorder]
+pressureInletNSCBCFvPatchField.H:151:14: warning:   'Foam::SymmTensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::SymmTensor<double> >::fieldInf_' [-Wreorder]
          Type fieldInf_;
               ^~~~~~~~~
-In file included from pressureInletNSCBCFvPatchField.H:318:0,
+In file included from pressureInletNSCBCFvPatchField.H:329:0,
                  from pressureInletNSCBCFvPatchFields.H:29,
                  from pressureInletNSCBCFvPatchFields.C:26:
-pressureInletNSCBCFvPatchField.C:83:1: warning:   when initialized here [-Wreorder]
+pressureInletNSCBCFvPatchField.C:85:1: warning:   when initialized here [-Wreorder]
  Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField
  ^~~~
 In file included from pressureInletNSCBCFvPatchFields.H:29:0,
@@ -159,13 +152,13 @@ pressureInletNSCBCFvPatchField.C: In instantiation of 'Foam::pressureInletNSCBCF
 /opt/OpenFOAM/OpenFOAM-7/src/finiteVolume/lnInclude/fvPatchField.H:125:9:   required from 'static Foam::tmp<Foam::fvPatchField<Type> > Foam::fvPatchField<Type>::addpatchConstructorToTable<fvPatchFieldType>::New(const Foam::fvPatch&, const Foam::DimensionedField<Type, Foam::volMesh>&) [with fvPatchFieldType = Foam::pressureInletNSCBCFvPatchField<Foam::Tensor<double> >; Type = Foam::Tensor<double>]'
 /opt/OpenFOAM/OpenFOAM-7/src/finiteVolume/lnInclude/fvPatchField.H:125:9:   required from 'Foam::fvPatchField<Type>::addpatchConstructorToTable<fvPatchFieldType>::addpatchConstructorToTable(const Foam::word&) [with fvPatchFieldType = Foam::pressureInletNSCBCFvPatchField<Foam::Tensor<double> >; Type = Foam::Tensor<double>]'
 pressureInletNSCBCFvPatchFields.C:36:1:   required from here
-pressureInletNSCBCFvPatchField.H:164:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::Tensor<double> >::etaAc_' will be initialized after [-Wreorder]
+pressureInletNSCBCFvPatchField.H:167:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::Tensor<double> >::etaAc_' will be initialized after [-Wreorder]
          scalar etaAc_;
                 ^~~~~~
-pressureInletNSCBCFvPatchField.H:149:14: warning:   'Foam::Tensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::Tensor<double> >::fieldInf_' [-Wreorder]
+pressureInletNSCBCFvPatchField.H:151:14: warning:   'Foam::Tensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::Tensor<double> >::fieldInf_' [-Wreorder]
          Type fieldInf_;
               ^~~~~~~~~
-In file included from pressureInletNSCBCFvPatchField.H:318:0,
+In file included from pressureInletNSCBCFvPatchField.H:329:0,
                  from pressureInletNSCBCFvPatchFields.H:29,
                  from pressureInletNSCBCFvPatchFields.C:26:
 pressureInletNSCBCFvPatchField.C:39:1: warning:   when initialized here [-Wreorder]
@@ -177,187 +170,187 @@ pressureInletNSCBCFvPatchField.C: In instantiation of 'Foam::pressureInletNSCBCF
 /opt/OpenFOAM/OpenFOAM-7/src/finiteVolume/lnInclude/fvPatchField.H:151:9:   required from 'static Foam::tmp<Foam::fvPatchField<Type> > Foam::fvPatchField<Type>::adddictionaryConstructorToTable<fvPatchFieldType>::New(const Foam::fvPatch&, const Foam::DimensionedField<Type, Foam::volMesh>&, const Foam::dictionary&) [with fvPatchFieldType = Foam::pressureInletNSCBCFvPatchField<Foam::Tensor<double> >; Type = Foam::Tensor<double>]'
 /opt/OpenFOAM/OpenFOAM-7/src/finiteVolume/lnInclude/fvPatchField.H:151:9:   required from 'Foam::fvPatchField<Type>::adddictionaryConstructorToTable<fvPatchFieldType>::adddictionaryConstructorToTable(const Foam::word&) [with fvPatchFieldType = Foam::pressureInletNSCBCFvPatchField<Foam::Tensor<double> >; Type = Foam::Tensor<double>]'
 pressureInletNSCBCFvPatchFields.C:36:1:   required from here
-pressureInletNSCBCFvPatchField.H:164:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::Tensor<double> >::etaAc_' will be initialized after [-Wreorder]
+pressureInletNSCBCFvPatchField.H:167:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::Tensor<double> >::etaAc_' will be initialized after [-Wreorder]
          scalar etaAc_;
                 ^~~~~~
-pressureInletNSCBCFvPatchField.H:149:14: warning:   'Foam::Tensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::Tensor<double> >::fieldInf_' [-Wreorder]
+pressureInletNSCBCFvPatchField.H:151:14: warning:   'Foam::Tensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::Tensor<double> >::fieldInf_' [-Wreorder]
          Type fieldInf_;
               ^~~~~~~~~
-In file included from pressureInletNSCBCFvPatchField.H:318:0,
+In file included from pressureInletNSCBCFvPatchField.H:329:0,
                  from pressureInletNSCBCFvPatchFields.H:29,
                  from pressureInletNSCBCFvPatchFields.C:26:
-pressureInletNSCBCFvPatchField.C:83:1: warning:   when initialized here [-Wreorder]
+pressureInletNSCBCFvPatchField.C:85:1: warning:   when initialized here [-Wreorder]
  Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField
  ^~~~
 In file included from pressureInletNSCBCFvPatchFields.H:29:0,
                  from pressureInletNSCBCFvPatchFields.C:26:
 pressureInletNSCBCFvPatchField.C: In instantiation of 'Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField(const Foam::pressureInletNSCBCFvPatchField<Type>&) [with Type = Foam::Tensor<double>]':
-pressureInletNSCBCFvPatchField.H:210:17:   required from 'Foam::tmp<Foam::fvPatchField<Type> > Foam::pressureInletNSCBCFvPatchField<Type>::clone() const [with Type = Foam::Tensor<double>]'
+pressureInletNSCBCFvPatchField.H:213:17:   required from 'Foam::tmp<Foam::fvPatchField<Type> > Foam::pressureInletNSCBCFvPatchField<Type>::clone() const [with Type = Foam::Tensor<double>]'
 pressureInletNSCBCFvPatchFields.C:40:1:   required from here
-pressureInletNSCBCFvPatchField.H:164:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::Tensor<double> >::etaAc_' will be initialized after [-Wreorder]
+pressureInletNSCBCFvPatchField.H:167:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::Tensor<double> >::etaAc_' will be initialized after [-Wreorder]
          scalar etaAc_;
                 ^~~~~~
-pressureInletNSCBCFvPatchField.H:149:14: warning:   'Foam::Tensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::Tensor<double> >::fieldInf_' [-Wreorder]
+pressureInletNSCBCFvPatchField.H:151:14: warning:   'Foam::Tensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::Tensor<double> >::fieldInf_' [-Wreorder]
          Type fieldInf_;
               ^~~~~~~~~
-In file included from pressureInletNSCBCFvPatchField.H:318:0,
+In file included from pressureInletNSCBCFvPatchField.H:329:0,
                  from pressureInletNSCBCFvPatchFields.H:29,
                  from pressureInletNSCBCFvPatchFields.C:26:
-pressureInletNSCBCFvPatchField.C:136:1: warning:   when initialized here [-Wreorder]
+pressureInletNSCBCFvPatchField.C:141:1: warning:   when initialized here [-Wreorder]
  Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField
  ^~~~
 In file included from pressureInletNSCBCFvPatchFields.H:29:0,
                  from pressureInletNSCBCFvPatchFields.C:26:
 pressureInletNSCBCFvPatchField.C: In instantiation of 'Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField(const Foam::pressureInletNSCBCFvPatchField<Type>&, const Foam::DimensionedField<Type, Foam::volMesh>&) [with Type = Foam::Tensor<double>]':
-pressureInletNSCBCFvPatchField.H:229:17:   required from 'Foam::tmp<Foam::fvPatchField<Type> > Foam::pressureInletNSCBCFvPatchField<Type>::clone(const Foam::DimensionedField<Type, Foam::volMesh>&) const [with Type = Foam::Tensor<double>]'
+pressureInletNSCBCFvPatchField.H:232:17:   required from 'Foam::tmp<Foam::fvPatchField<Type> > Foam::pressureInletNSCBCFvPatchField<Type>::clone(const Foam::DimensionedField<Type, Foam::volMesh>&) const [with Type = Foam::Tensor<double>]'
 pressureInletNSCBCFvPatchFields.C:40:1:   required from here
-pressureInletNSCBCFvPatchField.H:164:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::Tensor<double> >::etaAc_' will be initialized after [-Wreorder]
+pressureInletNSCBCFvPatchField.H:167:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::Tensor<double> >::etaAc_' will be initialized after [-Wreorder]
          scalar etaAc_;
                 ^~~~~~
-pressureInletNSCBCFvPatchField.H:149:14: warning:   'Foam::Tensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::Tensor<double> >::fieldInf_' [-Wreorder]
+pressureInletNSCBCFvPatchField.H:151:14: warning:   'Foam::Tensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::Tensor<double> >::fieldInf_' [-Wreorder]
          Type fieldInf_;
               ^~~~~~~~~
-In file included from pressureInletNSCBCFvPatchField.H:318:0,
+In file included from pressureInletNSCBCFvPatchField.H:329:0,
                  from pressureInletNSCBCFvPatchFields.H:29,
                  from pressureInletNSCBCFvPatchFields.C:26:
-pressureInletNSCBCFvPatchField.C:154:1: warning:   when initialized here [-Wreorder]
+pressureInletNSCBCFvPatchField.C:160:1: warning:   when initialized here [-Wreorder]
  Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField
  ^~~~
 In file included from pressureInletNSCBCFvPatchFields.H:29:0,
                  from pressureInletNSCBCFvPatchFields.C:26:
 pressureInletNSCBCFvPatchField.C: In instantiation of 'Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField(const Foam::pressureInletNSCBCFvPatchField<Type>&) [with Type = Foam::SymmTensor<double>]':
-pressureInletNSCBCFvPatchField.H:210:17:   required from 'Foam::tmp<Foam::fvPatchField<Type> > Foam::pressureInletNSCBCFvPatchField<Type>::clone() const [with Type = Foam::SymmTensor<double>]'
+pressureInletNSCBCFvPatchField.H:213:17:   required from 'Foam::tmp<Foam::fvPatchField<Type> > Foam::pressureInletNSCBCFvPatchField<Type>::clone() const [with Type = Foam::SymmTensor<double>]'
 pressureInletNSCBCFvPatchFields.C:40:1:   required from here
-pressureInletNSCBCFvPatchField.H:164:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::SymmTensor<double> >::etaAc_' will be initialized after [-Wreorder]
+pressureInletNSCBCFvPatchField.H:167:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::SymmTensor<double> >::etaAc_' will be initialized after [-Wreorder]
          scalar etaAc_;
                 ^~~~~~
-pressureInletNSCBCFvPatchField.H:149:14: warning:   'Foam::SymmTensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::SymmTensor<double> >::fieldInf_' [-Wreorder]
+pressureInletNSCBCFvPatchField.H:151:14: warning:   'Foam::SymmTensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::SymmTensor<double> >::fieldInf_' [-Wreorder]
          Type fieldInf_;
               ^~~~~~~~~
-In file included from pressureInletNSCBCFvPatchField.H:318:0,
+In file included from pressureInletNSCBCFvPatchField.H:329:0,
                  from pressureInletNSCBCFvPatchFields.H:29,
                  from pressureInletNSCBCFvPatchFields.C:26:
-pressureInletNSCBCFvPatchField.C:136:1: warning:   when initialized here [-Wreorder]
+pressureInletNSCBCFvPatchField.C:141:1: warning:   when initialized here [-Wreorder]
  Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField
  ^~~~
 In file included from pressureInletNSCBCFvPatchFields.H:29:0,
                  from pressureInletNSCBCFvPatchFields.C:26:
 pressureInletNSCBCFvPatchField.C: In instantiation of 'Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField(const Foam::pressureInletNSCBCFvPatchField<Type>&, const Foam::DimensionedField<Type, Foam::volMesh>&) [with Type = Foam::SymmTensor<double>]':
-pressureInletNSCBCFvPatchField.H:229:17:   required from 'Foam::tmp<Foam::fvPatchField<Type> > Foam::pressureInletNSCBCFvPatchField<Type>::clone(const Foam::DimensionedField<Type, Foam::volMesh>&) const [with Type = Foam::SymmTensor<double>]'
+pressureInletNSCBCFvPatchField.H:232:17:   required from 'Foam::tmp<Foam::fvPatchField<Type> > Foam::pressureInletNSCBCFvPatchField<Type>::clone(const Foam::DimensionedField<Type, Foam::volMesh>&) const [with Type = Foam::SymmTensor<double>]'
 pressureInletNSCBCFvPatchFields.C:40:1:   required from here
-pressureInletNSCBCFvPatchField.H:164:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::SymmTensor<double> >::etaAc_' will be initialized after [-Wreorder]
+pressureInletNSCBCFvPatchField.H:167:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::SymmTensor<double> >::etaAc_' will be initialized after [-Wreorder]
          scalar etaAc_;
                 ^~~~~~
-pressureInletNSCBCFvPatchField.H:149:14: warning:   'Foam::SymmTensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::SymmTensor<double> >::fieldInf_' [-Wreorder]
+pressureInletNSCBCFvPatchField.H:151:14: warning:   'Foam::SymmTensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::SymmTensor<double> >::fieldInf_' [-Wreorder]
          Type fieldInf_;
               ^~~~~~~~~
-In file included from pressureInletNSCBCFvPatchField.H:318:0,
+In file included from pressureInletNSCBCFvPatchField.H:329:0,
                  from pressureInletNSCBCFvPatchFields.H:29,
                  from pressureInletNSCBCFvPatchFields.C:26:
-pressureInletNSCBCFvPatchField.C:154:1: warning:   when initialized here [-Wreorder]
+pressureInletNSCBCFvPatchField.C:160:1: warning:   when initialized here [-Wreorder]
  Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField
  ^~~~
 In file included from pressureInletNSCBCFvPatchFields.H:29:0,
                  from pressureInletNSCBCFvPatchFields.C:26:
 pressureInletNSCBCFvPatchField.C: In instantiation of 'Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField(const Foam::pressureInletNSCBCFvPatchField<Type>&) [with Type = Foam::SphericalTensor<double>]':
-pressureInletNSCBCFvPatchField.H:210:17:   required from 'Foam::tmp<Foam::fvPatchField<Type> > Foam::pressureInletNSCBCFvPatchField<Type>::clone() const [with Type = Foam::SphericalTensor<double>]'
+pressureInletNSCBCFvPatchField.H:213:17:   required from 'Foam::tmp<Foam::fvPatchField<Type> > Foam::pressureInletNSCBCFvPatchField<Type>::clone() const [with Type = Foam::SphericalTensor<double>]'
 pressureInletNSCBCFvPatchFields.C:40:1:   required from here
-pressureInletNSCBCFvPatchField.H:164:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::SphericalTensor<double> >::etaAc_' will be initialized after [-Wreorder]
+pressureInletNSCBCFvPatchField.H:167:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::SphericalTensor<double> >::etaAc_' will be initialized after [-Wreorder]
          scalar etaAc_;
                 ^~~~~~
-pressureInletNSCBCFvPatchField.H:149:14: warning:   'Foam::SphericalTensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::SphericalTensor<double> >::fieldInf_' [-Wreorder]
+pressureInletNSCBCFvPatchField.H:151:14: warning:   'Foam::SphericalTensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::SphericalTensor<double> >::fieldInf_' [-Wreorder]
          Type fieldInf_;
               ^~~~~~~~~
-In file included from pressureInletNSCBCFvPatchField.H:318:0,
+In file included from pressureInletNSCBCFvPatchField.H:329:0,
                  from pressureInletNSCBCFvPatchFields.H:29,
                  from pressureInletNSCBCFvPatchFields.C:26:
-pressureInletNSCBCFvPatchField.C:136:1: warning:   when initialized here [-Wreorder]
+pressureInletNSCBCFvPatchField.C:141:1: warning:   when initialized here [-Wreorder]
  Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField
  ^~~~
 In file included from pressureInletNSCBCFvPatchFields.H:29:0,
                  from pressureInletNSCBCFvPatchFields.C:26:
 pressureInletNSCBCFvPatchField.C: In instantiation of 'Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField(const Foam::pressureInletNSCBCFvPatchField<Type>&, const Foam::DimensionedField<Type, Foam::volMesh>&) [with Type = Foam::SphericalTensor<double>]':
-pressureInletNSCBCFvPatchField.H:229:17:   required from 'Foam::tmp<Foam::fvPatchField<Type> > Foam::pressureInletNSCBCFvPatchField<Type>::clone(const Foam::DimensionedField<Type, Foam::volMesh>&) const [with Type = Foam::SphericalTensor<double>]'
+pressureInletNSCBCFvPatchField.H:232:17:   required from 'Foam::tmp<Foam::fvPatchField<Type> > Foam::pressureInletNSCBCFvPatchField<Type>::clone(const Foam::DimensionedField<Type, Foam::volMesh>&) const [with Type = Foam::SphericalTensor<double>]'
 pressureInletNSCBCFvPatchFields.C:40:1:   required from here
-pressureInletNSCBCFvPatchField.H:164:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::SphericalTensor<double> >::etaAc_' will be initialized after [-Wreorder]
+pressureInletNSCBCFvPatchField.H:167:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::SphericalTensor<double> >::etaAc_' will be initialized after [-Wreorder]
          scalar etaAc_;
                 ^~~~~~
-pressureInletNSCBCFvPatchField.H:149:14: warning:   'Foam::SphericalTensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::SphericalTensor<double> >::fieldInf_' [-Wreorder]
+pressureInletNSCBCFvPatchField.H:151:14: warning:   'Foam::SphericalTensor<double> Foam::pressureInletNSCBCFvPatchField<Foam::SphericalTensor<double> >::fieldInf_' [-Wreorder]
          Type fieldInf_;
               ^~~~~~~~~
-In file included from pressureInletNSCBCFvPatchField.H:318:0,
+In file included from pressureInletNSCBCFvPatchField.H:329:0,
                  from pressureInletNSCBCFvPatchFields.H:29,
                  from pressureInletNSCBCFvPatchFields.C:26:
-pressureInletNSCBCFvPatchField.C:154:1: warning:   when initialized here [-Wreorder]
+pressureInletNSCBCFvPatchField.C:160:1: warning:   when initialized here [-Wreorder]
  Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField
  ^~~~
 In file included from pressureInletNSCBCFvPatchFields.H:29:0,
                  from pressureInletNSCBCFvPatchFields.C:26:
 pressureInletNSCBCFvPatchField.C: In instantiation of 'Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField(const Foam::pressureInletNSCBCFvPatchField<Type>&) [with Type = Foam::Vector<double>]':
-pressureInletNSCBCFvPatchField.H:210:17:   required from 'Foam::tmp<Foam::fvPatchField<Type> > Foam::pressureInletNSCBCFvPatchField<Type>::clone() const [with Type = Foam::Vector<double>]'
+pressureInletNSCBCFvPatchField.H:213:17:   required from 'Foam::tmp<Foam::fvPatchField<Type> > Foam::pressureInletNSCBCFvPatchField<Type>::clone() const [with Type = Foam::Vector<double>]'
 pressureInletNSCBCFvPatchFields.C:40:1:   required from here
-pressureInletNSCBCFvPatchField.H:164:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::Vector<double> >::etaAc_' will be initialized after [-Wreorder]
+pressureInletNSCBCFvPatchField.H:167:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::Vector<double> >::etaAc_' will be initialized after [-Wreorder]
          scalar etaAc_;
                 ^~~~~~
-pressureInletNSCBCFvPatchField.H:149:14: warning:   'Foam::Vector<double> Foam::pressureInletNSCBCFvPatchField<Foam::Vector<double> >::fieldInf_' [-Wreorder]
+pressureInletNSCBCFvPatchField.H:151:14: warning:   'Foam::Vector<double> Foam::pressureInletNSCBCFvPatchField<Foam::Vector<double> >::fieldInf_' [-Wreorder]
          Type fieldInf_;
               ^~~~~~~~~
-In file included from pressureInletNSCBCFvPatchField.H:318:0,
+In file included from pressureInletNSCBCFvPatchField.H:329:0,
                  from pressureInletNSCBCFvPatchFields.H:29,
                  from pressureInletNSCBCFvPatchFields.C:26:
-pressureInletNSCBCFvPatchField.C:136:1: warning:   when initialized here [-Wreorder]
+pressureInletNSCBCFvPatchField.C:141:1: warning:   when initialized here [-Wreorder]
  Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField
  ^~~~
 In file included from pressureInletNSCBCFvPatchFields.H:29:0,
                  from pressureInletNSCBCFvPatchFields.C:26:
 pressureInletNSCBCFvPatchField.C: In instantiation of 'Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField(const Foam::pressureInletNSCBCFvPatchField<Type>&, const Foam::DimensionedField<Type, Foam::volMesh>&) [with Type = Foam::Vector<double>]':
-pressureInletNSCBCFvPatchField.H:229:17:   required from 'Foam::tmp<Foam::fvPatchField<Type> > Foam::pressureInletNSCBCFvPatchField<Type>::clone(const Foam::DimensionedField<Type, Foam::volMesh>&) const [with Type = Foam::Vector<double>]'
+pressureInletNSCBCFvPatchField.H:232:17:   required from 'Foam::tmp<Foam::fvPatchField<Type> > Foam::pressureInletNSCBCFvPatchField<Type>::clone(const Foam::DimensionedField<Type, Foam::volMesh>&) const [with Type = Foam::Vector<double>]'
 pressureInletNSCBCFvPatchFields.C:40:1:   required from here
-pressureInletNSCBCFvPatchField.H:164:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::Vector<double> >::etaAc_' will be initialized after [-Wreorder]
+pressureInletNSCBCFvPatchField.H:167:16: warning: 'Foam::pressureInletNSCBCFvPatchField<Foam::Vector<double> >::etaAc_' will be initialized after [-Wreorder]
          scalar etaAc_;
                 ^~~~~~
-pressureInletNSCBCFvPatchField.H:149:14: warning:   'Foam::Vector<double> Foam::pressureInletNSCBCFvPatchField<Foam::Vector<double> >::fieldInf_' [-Wreorder]
+pressureInletNSCBCFvPatchField.H:151:14: warning:   'Foam::Vector<double> Foam::pressureInletNSCBCFvPatchField<Foam::Vector<double> >::fieldInf_' [-Wreorder]
          Type fieldInf_;
               ^~~~~~~~~
-In file included from pressureInletNSCBCFvPatchField.H:318:0,
+In file included from pressureInletNSCBCFvPatchField.H:329:0,
                  from pressureInletNSCBCFvPatchFields.H:29,
                  from pressureInletNSCBCFvPatchFields.C:26:
-pressureInletNSCBCFvPatchField.C:154:1: warning:   when initialized here [-Wreorder]
+pressureInletNSCBCFvPatchField.C:160:1: warning:   when initialized here [-Wreorder]
  Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField
  ^~~~
 In file included from pressureInletNSCBCFvPatchFields.H:29:0,
                  from pressureInletNSCBCFvPatchFields.C:26:
 pressureInletNSCBCFvPatchField.C: In instantiation of 'Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField(const Foam::pressureInletNSCBCFvPatchField<Type>&) [with Type = double]':
-pressureInletNSCBCFvPatchField.H:210:17:   required from 'Foam::tmp<Foam::fvPatchField<Type> > Foam::pressureInletNSCBCFvPatchField<Type>::clone() const [with Type = double]'
+pressureInletNSCBCFvPatchField.H:213:17:   required from 'Foam::tmp<Foam::fvPatchField<Type> > Foam::pressureInletNSCBCFvPatchField<Type>::clone() const [with Type = double]'
 pressureInletNSCBCFvPatchFields.C:40:1:   required from here
-pressureInletNSCBCFvPatchField.H:164:16: warning: 'Foam::pressureInletNSCBCFvPatchField<double>::etaAc_' will be initialized after [-Wreorder]
+pressureInletNSCBCFvPatchField.H:167:16: warning: 'Foam::pressureInletNSCBCFvPatchField<double>::etaAc_' will be initialized after [-Wreorder]
          scalar etaAc_;
                 ^~~~~~
-pressureInletNSCBCFvPatchField.H:149:14: warning:   'double Foam::pressureInletNSCBCFvPatchField<double>::fieldInf_' [-Wreorder]
+pressureInletNSCBCFvPatchField.H:151:14: warning:   'double Foam::pressureInletNSCBCFvPatchField<double>::fieldInf_' [-Wreorder]
          Type fieldInf_;
               ^~~~~~~~~
-In file included from pressureInletNSCBCFvPatchField.H:318:0,
+In file included from pressureInletNSCBCFvPatchField.H:329:0,
                  from pressureInletNSCBCFvPatchFields.H:29,
                  from pressureInletNSCBCFvPatchFields.C:26:
-pressureInletNSCBCFvPatchField.C:136:1: warning:   when initialized here [-Wreorder]
+pressureInletNSCBCFvPatchField.C:141:1: warning:   when initialized here [-Wreorder]
  Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField
  ^~~~
 In file included from pressureInletNSCBCFvPatchFields.H:29:0,
                  from pressureInletNSCBCFvPatchFields.C:26:
 pressureInletNSCBCFvPatchField.C: In instantiation of 'Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField(const Foam::pressureInletNSCBCFvPatchField<Type>&, const Foam::DimensionedField<Type, Foam::volMesh>&) [with Type = double]':
-pressureInletNSCBCFvPatchField.H:229:17:   required from 'Foam::tmp<Foam::fvPatchField<Type> > Foam::pressureInletNSCBCFvPatchField<Type>::clone(const Foam::DimensionedField<Type, Foam::volMesh>&) const [with Type = double]'
+pressureInletNSCBCFvPatchField.H:232:17:   required from 'Foam::tmp<Foam::fvPatchField<Type> > Foam::pressureInletNSCBCFvPatchField<Type>::clone(const Foam::DimensionedField<Type, Foam::volMesh>&) const [with Type = double]'
 pressureInletNSCBCFvPatchFields.C:40:1:   required from here
-pressureInletNSCBCFvPatchField.H:164:16: warning: 'Foam::pressureInletNSCBCFvPatchField<double>::etaAc_' will be initialized after [-Wreorder]
+pressureInletNSCBCFvPatchField.H:167:16: warning: 'Foam::pressureInletNSCBCFvPatchField<double>::etaAc_' will be initialized after [-Wreorder]
          scalar etaAc_;
                 ^~~~~~
-pressureInletNSCBCFvPatchField.H:149:14: warning:   'double Foam::pressureInletNSCBCFvPatchField<double>::fieldInf_' [-Wreorder]
+pressureInletNSCBCFvPatchField.H:151:14: warning:   'double Foam::pressureInletNSCBCFvPatchField<double>::fieldInf_' [-Wreorder]
          Type fieldInf_;
               ^~~~~~~~~
-In file included from pressureInletNSCBCFvPatchField.H:318:0,
+In file included from pressureInletNSCBCFvPatchField.H:329:0,
                  from pressureInletNSCBCFvPatchFields.H:29,
                  from pressureInletNSCBCFvPatchFields.C:26:
-pressureInletNSCBCFvPatchField.C:154:1: warning:   when initialized here [-Wreorder]
+pressureInletNSCBCFvPatchField.C:160:1: warning:   when initialized here [-Wreorder]
  Foam::pressureInletNSCBCFvPatchField<Type>::pressureInletNSCBCFvPatchField
  ^~~~
-/opt/OpenFOAM/OpenFOAM-7/wmake/rules/General/transform:25: recipe for target 'Make/linux64GccDPInt32Opt/pressureInletNSCBCFvPatchFields.o' failed
-make: *** [Make/linux64GccDPInt32Opt/pressureInletNSCBCFvPatchFields.o] Error 1
+g++ -std=c++11 -m64 -Dlinux64 -DWM_ARCH_OPTION=64 -DWM_DP -DWM_LABEL_SIZE=32 -Wall -Wextra -Wold-style-cast -Wnon-virtual-dtor -Wno-unused-parameter -Wno-invalid-offsetof -Wno-attributes -O3  -DNoRepository -ftemplate-depth-100 -g 	-I/opt/OpenFOAM/OpenFOAM-7/src/finiteVolume/lnInclude -I/opt/OpenFOAM/OpenFOAM-7/src/meshTools/lnInclude -IlnInclude -I. -I/opt/OpenFOAM/OpenFOAM-7/src/OpenFOAM/lnInclude -I/opt/OpenFOAM/OpenFOAM-7/src/OSspecific/POSIX/lnInclude   -fPIC -fuse-ld=bfd -shared -Xlinker --add-needed -Xlinker --no-as-needed Make/linux64GccDPInt32Opt/pressureInletNSCBCFvPatchFields.o -L/opt/OpenFOAM/OpenFOAM-7/platforms/linux64GccDPInt32Opt/lib \
+      -o /home/ofuser/OpenFOAM/ofuser-7/platforms/linux64GccDPInt32Opt/lib/libpressureInletNSCBC.so

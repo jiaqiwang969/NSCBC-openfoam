@@ -5025,7 +5025,12 @@ internalField   nonuniform List<scalar>
 
 boundaryField
 {
-    sides
+    leftSide
+    {
+        type            calculated;
+        value           uniform 0;
+    }
+    rightSide
     {
         type            calculated;
         value           uniform 0;

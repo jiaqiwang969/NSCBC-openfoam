@@ -15,13 +15,19 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-2
+3
 (
-    sides
+    leftSide
     {
         type            patch;
-        nFaces          2;
+        nFaces          1;
         startFace       4999;
+    }
+    rightSide
+    {
+        type            patch;
+        nFaces          1;
+        startFace       5000;
     }
     emptywalls
     {

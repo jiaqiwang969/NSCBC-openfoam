@@ -21,6 +21,7 @@ caseName=sod_shock_tube
 baseWorkingDir=$PWD/run
 caseDir=$baseWorkingDir/$caseName
 mkdir -p $baseWorkingDir
+rm -rf $baseWorkingDir/$caseName
 cp -rf $PWD/test_cases/$caseName $baseWorkingDir
 rm -rf $baseWorkingDir/$caseName/0
 cp -rf $baseWorkingDir/$caseName/0_org $baseWorkingDir/$caseName/0

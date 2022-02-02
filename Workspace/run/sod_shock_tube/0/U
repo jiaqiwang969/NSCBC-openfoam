@@ -21,9 +21,17 @@ internalField   uniform (0 0 0);
 
 boundaryField
 {
-    sides
+    leftSide
     {
         type            zeroGradient;
+    }
+    rightSide
+    {
+        type            waveTransmissive;
+        gamma           1.4;
+        fieldInf        (0 0 0);
+        lInf            1000;
+        value           uniform (0 0 0);
     }
     emptywalls
     {

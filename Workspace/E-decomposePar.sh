@@ -24,6 +24,10 @@ baseWorkingDir=$(pwd)/run
 caseName=sod_shock_tube
 caseDir=$baseWorkingDir/$caseName
 
+
+#3. Defining the projectUserDir to be mounted into the path of the internal WM_PROJECT_USER_DIR
+projectUserDir=$PWD/projectUserDir
+
 #4. Going into the case and creating the logs directory
 if [ -d $caseDir ]; then
    cd $caseDir
@@ -48,23 +52,23 @@ foam_numberOfSubdomains=$(grep "^numberOfSubdomains" ./system/decomposeParDict |
 
 #6. clean files
 echo "Cleaning files"
-singularity exec $theImage foamCleanTutorials 2>&1 | tee $logsDir/log.foamCleanTutorials.$SLURM_JOBID
+singularity exec -B $projectUserDir:/home/ofuser/OpenFOAM/ofuser-$theVersion $theImage foamCleanTutorials 2>&1 | tee $logsDir/log.foamCleanTutorials.$SLURM_JOBID
 
 #7. Perform all preprocessing OpenFOAM steps up to decomposition
 echo "Executing blockMesh"
 #srun -n 1 -N 1 
-singularity exec $theImage blockMesh 2>&1 | tee $logsDir/log.blockMesh.$SLURM_JOBID
+singularity exec -B $projectUserDir:/home/ofuser/OpenFOAM/ofuser-$theVersion $theImage blockMesh 2>&1 | tee $logsDir/log.blockMesh.$SLURM_JOBID
 
 
 #mkdir processor{0..$foam_numberOfSubdomains}
 
 echo "setFeilds"
 #srun -n 1 -N 1
-singularity exec $theImage setFields 2>&1 | tee $logsDir/log.setFields.$SLURM_JOBID
+singularity exec -B $projectUserDir:/home/ofuser/OpenFOAM/ofuser-$theVersion $theImage setFields 2>&1 | tee $logsDir/log.setFields.$SLURM_JOBID
 
 echo "Executing decomposePar"
 #srun -n 1 -N 1 
-singularity exec $theImage decomposePar -cellDist -force 2>&1 | tee $logsDir/log.decomposePar.$SLURM_JOBID
+singularity exec -B $projectUserDir:/home/ofuser/OpenFOAM/ofuser-$theVersion $theImage decomposePar -cellDist -force 2>&1 | tee $logsDir/log.decomposePar.$SLURM_JOBID
 
 
 

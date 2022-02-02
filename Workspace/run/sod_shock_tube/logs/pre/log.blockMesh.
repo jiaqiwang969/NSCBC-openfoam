@@ -7,10 +7,10 @@
 \*---------------------------------------------------------------------------*/
 Build  : 7-83cd285f0e3f
 Exec   : blockMesh
-Date   : Jan 28 2022
-Time   : 16:00:35
+Date   : Feb 02 2022
+Time   : 11:56:24
 Host   : "login3.pi.sjtu.edu.cn"
-PID    : 6249
+PID    : 1086
 I/O    : collated (maxThreadFileBufferSize 2e+09)
          Threading activated since maxThreadFileBufferSize > 0.
          Requires large enough buffer to collect all data or thread support 
@@ -68,8 +68,9 @@ Mesh Information
 ----------------
 Patches
 ----------------
-  patch 0 (start: 4999 size: 2) name: sides
-  patch 1 (start: 5001 size: 20000) name: emptywalls
+  patch 0 (start: 4999 size: 1) name: leftSide
+  patch 1 (start: 5000 size: 1) name: rightSide
+  patch 2 (start: 5001 size: 20000) name: emptywalls
 
 End
 

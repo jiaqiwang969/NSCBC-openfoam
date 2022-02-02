@@ -137,6 +137,8 @@ class pressureInletNSCBCFvPatchField
 protected:
 
     // Private Data
+        //- Name of the velocity field
+	word UName_;
 
         //- Name of the flux transporting the field
         word phiName_;
@@ -148,8 +150,6 @@ protected:
         //- Field value of the far-field
         Type fieldInf_;
 
-        //- Field value of unit one
-        Type fieldOne_;
 
         //- Relaxation length-scale
         scalar lInf_;
@@ -157,6 +157,9 @@ protected:
         //- Name of the compressibility field used to calculate the wave speed
         word psiName_;
 
+        //- Velocity of inlet
+        scalar UInf_;
+        
         //- Heat capacity ratio
 	scalar gamma_;
 
@@ -235,6 +238,19 @@ public:
 
         // Access
 
+
+            //- Return the velocity at infinity
+	    const vector& UInf() const
+	    {
+                return UInf_;
+            }
+
+            //- Return reference to the velocity at infinity to allow adjustment
+	    vector& UInf()
+            {
+                return UInf_;
+            }
+
             //- Return the field at infinity
             const Type& fieldInf() const
             {
@@ -247,11 +263,6 @@ public:
                 return fieldInf_;
             }
 
-	    //- Return the field of unit one
-	    const Type& fieldOne() const
-	    {
-		return fieldOne_;
-	    }
 
 
             //- Return the relaxation length-scale
