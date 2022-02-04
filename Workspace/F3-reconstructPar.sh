@@ -1,5 +1,5 @@
 #!/bin/bash -l
-#SBATCH --job-name=sod_shock_tube
+#SBATCH --job-name=sineWaveDamping
 #SBATCH --partition=debug
 #SBATCH -n 4
 #SBATCH --ntasks-per-node=40
@@ -11,12 +11,12 @@
 #1. Defining the container to be used
 theRepo=/lustre/home/acct-medgm/medgm/00-sif
 theContainerBaseName=openfoam
-theVersion=7
-theProvider=pawsey
+theVersion=v2006
+theProvider=wjq
 theImage=$theRepo/$theContainerBaseName-$theVersion-$theProvider.sif
  
 baseWorkingDir=$PWD/run
-caseName=sod_shock_tube
+caseName=sineWaveDamping
 caseDir=$baseWorkingDir/$caseName
 
 #2. Going into the case and creating the logs dir

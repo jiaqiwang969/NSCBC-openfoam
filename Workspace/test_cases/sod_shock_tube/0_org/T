@@ -21,11 +21,11 @@ internalField   uniform 293;
 
 boundaryField
 {
-    leftSide
+    rightSide
     {
         type            zeroGradient;
     }
-    rightSide
+    leftSide
     {
         type            zeroGradient;
     }

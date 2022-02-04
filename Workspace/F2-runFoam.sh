@@ -1,5 +1,5 @@
 #!/bin/bash -l
-#SBATCH --job-name=sod_shock_tube
+#SBATCH --job-name=sineWaveDamping
 #SBATCH --partition=small
 #SBATCH -n 4
 #SBATCH --ntasks-per-node=40
@@ -16,15 +16,15 @@ module load openmpi
 #2. Defining the container to be used
 theRepo=/lustre/home/acct-medgm/medgm/00-sif
 theContainerBaseName=openfoam
-theVersion=7
-theProvider=pawsey
+theVersion=v2006
+theProvider=wjq
 theImage=$theRepo/$theContainerBaseName-$theVersion-$theProvider.sif
  
 #3. Defining the case directory
 #baseWorkingDir=$MYSCRATCH/OpenFOAM/$USER-$theVersion/run
 #baseWorkingDir=$MYSCRATCH/OpenFOAM/$USER-$theVersion/workshop/01_usingOpenFOAMContainers/run
 baseWorkingDir=$SLURM_SUBMIT_DIR/run
-caseName=sod_shock_tube
+caseName=sineWaveDamping
 caseDir=$baseWorkingDir/$caseName
 
 #4. Going into the case and creating the logs dir
@@ -54,7 +54,7 @@ foam_startFrom=startTime
 #foam_startFrom=latestTime
 foam_startTime=0
 #foam_startTime=15
-foam_endTime=0.0265
+foam_endTime=0.0035
 #foam_endTime=30
 foam_writeInterval=1.0e-5
 foam_purgeWrite=0

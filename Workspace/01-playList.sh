@@ -1,10 +1,8 @@
 #!/bin/bash -l
 bash D-cloneadaptCase.sh
 bash E-decomposePar.sh
-sbatch F2-runFoam.sh
+sbatch F2-runFoam-sine.sh
 sleep 60s
 bash F3-reconstructPar.sh
-sleep 120s
 bash G1-sampling.sh
-sleep 60s
 bash G2-pythonProcessing.sh

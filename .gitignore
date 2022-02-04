@@ -1,3 +1,4 @@
 *.so
 /platforms
 /Workspace/run
+*.swp

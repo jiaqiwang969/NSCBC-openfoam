@@ -1,2 +1,4 @@
 SOURCE = \
-pressureInletNSCBCFvPatchFields.C 
+pressureInletNSCBCFvPatchFields.C \
+
+# sources

@@ -23,16 +23,14 @@ boundaryField
 {
     leftSide
     {
-        type            pressureInletNSCBC;
+        type            waveTransmissive;
         field           p;
         phi             phi;
         rho             rho;
         psi             thermo:psi;
         gamma           1.4;
-        fieldInf        1;
-        lInf            1;
-        UInf            0;
-        etaAc           0.1;
+	fieldInf        0;
+	lInf            1000;
         value           uniform 120000;
     }
     rightSide
@@ -43,8 +41,8 @@ boundaryField
         rho             rho;
         psi             thermo:psi;
         gamma           1.4;
-        fieldInf        0;
-        lInf            1000;
+	fieldInf        0;
+	lInf            1000;
         value           uniform 100000;
     }
     emptywalls

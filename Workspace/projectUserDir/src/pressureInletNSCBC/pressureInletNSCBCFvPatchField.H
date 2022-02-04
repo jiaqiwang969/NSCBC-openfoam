@@ -1,9 +1,11 @@
 /*---------------------------------------------------------------------------*\
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2019 OpenFOAM Foundation
+   \\    /   O peration     |
+    \\  /    A nd           | www.openfoam.com
      \\/     M anipulation  |
+-------------------------------------------------------------------------------
+    Copyright (C) 2011-2016 OpenFOAM Foundation
 -------------------------------------------------------------------------------
 License
     This file is part of OpenFOAM.
@@ -23,6 +25,9 @@ License
 
 Class
     Foam::pressureInletNSCBCFvPatchField
+
+Group
+    grpOutletBoundaryConditions
 
 Description
     This boundary condition provides an pressureInletNSCBC outflow condition, based on
@@ -46,48 +51,6 @@ Description
     the flow-speed plus the acoustic wave speed creating an acoustic wave
     transmissive boundary condition.
 
-Description
-    This boundary condition provides a wave transmissive outflow condition,
-    based on solving DDt(W, field) = 0 at the boundary \c W is the wave velocity
-    and \c field is the field to which this boundary condition is applied.
-
-    The wave speed is calculated using:
-
-        \f[
-            w_p = \frac{\phi_p}{|Sf|} + \sqrt{\frac{\gamma}{\psi_p}}
-        \f]
-
-    where
-
-    \vartable
-        w_p     | patch wave speed
-        \phi_p  | patch face flux
-        \psi_p  | patch compressibility
-        Sf      | patch face area vector
-        \gamma  | ratio of specific heats
-        \etaAc  | ratio of modified terms 
-    \endvartable
-Usage
-    \table
-        Property     | Description             | Required    | Default value
-        phi          | flux field name         | no          | phi
-        rho          | density field name      | no          | rho
-        psi          | compressibility field name | no       | thermo:psi
-        gamma        | ratio of specific heats (Cp/Cv) | yes |
-        etaAc        |
-    \endtable
-
-    Example of the boundary condition specification:
-    \verbatim
-    <patchName>
-    {
-        type            pressureInletNSCBC;
-        phi             phi;
-        psi             psi;
-        gamma           1.4;
-        etaAc           0.1;
-    }
-    \endverbatim
 Usage
     \table
         Property     | Description             | Required    | Default value
@@ -136,20 +99,20 @@ class pressureInletNSCBCFvPatchField
 {
 protected:
 
-    // Private Data
+    // Private data
+        
         //- Name of the velocity field
-	word UName_;
+        word UName_;
 
         //- Name of the flux transporting the field
         word phiName_;
 
         //- Name of the density field used to normalise the mass flux
-        //  if necessary
+        //- if necessary
         word rhoName_;
 
         //- Field value of the far-field
         Type fieldInf_;
-
 
         //- Relaxation length-scale
         scalar lInf_;
@@ -159,11 +122,11 @@ protected:
 
         //- Velocity of inlet
         scalar UInf_;
-        
-        //- Heat capacity ratio
-	scalar gamma_;
 
-        // - etaAc ratio for NSCBC boundary 
+        //- Heat capacity ratio
+        scalar gamma_;
+
+        // - etaAc ratio for NSCBC boundary
         scalar etaAc_;
 
 public:
@@ -182,7 +145,7 @@ public:
         );
 
         //- Construct from patch, internal field and dictionary
-	pressureInletNSCBCFvPatchField
+        pressureInletNSCBCFvPatchField
         (
             const fvPatch&,
             const DimensionedField<Type, volMesh>&,
@@ -199,7 +162,7 @@ public:
             const fvPatchFieldMapper&
         );
 
-        //- Copy constructor
+        //- Construct as copy
         pressureInletNSCBCFvPatchField
         (
             const pressureInletNSCBCFvPatchField&
@@ -214,7 +177,7 @@ public:
             );
         }
 
-        //- Copy constructor setting internal field reference
+        //- Construct as copy setting internal field reference
         pressureInletNSCBCFvPatchField
         (
             const pressureInletNSCBCFvPatchField&,
@@ -234,19 +197,18 @@ public:
         }
 
 
-    // Member Functions
+    // Member functions
 
         // Access
 
-
             //- Return the velocity at infinity
-	    const vector& UInf() const
-	    {
+            const vector& UInf() const
+            {
                 return UInf_;
             }
 
             //- Return reference to the velocity at infinity to allow adjustment
-	    vector& UInf()
+            vector& UInf()
             {
                 return UInf_;
             }
@@ -263,8 +225,6 @@ public:
                 return fieldInf_;
             }
 
-
-
             //- Return the relaxation length-scale
             scalar lInf() const
             {
@@ -278,29 +238,33 @@ public:
                 return lInf_;
             }
 
-	    //- Return the heat capacity ratio
-	    scalar gamma() const
-	    {
-                return gamma_;
-            }
-            
-	    //- Return reference to the heat capacity ratio to allow adjustment
-	    scalar& gamma()
-	    {
+            //- Return the heat capacity ratio
+            scalar gamma() const
+            {
                 return gamma_;
             }
 
-	    //- Return the etaAc NSCBC ratio
-	    scalar etaAc() const
-	    {
-		return etaAc_;
+            //- Return reference to the heat capacity ratio to allow adjustment
+            scalar& gamma()
+            {
+                return gamma_;
+            }
+
+
+            //- Return the etaAc NSCBC ratio
+            scalar etaAc() const
+            {
+                return etaAc_;
             }
 
             //- Return reference to the etaAc NSCBC ratio
             scalar& etaAc()
-	    {
-		return etaAc_;
-	    }
+            {
+                return etaAc_;
+            }
+
+
+
 
         // Evaluation functions
 

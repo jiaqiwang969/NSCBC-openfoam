@@ -14,6 +14,8 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+libs ("libpressureOutletNSCBC.so" "libpressureInletNSCBC.so" "libtemperatureOutletNSCBC.so");
+
 application     sonicFoam;
 
 startFrom       startTime;
@@ -49,7 +51,6 @@ adjustTimeStep  yes;
 maxCo           0.2;
 maxDeltaT       0.01;
 
-libs ("libpressureOutletNSCBC.so" "libpressureInletNSCBC.so")
 
 // ************************************************************************* //
 
@@ -61,8 +62,8 @@ functions
 minmaxdomain
 {
     type fieldMinMax;
-
-    functionObjectLibs ("libfieldFunctionObjects.so");
+    
+    libs ("libfieldFunctionObjects.so");
 
     enabled true; //true or false
 

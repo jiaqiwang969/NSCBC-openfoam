@@ -11,12 +11,12 @@
 #2. Defining the container to be used
 theRepo=/lustre/home/acct-medgm/medgm/00-sif
 theContainerBaseName=openfoam
-theVersion=7
-theProvider=pawsey
+theVersion=v2006
+theProvider=wjq
 theImage=$theRepo/$theContainerBaseName-$theVersion-$theProvider.sif
  
 #3. Defining the case directory
-caseName=sod_shock_tube
+caseName=sineWaveDamping
 
 baseWorkingDir=$PWD/run
 caseDir=$baseWorkingDir/$caseName

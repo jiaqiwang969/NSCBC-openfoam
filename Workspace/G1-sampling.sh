@@ -13,15 +13,15 @@
 #2. Defining the container to be used
 theRepo=/lustre/home/acct-medgm/medgm/00-sif
 theContainerBaseName=openfoam
-theVersion=7
-theProvider=pawsey
+theVersion=v2006
+theProvider=wjq
 theImage=$theRepo/$theContainerBaseName-$theVersion-$theProvider.sif
  
 #3. Defining the case directory
 #baseWorkingDir=$MYSCRATCH/OpenFOAM/$USER-$theVersion/run
 #baseWorkingDir=$MYSCRATCH/OpenFOAM/$USER-$theVersion/workshop/01_usingOpenFOAMContainers/run
 baseWorkingDir=$(pwd)/run
-caseName=sod_shock_tube
+caseName=sineWaveDamping
 caseDir=$baseWorkingDir/$caseName
 
 #4. Going into the case and creating the logs directory
@@ -42,9 +42,7 @@ fi
 
 echo "Sampling"
 #srun -n 1 -N 1 
-singularity exec $theImage postProcess -func 'mag(U)'  2>&1 | tee $logsDir/log.decomposePar.$SLURM_JOBID
-singularity exec $theImage postProcess -func 'components(U)'  2>&1 | tee $logsDir/log.decomposePar.$SLURM_JOBID
-singularity exec $theImage postProcess -func sampleDict  2>&1 | tee $logsDir/log.decomposePar.$SLURM_JOBID
+singularity exec $theImage postProcess -func sampleDict  2>&1 | tee $logsDir/log.sampling3.$SLURM_JOBID
 
 
 
