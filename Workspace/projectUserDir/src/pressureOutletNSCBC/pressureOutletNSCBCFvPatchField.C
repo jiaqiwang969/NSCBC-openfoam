@@ -121,7 +121,7 @@ Foam::pressureOutletNSCBCFvPatchField<Type>::pressureOutletNSCBCFvPatchField
 
     if (dict.readIfPresent("lInf", lInf_))
     {
-        dict.readEntry("fieldInf", fieldInf_);
+        dict.lookup("fieldInf") >> fieldInf_;
 
         if (lInf_ < 0.0)
         {

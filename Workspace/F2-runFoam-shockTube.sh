@@ -54,11 +54,11 @@ foam_startFrom=startTime
 #foam_startFrom=latestTime
 foam_startTime=0
 #foam_startTime=15
-foam_endTime=0.0112
+foam_endTime=0.0035
 #foam_endTime=30
-foam_writeInterval=2.0e-4
+foam_writeInterval=1.0e-5
 foam_purgeWrite=0
-foam_deltaT=2.0e-6
+foam_deltaT=1.0e-7
 
 
 #9. Changing OpenFOAM controlDict settings

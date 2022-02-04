@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 
 
 
-for time in np.linspace(0.0002,0.0092,16):
+for time in np.linspace(0.0022,0.0112,16):
     #Read in openfoam solution
     print(round(time,4))
     filename='../postProcessing/sampleDict/{}/data_T_mag(U)_p.xy'.format(round(time,4))
@@ -33,7 +33,7 @@ for time in np.linspace(0.0002,0.0092,16):
     plt.grid()
     plt.savefig('p-{}.png'.format("%.4f" % time), dpi=100)
 
-for time in np.linspace(0.0002,0.0092,16):
+for time in np.linspace(0.0022,0.0112,16):
     #Read in openfoam solution
     print(round(time,4))
     filename='../postProcessing/sampleDict/{}/data_T_mag(U)_p.xy'.format(round(time,4))
@@ -49,7 +49,7 @@ for time in np.linspace(0.0002,0.0092,16):
     plt.grid()
     plt.savefig('U-{}.png'.format("%.4f" % time), dpi=100)
 
-for time in np.linspace(0.0002,0.0092,16):
+for time in np.linspace(0.0022,0.0112,16):
     #Read in openfoam solution
     print(round(time,4))
     filename='../postProcessing/sampleDict/{}/data_T_mag(U)_p.xy'.format(round(time,4))

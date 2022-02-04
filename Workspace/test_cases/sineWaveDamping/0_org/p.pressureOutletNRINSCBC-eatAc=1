@@ -43,7 +43,7 @@ boundaryField
         fieldInf        1;
         lInf            2.25;
         pInf            101325;
-	etaAc           100;
+	etaAc           1;
         value           $internalField;
     }
 

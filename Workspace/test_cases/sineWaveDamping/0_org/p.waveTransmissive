@@ -37,13 +37,10 @@ boundaryField
 
     outlet
     {
-        type            pressureOutletNSCBC;
-        field           p;
+        type            waveTransmissive;
         gamma           1.4;
-        fieldInf        1;
+        fieldInf        101325;
         lInf            2.25;
-        pInf            101325;
-	etaAc           100;
         value           $internalField;
     }
 

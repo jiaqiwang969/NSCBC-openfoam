@@ -16,7 +16,7 @@ FoamFile
 
 libs ("libpressureOutletNSCBC.so" "libpressureInletNSCBC.so" "libtemperatureOutletNSCBC.so");
 
-application     sonicFoam;
+application     rhoPimpleFoam; 
 
 startFrom       startTime;
 
@@ -29,7 +29,7 @@ endTime         0.0035;
 deltaT          1e-07;
 
 writeControl    runTime;
-writeControl    adjustableRunTime;
+//writeControl    adjustableRunTime;
 
 writeInterval   0.00005;
 
@@ -58,24 +58,24 @@ functions
 {
 
 ///////////////////////////////////////////////////////////////////////////
-
-minmaxdomain
-{
-    type fieldMinMax;
+     #includeFunc mag(U)
+//minmaxdomain
+//{
+//    type fieldMinMax;
     
-    libs ("libfieldFunctionObjects.so");
+//    libs ("libfieldFunctionObjects.so");
 
-    enabled true; //true or false
+//    enabled true; //true or false
 
-    mode component;
+//    mode component;
 
-    writeControl timeStep;
-    writeInterval 1;
+//    writeControl timeStep;
+//    writeInterval 1;
 
-    log true;
+//    log true;
 
-    fields (p U T);
-}
+//    fields (p U T);
+//}
 
 ///////////////////////////////////////////////////////////////////////////
 
