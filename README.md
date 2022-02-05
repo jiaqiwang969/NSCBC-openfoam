@@ -13,10 +13,17 @@
 
 ### 02-sineWaveDamping
 
-| boundary condition        | Link                                                         | Info                                                         |
-| ------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| waveTransmitive & damping | [sineWaveDamping01](https://github.com/jiaqiwang969/NSCBC-openfoam/blob/main/Workspace/results/sineWaveDamping-waveTransimision-damping.gif) | [Ref](https://www.openfoam.com/documentation/guides/latest/doc/guide-fvoptions-sources-acoustic-damping.html) |
-| waveTransmitive           | [sineWaveDamping02](https://github.com/jiaqiwang969/NSCBC-openfoam/blob/main/Workspace/results/sineWaveDamping-waveTransmision.gif) |                                                              |
-| NRI-outlet-Pressure       | [sineWaveDamping03](https://github.com/jiaqiwang969/NSCBC-openfoam/blob/main/Workspace/results/sineWaveDamping-pressureOutletNRINSCBC-etaAc100.gif) | Vertificating                                                |
-|                           |                                                              |                                                              |
+| Time scheme           | Link                                                         | Info                                                         |
+| --------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Euler scheme explicit | [sineWaveDamping01](https://github.com/jiaqiwang969/NSCBC-openfoam/blob/main/Workspace/results/Euler scheme explicit.gif) | [Ref01](https://www.openfoam.com/documentation/guides/latest/doc/guide-schemes-time-local-euler.html) |
+| Backward Scheme       | [sineWaveDamping02](https://github.com/jiaqiwang969/NSCBC-openfoam/blob/main/Workspace/results/Backward time scheme.gif) | [Ref02](https://www.openfoam.com/documentation/guides/latest/doc/guide-schemes-time-backward.html) |
+
+Below boundary condition testing in "Backward Scheme": (Vertificating)
+
+| boundary condition        | Link | Info                                                         |
+| ------------------------- | ---- | ------------------------------------------------------------ |
+| waveTransmitive & damping |      | [Ref](https://www.openfoam.com/documentation/guides/latest/doc/guide-fvoptions-sources-acoustic-damping.html) |
+| waveTransmitive           |      |                                                              |
+| NRI-outlet-Pressure       |      |                                                              |
+|                           |      |                                                              |
 

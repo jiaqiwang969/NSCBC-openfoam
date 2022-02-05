@@ -275,8 +275,8 @@ void Foam::pressureOutletNSCBCFvPatchField<Type>::updateCoeffs()
         )
         {
                             // Calculate the field relaxation coefficient k (See A2.2.2)
-                            const scalarField K(etaAc_*(1.0-sqr(aP/cP))*cP/lInf_);
-
+                            const scalarField K(0.0*etaAc_*(1.0-sqr(aP/cP))*cP/lInf_);
+                            
                             this->valueFraction() = (1.0 + K*deltaT/2.0)/(1.0 + K*deltaT/2.0 + (aP+cP)/2.0*deltaT*this->patch().deltaCoeffs()) ;
                             // ref-B.2.2
                             this->refValue() =
