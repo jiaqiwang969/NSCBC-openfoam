@@ -26,10 +26,16 @@ boundaryField
         type            zeroGradient; // pressureInletVelocity;
         value           $internalField;
     }
-
+ 
     outlet
     {
-        type            pressureInletOutletVelocity;
+        type            velocityOutletNSCBC;
+        field           U;
+        gamma           1.4;
+        fieldInf        (1 0 0);
+        lInf            2.25;
+        pInf            101325;
+        etaAc           1;
         value           $internalField;
     }
 

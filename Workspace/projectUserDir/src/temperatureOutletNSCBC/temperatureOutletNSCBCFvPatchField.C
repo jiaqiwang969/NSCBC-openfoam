@@ -1,9 +1,12 @@
 /*---------------------------------------------------------------------------*\
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2019 OpenFOAM Foundation
+   \\    /   O peration     |
+    \\  /    A nd           | www.openfoam.com
      \\/     M anipulation  |
+-------------------------------------------------------------------------------
+    Copyright (C) 2011-2016 OpenFOAM Foundation
+    Copyright (C) 2020 OpenCFD Ltd.
 -------------------------------------------------------------------------------
 License
     This file is part of OpenFOAM.
@@ -32,6 +35,7 @@ License
 #include "backwardDdtScheme.H"
 #include "localEulerDdtScheme.H"
 
+
 // * * * * * * * * * * * * * * * * Constructors  * * * * * * * * * * * * * * //
 
 template<class Type>
@@ -45,11 +49,11 @@ Foam::temperatureOutletNSCBCFvPatchField<Type>::temperatureOutletNSCBCFvPatchFie
     UName_("U"),
     phiName_("phi"),
     rhoName_("rho"),
-    psiName_("thermo:psi"),
+    psiName_("thermo:psi"),    
     pName_("p"),
     pInf_(0.0),
     gamma_(0.0),
-    etaAc_(0.25), 
+    etaAc_(0.25),    
     fieldInf_(Zero),
     lInf_(-GREAT)
 {
@@ -92,12 +96,12 @@ Foam::temperatureOutletNSCBCFvPatchField<Type>::temperatureOutletNSCBCFvPatchFie
 :
     mixedFvPatchField<Type>(p, iF),
     UName_(dict.lookupOrDefault<word>("U", "U")),
-    phiName_(dict.lookupOrDefault<word>("phi", "phi")),
-    rhoName_(dict.lookupOrDefault<word>("rho", "rho")),
+    phiName_(dict.getOrDefault<word>("phi", "phi")),
+    rhoName_(dict.getOrDefault<word>("rho", "rho")),
     psiName_(dict.lookupOrDefault<word>("psi", "thermo:psi")),
-    pName_(dict.lookupOrDefault<word>("p", "p")),
+    pName_(dict.lookupOrDefault<word>("p","p")),
     pInf_(readScalar(dict.lookup("pInf"))),
-    gamma_(readScalar(dict.lookup("gamma"))), 
+    gamma_(readScalar(dict.lookup("gamma"))),
     etaAc_(readScalar(dict.lookup("etaAc"))),
     fieldInf_(Zero),
     lInf_(-GREAT)
@@ -120,11 +124,11 @@ Foam::temperatureOutletNSCBCFvPatchField<Type>::temperatureOutletNSCBCFvPatchFie
 
     if (dict.readIfPresent("lInf", lInf_))
     {
-        dict.readEntry("fieldInf", fieldInf_);
-        
+        dict.lookup("fieldInf") >> fieldInf_;
+
         if (lInf_ < 0.0)
         {
-            FatalIOErrorInFunction(dict)   
+            FatalIOErrorInFunction(dict)
                 << "unphysical lInf specified (lInf < 0)" << nl
                 << "    on patch " << this->patch().name()
                 << " of field " << this->internalField().name()
@@ -145,8 +149,8 @@ Foam::temperatureOutletNSCBCFvPatchField<Type>::temperatureOutletNSCBCFvPatchFie
     UName_(ptpsf.UName_),
     phiName_(ptpsf.phiName_),
     rhoName_(ptpsf.rhoName_),
-    pName_(ptpsf.pName_),
     psiName_(ptpsf.psiName_),
+    pName_(ptpsf.pName_),
     pInf_(ptpsf.pInf_),
     gamma_(ptpsf.gamma_),
     etaAc_(ptpsf.etaAc_),
@@ -166,8 +170,8 @@ Foam::temperatureOutletNSCBCFvPatchField<Type>::temperatureOutletNSCBCFvPatchFie
     UName_(ptpsf.UName_),
     phiName_(ptpsf.phiName_),
     rhoName_(ptpsf.rhoName_),
-    pName_(ptpsf.pName_),
     psiName_(ptpsf.psiName_),
+    pName_(ptpsf.pName_),
     pInf_(ptpsf.pInf_),
     gamma_(ptpsf.gamma_),
     etaAc_(ptpsf.etaAc_),
@@ -195,8 +199,10 @@ Foam::temperatureOutletNSCBCFvPatchField<Type>::advectionSpeed() const
     if (phi.dimensions() == dimDensity*dimVelocity*dimArea)
     {
         const fvPatchScalarField& rhop =
-            this->patch().template 
-	    lookupPatchField<volScalarField, scalar>(rhoName_);
+            this->patch().template lookupPatchField<volScalarField, scalar>
+            (
+                rhoName_
+            );
 
         return phip/(rhop*this->patch().magSf());
     }
@@ -206,7 +212,6 @@ Foam::temperatureOutletNSCBCFvPatchField<Type>::advectionSpeed() const
     }
 }
 
-
 template<class Type>
 Foam::tmp<Foam::scalarField>
 Foam::temperatureOutletNSCBCFvPatchField<Type>::soundSpeed() const
@@ -215,103 +220,115 @@ Foam::temperatureOutletNSCBCFvPatchField<Type>::soundSpeed() const
            this->patch().template
                 lookupPatchField<volScalarField, scalar>(psiName_);
 
-	return  sqrt(gamma_/psip);
+        return  sqrt(gamma_/psip);
 }
-
 
 
 template<class Type>
 void Foam::temperatureOutletNSCBCFvPatchField<Type>::updateCoeffs()
 {
-    if (this->updated())
-    {
-        return;
-    }
+	if (this->updated())
+	{
+		return;
+	}
 
-    const fvMesh& mesh = this->internalField().mesh();
+	const fvMesh& mesh = this->internalField().mesh();
 
-    word ddtScheme
-    (
-        mesh.ddtScheme(this->internalField().name())
-    );
-    scalar deltaT = this->db().time().deltaTValue();
+	word ddtScheme
+		(
+		 mesh.ddtScheme(this->internalField().name())
+		);
+	scalar deltaT = this->db().time().deltaTValue();
 
-    const GeometricField<Type, fvPatchField, volMesh>& field =
-        this->db().objectRegistry::template
-        lookupObject<GeometricField<Type, fvPatchField, volMesh>>
-        (
-            this->internalField().name()
-        );
+	const GeometricField<Type, fvPatchField, volMesh>& field =
+		this->db().objectRegistry::template
+		lookupObject<GeometricField<Type, fvPatchField, volMesh>>
+		(
+		 this->internalField().name()
+		);
 
-    // Calculate the advection speed of the field wave
-    // If the wave is incoming set the speed to 0.
-    // -: const scalarField w(Foam::max(advectionSpeed(), scalar(0)));
-    const  scalarField cP(soundSpeed());
-    const  scalarField aP(advectionSpeed());
+	// Calculate the advection speed of the field wave
+	// If the wave is incoming set the speed to 0.
+	// const scalarField w(Foam::max(advectionSpeed(), scalar(0)));
 
- 
-    const fvPatchScalarField& rhop =
-            this->patch().template lookupPatchField<volScalarField, scalar>
-            (
-                rhoName_
-            );
+	const  scalarField cP(soundSpeed());
+	const  scalarField aP(advectionSpeed());
 
-    const fvPatchVectorField& Up =
-            this->patch().template lookupPatchField<volVectorField, vector>(UName_); 
+	const fvPatchScalarField& rhop =
+		this->patch().template lookupPatchField<volScalarField, scalar>
+		(
+		 rhoName_
+		);
 
-//    const fvPatchScalarField& pp =
-//            this->patch().template lookupPatchField<volScalarField, scalar>(pName_);
+	const fvPatchVectorField& Up =
+		this->patch().template lookupPatchField<volVectorField, vector>(UName_);
 
+	const fvPatchScalarField& pp =
+		this->patch().template lookupPatchField<volScalarField, scalar>(pName_);
 
-   // const fvPatchScalarField& pp =
-   //         this->patch().template lookupPatchField<volScalarField, scalar>
-   //         (
-   //             pName_
-   //         );
+	label patchi = this->patch().index();
 
-    label patchi = this->patch().index();
+	// Non-reflecting outflow boundary
+	// If lInf_ defined setup relaxation to the value fieldInf_.
+	if (lInf_ > 0)
+	{
 
-    // If lInf_ defined setup relaxation to the value fieldInf_.
-    if (lInf_ > 0)
-    {
-	    if
-		    (
-		     ddtScheme == fv::EulerDdtScheme<scalar>::typeName
-		     || ddtScheme == fv::CrankNicolsonDdtScheme<scalar>::typeName
-		    )
-		    {
+		if
+			(
+			 ddtScheme == fv::EulerDdtScheme<scalar>::typeName
+			 || ddtScheme == fv::CrankNicolsonDdtScheme<scalar>::typeName
+			)
+			{
+				const scalar R = 8.3143; //J/mol.K
+				// Calculate the field relaxation coefficient k (See A2.2.2)
+				const scalarField K(etaAc_*(1.0-sqr(aP/cP))*cP/lInf_);
+				const scalarField L1 = K*pp - K*pInf_;
+				const scalarField L5 = (aP+cP)*(pp.snGrad() + rhop * cP * (this->patch().nf() & Up.snGrad()));
 
-			    Info << "Insert NRI-NSCBC Code  "<<endl;
-			    // Calculate the field relaxation coefficient k (See A2.2.2)
-			    const scalarField K(etaAc_*(1.0-sqr(aP/cP))*cP/lInf_);
+				// ref-D.2.1
+				this->valueFraction() = 1.0 /(1.0 + aP*deltaT*this->patch().deltaCoeffs()) ;			    
 
+				// ref-D.2.2
+				this->refValue() =
+					(
+					 field.oldTime().boundaryField()[patchi]
+					 + deltaT * (gamma_ - 1.0)/gamma_ * 0.5 *(L5+L1) / rhop / R * fieldInf_
+					)/( 1.0 );
 
-			    // ref-B.2.1
-			    this->valueFraction() = (1.0 + K*deltaT/2.0)/(1.0 + K*deltaT/2.0 + (aP+cP)/2.0*deltaT*this->patch().deltaCoeffs()) ;
-			    // ref-B.2.2
-			    this->refValue() =
-				    (
-				     field.oldTime().boundaryField()[patchi] 
-				     + K * deltaT/2.0 * pInf_ * fieldInf_    
-				    )/( 1.0 + K * deltaT/2.0);
-			    // ref-B.2.3
-			    this->refGrad() = - 1.0 * rhop * cP * (this-> patch().nf() & Up.snGrad()) * fieldInf_;
-		    }
-	    else
-	    {
-		    FatalErrorInFunction
-			    << "lInf_ must above 0 "
-			    << exit(FatalError);
-	    }
-    }
-    else //lInf_ = 0 equal to waveTransimition
-    {
-	    FatalErrorInFunction
-		    << "lInf_ must above 0 " 
-		    << exit(FatalError);
-    }
+				// ref-D.2.3
+				this->refGrad() = (gamma_-1.0)/gamma_*pp.snGrad()/rhop/R * fieldInf_;
+			}
+		else if (ddtScheme == fv::backwardDdtScheme<scalar>::typeName)
+		{
+			const scalar R = 8.3143; //J/mol.K
+			// Calculate the field relaxation coefficient k (See A2.2.2)
+			const scalarField K(etaAc_*(1.0-sqr(aP/cP))*cP/lInf_);
+			const scalarField L1 = K*pp - K*pInf_;
+			const scalarField L5 = (aP+cP)*(pp.snGrad() + rhop * cP * (this->patch().nf() & Up.snGrad()));
 
-    mixedFvPatchField<Type>::updateCoeffs();
+			// ref-D.2.1
+			this->valueFraction() = 1.5 /(1.5 + aP*deltaT*this->patch().deltaCoeffs()) ;			    
+
+			// ref-D.2.2
+			this->refValue() =
+				(
+				 2.0*field.oldTime().boundaryField()[patchi]
+                               - 0.5*field.oldTime().oldTime().boundaryField()[patchi]
+				 + deltaT * (gamma_ - 1.0)/gamma_ * 0.5 *(L5+L1) / rhop / R * fieldInf_
+				)/( 1.5 );
+
+			// ref-D.2.3
+			this->refGrad() = (gamma_-1.0)/gamma_*pp.snGrad()/rhop/R * fieldInf_;
+
+		}
+	}
+	else
+	{
+		FatalErrorInFunction
+			<< "lInf_ must above 0 "
+			<< exit(FatalError);
+	}
+	mixedFvPatchField<Type>::updateCoeffs();
 }
 
 
@@ -320,20 +337,22 @@ void Foam::temperatureOutletNSCBCFvPatchField<Type>::write(Ostream& os) const
 {
     fvPatchField<Type>::write(os);
 
-    os.writeEntryIfDifferent<word>( "phi", "phi", phiName_);
-    os.writeEntryIfDifferent<word>( "rho", "rho", rhoName_);
-    os.writeEntryIfDifferent<word>( "U", "U", UName_);
-    os.writeEntryIfDifferent<word>( "p", "p", pName_);
-    os.writeEntry( "pInf", pInf_);
-    os.writeEntry( "gamma", gamma_);
-    os.writeEntry( "etaAc", etaAc_);
+    os.writeEntryIfDifferent<word>("phi", "phi", phiName_);
+    os.writeEntryIfDifferent<word>("rho", "rho", rhoName_);
+    os.writeEntryIfDifferent<word>("U", "U", UName_);
+    os.writeEntryIfDifferent<word>("p", "p", pName_);
+    os.writeEntry("pInf", pInf_);
+    os.writeEntry("gamma", gamma_);
+    os.writeEntry("etaAc", etaAc_);
+
+
     if (lInf_ > 0)
     {
-        os.writeEntry( "fieldInf", fieldInf_);
-        os.writeEntry( "lInf", lInf_);
+        os.writeEntry("fieldInf", fieldInf_);
+        os.writeEntry("lInf", lInf_);
     }
 
-    this->writeEntry( "value", os);
+    this->writeEntry("value", os);
 }
 
 

@@ -515,6 +515,55 @@ k是和松弛有关的参数，可以不考虑。
 
 
 
+若时间格式为[backWard](https://www.openfoam.com/documentation/guides/latest/doc/guide-schemes-time-backward.html)
+
+- Implicit
+- Second order
+- Transient
+- Boundedness not guaranteed
+- Conditionally stable
+
+$$
+\frac{\partial}{\partial t}(\phi)=\frac{1}{\Delta t}\left(\frac{3}{2} \phi-2 \phi^{o}+\frac{1}{2} \phi^{o o}\right)
+$$
+
+$$
+\frac{D \phi}{D t} \approx \frac{\partial \phi}{\partial t}+U_{n} \cdot \frac{\partial \phi}{\partial \mathbf{n}}=0
+$$
+
+数值化：
+$$
+\frac{3/2 \phi_{\text {face }}^{n+1}-2\phi_{\text {face }}^{n} +1/2\phi_{\text {face }}^{n-1}}{d t}+U_n \frac{\phi_{\text {face }}^{n+1}-\phi_{\text {centre }}^{n+1}}{d x}=0
+$$
+
+$$
+\rightarrow \begin{aligned}
+\phi_{\text {face }}^{n+1}\left(3/2 + U_n \frac{d t}{d x}\right) &=2\phi_{\text {face }}^{n}- 1/2 \phi_{\text {face }}^{n-1} +U_n \frac{d t}{d x} \phi_{\text {centre }}^{n+1}
+\end{aligned}
+$$
+
+$$
+\rightarrow \quad \phi_{f a c e}^{n+1} =\frac{3/2}{3/2+U_n \frac{d t}{d x}} [4/3\phi_{f a c e}^{n}-1/3\phi_{f a c e}^{n-1}]+\frac{U_n \frac{d t}{d x}}{3/2+U_n \frac{d t}{d x}} [\phi_{\text {centre }}^{n+1} ]
+$$
+
+$$
+P_{face}^{n+1}= valueFraction*refVlaue+(1-valueFraction)*(P_{centre}^{n+1}+refGrad* Delta)
+$$
+
+源代码：advectiveFvPatchField.C
+
+代码：
+$$
+\rightarrow \quad \phi_{f a c e}^{n+1} =\frac{3/2}{3/2+U_n \frac{d t}{d x}} [2\phi_{f a c e}^{n}-0.5\phi_{f a c e}^{n-1}]/1.5+\frac{U_n \frac{d t}{d x}}{3/2+U_n \frac{d t}{d x}} [\phi_{\text {centre }}^{n+1} ]
+$$
+
+
+
+
+
+
+
+
 ### 2. 线性欧拉方程的NSCBC(不考虑速度)-ref1
 
 waveTransmissive可以看成最简单的波动方程，而现在我们考虑联系欧拉方程的情况。
@@ -805,6 +854,7 @@ $$
 $$
 
 即(2.69)
+
 
 
 

@@ -14,7 +14,7 @@ FoamFile
     object      controlDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-libs ("libpressureOutletNSCBC.so" "libpressureInletNSCBC.so" "libtemperatureOutletNSCBC.so");
+libs ("libvelocityOutletNSCBC.so" "libwaveTransmision.so" "libpressureOutletNSCBC.so" "libpressureInletNSCBC.so" "libtemperatureOutletNSCBC.so");
 application     rhoPimpleFoam;
 
 startFrom       startTime;

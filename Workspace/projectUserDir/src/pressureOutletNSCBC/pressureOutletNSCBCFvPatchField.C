@@ -268,25 +268,41 @@ void Foam::pressureOutletNSCBCFvPatchField<Type>::updateCoeffs()
     if (lInf_ > 0)
     {
 
-        if
-        (
-            ddtScheme == fv::EulerDdtScheme<scalar>::typeName
-         || ddtScheme == fv::CrankNicolsonDdtScheme<scalar>::typeName
-        )
-        {
-                            // Calculate the field relaxation coefficient k (See A2.2.2)
-                            const scalarField K(0.0*etaAc_*(1.0-sqr(aP/cP))*cP/lInf_);
-                            
-                            this->valueFraction() = (1.0 + K*deltaT/2.0)/(1.0 + K*deltaT/2.0 + (aP+cP)/2.0*deltaT*this->patch().deltaCoeffs()) ;
-                            // ref-B.2.2
-                            this->refValue() =
-                                    (
-                                     field.oldTime().boundaryField()[patchi]
-                                     + K * deltaT/2.0 * pInf_ * fieldInf_
-                                    )/( 1.0 + K * deltaT/2.0);
-                            // ref-B.2.3
-                            this->refGrad() = - 1.0 * rhop * cP * (this-> patch().nf() & Up.snGrad()) * fieldInf_;
-        }
+	    if
+		    (
+		     ddtScheme == fv::EulerDdtScheme<scalar>::typeName
+		     || ddtScheme == fv::CrankNicolsonDdtScheme<scalar>::typeName
+		    )
+		    {
+			    // Calculate the field relaxation coefficient k (See A2.2.2)
+			    const scalarField K(etaAc_*(1.0-sqr(aP/cP))*cP/lInf_);
+
+			    this->valueFraction() = (1.0 + K*deltaT/2.0)/(1.0 + K*deltaT/2.0 + (aP+cP)/2.0*deltaT*this->patch().deltaCoeffs()) ;
+			    // ref-B.2.2
+			    this->refValue() =
+				    (
+				     field.oldTime().boundaryField()[patchi]
+				     + K * deltaT/2.0 * pInf_ * fieldInf_
+				    )/( 1.0 + K * deltaT/2.0);
+			    // ref-B.2.3
+			    this->refGrad() = - 1.0 * rhop * cP * (this-> patch().nf() & Up.snGrad()) * fieldInf_;
+		    }
+	    else if (ddtScheme == fv::backwardDdtScheme<scalar>::typeName)
+	    {
+		    // Calculate the field relaxation coefficient k (See A2.2.2)
+		    const scalarField K(etaAc_*(1.0-sqr(aP/cP))*cP/lInf_);
+
+		    this->valueFraction() = (1.5 + K*deltaT/2.0)/(1.5 + K*deltaT/2.0 + (aP+cP)/2.0*deltaT*this->patch().deltaCoeffs()) ;
+		    // ref-B.2.2
+		    this->refValue() =
+			    (
+			     2.0*field.oldTime().boundaryField()[patchi]
+                           - 0.5*field.oldTime().oldTime().boundaryField()[patchi]
+			     + K * deltaT/2.0 * pInf_ * fieldInf_
+			    )/( 1.5 + K * deltaT/2.0);
+		    // ref-B.2.3
+		    this->refGrad() = - 1.0 * rhop * cP * (this-> patch().nf() & Up.snGrad()) * fieldInf_;
+	    }
         else
         {
             FatalErrorInFunction
