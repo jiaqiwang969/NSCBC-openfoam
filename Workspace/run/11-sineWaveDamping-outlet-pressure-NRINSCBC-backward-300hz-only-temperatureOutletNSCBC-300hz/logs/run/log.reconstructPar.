@@ -1,0 +1,2037 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2006                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _b45f8f6f58-20200629 OPENFOAM=2006
+Arch   : "LSB;label=32;scalar=64"
+Exec   : reconstructPar
+Date   : Feb 06 2022
+Time   : 11:18:18
+Host   : login2.pi.sjtu.edu.cn
+PID    : 25484
+I/O    : collated (maxThreadFileBufferSize 0)
+         Threading not activated since maxThreadFileBufferSize = 0.
+         Writing may run slowly for large file sizes.
+Case   : /lustre/home/acct-medgm/medgm/05-NSCBC/Workspace/run/sineWaveDamping
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStamp (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libwaveTransmision.so"
+libwaveTransmision.so: cannot open shared object file: No such file or directory
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libpressureOutletNSCBC.so"
+libpressureOutletNSCBC.so: cannot open shared object file: No such file or directory
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libpressureInletNSCBC.so"
+libpressureInletNSCBC.so: cannot open shared object file: No such file or directory
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libtemperatureOutletNSCBC.so"
+libtemperatureOutletNSCBC.so: cannot open shared object file: No such file or directory
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libwaveTransmision.so"
+libwaveTransmision.so: cannot open shared object file: No such file or directory
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libpressureOutletNSCBC.so"
+libpressureOutletNSCBC.so: cannot open shared object file: No such file or directory
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libpressureInletNSCBC.so"
+libpressureInletNSCBC.so: cannot open shared object file: No such file or directory
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libtemperatureOutletNSCBC.so"
+libtemperatureOutletNSCBC.so: cannot open shared object file: No such file or directory
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libwaveTransmision.so"
+libwaveTransmision.so: cannot open shared object file: No such file or directory
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libpressureOutletNSCBC.so"
+libpressureOutletNSCBC.so: cannot open shared object file: No such file or directory
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libpressureInletNSCBC.so"
+libpressureInletNSCBC.so: cannot open shared object file: No such file or directory
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libtemperatureOutletNSCBC.so"
+libtemperatureOutletNSCBC.so: cannot open shared object file: No such file or directory
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libwaveTransmision.so"
+libwaveTransmision.so: cannot open shared object file: No such file or directory
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libpressureOutletNSCBC.so"
+libpressureOutletNSCBC.so: cannot open shared object file: No such file or directory
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libpressureInletNSCBC.so"
+libpressureInletNSCBC.so: cannot open shared object file: No such file or directory
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libtemperatureOutletNSCBC.so"
+libtemperatureOutletNSCBC.so: cannot open shared object file: No such file or directory
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libwaveTransmision.so"
+libwaveTransmision.so: cannot open shared object file: No such file or directory
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libpressureOutletNSCBC.so"
+libpressureOutletNSCBC.so: cannot open shared object file: No such file or directory
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libpressureInletNSCBC.so"
+libpressureInletNSCBC.so: cannot open shared object file: No such file or directory
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libtemperatureOutletNSCBC.so"
+libtemperatureOutletNSCBC.so: cannot open shared object file: No such file or directory
+
+
+Reconstructing fields for mesh region0
+
+Time = 0.0002
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0004
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0006
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0008
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.001
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0012
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0014
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0016
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0018
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.002
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0022
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0024
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0026
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0028
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.003
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0032
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0034
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0036
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0038
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.004
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0042
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0044
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0046
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0048
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.005
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0052
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0054
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0056
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0058
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.006
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0062
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0064
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0066
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0068
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.007
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0072
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0074
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0076
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0078
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.008
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0082
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0084
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0086
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0088
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.009
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0092
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0094
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0096
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0098
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.01
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0102
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0104
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0106
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0108
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.011
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+Time = 0.0112
+
+Reconstructing FV fields
+
+    Reconstructing volScalarFields
+
+        T
+        T_0
+        mag(U)
+        p
+        pMean
+        p_0
+        rho
+        rho_0
+
+    Reconstructing volVectorFields
+
+        U
+        UMean
+        U_0
+
+    Reconstructing surfaceScalarFields
+
+        phi
+        phi_0
+
+Reconstructing point fields
+
+No point fields
+
+No lagrangian fields
+
+No FA fields
+
+
+End
+

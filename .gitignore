@@ -1,4 +1,5 @@
 *.so
 /platforms
-/Workspace/run
-*.swp
+/Workspace/run/*/0.*
+.*.swp
+.DS_Store

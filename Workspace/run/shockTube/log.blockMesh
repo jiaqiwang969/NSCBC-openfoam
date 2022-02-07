@@ -1,0 +1,75 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2006                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _b45f8f6f58-20200629 OPENFOAM=2006
+Arch   : "LSB;label=32;scalar=64"
+Exec   : blockMesh
+Date   : Feb 04 2022
+Time   : 00:53:47
+Host   : login3.pi.sjtu.edu.cn
+PID    : 17710
+I/O    : collated (maxThreadFileBufferSize 0)
+         Threading not activated since maxThreadFileBufferSize = 0.
+         Writing may run slowly for large file sizes.
+Case   : /lustre/home/acct-medgm/medgm/05-NSCBC/Workspace/run/shockTube
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStamp (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Creating block mesh from "system/blockMeshDict"
+Creating block edges
+No non-planar block faces defined
+Creating topology blocks
+Creating topology patches
+
+Creating block mesh topology
+
+Check topology
+
+	Basic statistics
+		Number of internal faces : 0
+		Number of boundary faces : 6
+		Number of defined boundary faces : 6
+		Number of undefined boundary faces : 0
+	Checking patch -> block consistency
+
+Creating block offsets
+Creating merge list (topological search)...
+
+Creating polyMesh from blockMesh
+Creating patches
+Creating cells
+Creating points with scale 1
+    Block 0 cell size :
+        i : 0.1 .. 0.1
+        j : 2 .. 2
+        k : 2 .. 2
+
+
+There are no merge patch pairs
+
+Writing polyMesh with 0 cellZones
+----------------
+Mesh Information
+----------------
+  boundingBox: (-5 -1 -1) (5 1 1)
+  nPoints: 404
+  nCells: 100
+  nFaces: 501
+  nInternalFaces: 99
+----------------
+Patches
+----------------
+  patch 0 (start: 99 size: 2) name: sides
+  patch 1 (start: 101 size: 400) name: empty
+
+End
+

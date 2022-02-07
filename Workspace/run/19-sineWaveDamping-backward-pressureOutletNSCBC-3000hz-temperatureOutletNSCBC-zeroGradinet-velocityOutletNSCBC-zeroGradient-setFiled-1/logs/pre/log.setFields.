@@ -1,0 +1,42 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2006                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _b45f8f6f58-20200629 OPENFOAM=2006
+Arch   : "LSB;label=32;scalar=64"
+Exec   : setFields
+Date   : Feb 07 2022
+Time   : 06:25:35
+Host   : login3.pi.sjtu.edu.cn
+PID    : 5780
+I/O    : collated (maxThreadFileBufferSize 0)
+         Threading not activated since maxThreadFileBufferSize = 0.
+         Writing may run slowly for large file sizes.
+Case   : /lustre/home/acct-medgm/medgm/05-NSCBC/Workspace/run/sineWaveDamping
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStamp (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Reading setFieldsDict
+
+Setting field default values
+    Setting internal values of volVectorField U
+    Setting internal values of volScalarField T
+    Setting internal values of volScalarField p
+
+Setting field region values
+    Adding cells with centre within boxes 1((0 -1 -1) (2 1 1))
+    Setting internal values of volScalarField T
+    Setting internal values of volScalarField p
+
+End
+

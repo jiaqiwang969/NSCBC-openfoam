@@ -1,0 +1,95 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2006                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _b45f8f6f58-20200629 OPENFOAM=2006
+Arch   : "LSB;label=32;scalar=64"
+Exec   : decomposePar -cellDist -force
+Date   : Feb 05 2022
+Time   : 22:27:39
+Host   : login3.pi.sjtu.edu.cn
+PID    : 401
+I/O    : collated (maxThreadFileBufferSize 0)
+         Threading not activated since maxThreadFileBufferSize = 0.
+         Writing may run slowly for large file sizes.
+Case   : /lustre/home/acct-medgm/medgm/05-NSCBC/Workspace/run/sineWaveDamping
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStamp (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+
+
+Decomposing mesh region0
+
+Create mesh
+
+Calculating distribution of cells
+Selecting decompositionMethod scotch [4]
+
+Finished decomposition in 0.01 s
+
+Calculating original mesh data
+
+Distributing cells to processors
+
+Distributing faces to processors
+
+Distributing points to processors
+
+Constructing processor meshes
+
+Processor 0
+    Number of cells = 251
+    Number of faces shared with processor 1 = 1
+    Number of processor patches = 1
+    Number of processor faces = 1
+    Number of boundary faces = 1005
+
+Processor 1
+    Number of cells = 249
+    Number of faces shared with processor 0 = 1
+    Number of faces shared with processor 2 = 1
+    Number of processor patches = 2
+    Number of processor faces = 2
+    Number of boundary faces = 996
+
+Processor 2
+    Number of cells = 250
+    Number of faces shared with processor 1 = 1
+    Number of faces shared with processor 3 = 1
+    Number of processor patches = 2
+    Number of processor faces = 2
+    Number of boundary faces = 1000
+
+Processor 3
+    Number of cells = 250
+    Number of faces shared with processor 2 = 1
+    Number of processor patches = 1
+    Number of processor faces = 1
+    Number of boundary faces = 1001
+
+Number of processor faces = 3
+Max number of cells = 251 (0.4% above average 250)
+Max number of processor patches = 2 (33.33333333333334% above average 1.5)
+Max number of faces between processors = 2 (33.33333333333334% above average 1.5)
+
+
+Wrote decomposition as volScalarField to cellDist for visualization.
+
+Wrote decomposition to "/lustre/home/acct-medgm/medgm/05-NSCBC/Workspace/run/sineWaveDamping/constant/cellDecomposition" for use in manual decomposition.
+Time = 0
+
+Processor 0: field transfer
+Processor 1: field transfer
+Processor 2: field transfer
+Processor 3: field transfer
+
+End
+
