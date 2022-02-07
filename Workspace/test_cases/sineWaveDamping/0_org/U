@@ -17,13 +17,22 @@ FoamFile
 
 dimensions      [0 1 -1 0 0 0 0];
 
-internalField   uniform (1 0 0);
+internalField   uniform (0 0 0);
 
 boundaryField
 {
     inlet
     {
-        type            zeroGradient;
+        type            uniformFixedValue; // oscillatingFixedValue;
+        uniformValue    sine;
+        uniformValueCoeffs
+        {
+            amplitude       constant 1;
+            frequency       constant 300;
+            scale           constant (50 0 0);
+            level           constant (1 0 0);
+        }
+        value           $internalField;
     }
  
     outlet
@@ -37,8 +46,6 @@ boundaryField
         etaAc           1;
         value           $internalField;
     }
-
-
 
     frontAndBack
     {

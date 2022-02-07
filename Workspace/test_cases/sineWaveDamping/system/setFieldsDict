@@ -16,7 +16,7 @@ FoamFile
 
 defaultFieldValues 
 ( 
-    volVectorFieldValue U (1 0 0) 
+    volVectorFieldValue U (0 0 0) 
     volScalarFieldValue T 300
     volScalarFieldValue p 101325
 );
