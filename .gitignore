@@ -4,3 +4,4 @@
 /Workspace/run/*/postProcessing
 .*.swp
 .DS_Store
+*.sh
