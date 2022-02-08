@@ -4,4 +4,9 @@
 /Workspace/run/*/postProcessing
 .*.swp
 .DS_Store
-*.sh
+/Workspace/*.sh
+/Workspace/*.md
+/Workspace/*.txt
+
+
+
