@@ -1,2 +1,0 @@
-NSCBC_p_inletFvPatchFields.C
-LIB = $(FOAM_USER_LIBBIN)/libNSCBC
