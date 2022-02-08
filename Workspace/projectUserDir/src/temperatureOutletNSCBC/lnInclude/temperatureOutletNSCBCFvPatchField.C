@@ -1,1 +1,0 @@
-../temperatureOutletNSCBCFvPatchField.C
