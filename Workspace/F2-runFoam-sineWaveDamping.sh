@@ -56,7 +56,7 @@ foam_startTime=0
 #foam_startTime=15
 foam_endTime=0.0112
 #foam_endTime=30
-foam_writeInterval=2.0e-4
+foam_writeInterval=1.0e-4
 foam_purgeWrite=0
 foam_deltaT=2.0e-6
 

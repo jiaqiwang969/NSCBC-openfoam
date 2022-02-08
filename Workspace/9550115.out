@@ -1,0 +1,139 @@
+pwd=/lustre/home/acct-medgm/medgm/05-NSCBC/Workspace/run/sineWaveDamping
+About to execute the case
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2006                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _b45f8f6f58-20200629 OPENFOAM=2006
+Arch   : "LSB;label=32;scalar=64"
+Exec   : /opt/OpenFOAM/OpenFOAM-v2006/platforms/linux64GccDPInt32Opt/bin/rhoPimpleFoam -parallel
+Date   : Feb 08 2022
+Time   : 23:04:54
+Host   : cas532.pi.sjtu.edu.cn
+PID    : 71832
+I/O    : collated (maxThreadFileBufferSize 0)
+         Threading not activated since maxThreadFileBufferSize = 0.
+         Writing may run slowly for large file sizes.
+Case   : /lustre/home/acct-medgm/medgm/05-NSCBC/Workspace/run/sineWaveDamping
+nProcs : 4
+Hosts  :
+(
+    (cas532.pi.sjtu.edu.cn 4)
+)
+Pstream initialized with:
+    floatTransfer      : 0
+    nProcsSimpleSum    : 0
+    commsType          : nonBlocking
+    polling iterations : 0
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStamp (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+
+PIMPLE: no residual control data found. Calculations will employ 7 corrector loops
+
+Reading thermophysical properties
+
+Selecting thermodynamics package 
+{
+    type            hePsiThermo;
+    mixture         pureMixture;
+    transport       sutherland;
+    thermo          hConst;
+    equationOfState perfectGas;
+    specie          specie;
+    energy          sensibleEnthalpy;
+}
+
+Reading field U
+
+Reading/calculating face flux field phi
+
+--> FOAM Warning : 
+    From Foam::pressureControl::pressureControl(const volScalarField&, const volScalarField&, const Foam::dictionary&, bool)
+    in file cfdTools/general/pressureControl/pressureControl.C at line 123
+    Reading "/lustre/home/acct-medgm/medgm/05-NSCBC/Workspace/run/sineWaveDamping/system/fvSolution.PIMPLE" at line 57 to 60
+    'rhoMax' specified rather than 'pMax' or 'pMaxFactor'
+    This is supported for backward-compatibility but 'pMax' or 'pMaxFactor' are more reliable.
+pressureControl
+    pMax 129464.0667794966
+
+Creating turbulence model
+
+Selecting turbulence model type laminar
+Selecting laminar stress model Stokes
+Creating field dpdt
+
+Creating field kinetic energy K
+
+No MRF models present
+
+Creating finite volume options from "system/fvOptions"
+
+Selecting finite volume options type acousticDampingSource
+    Source: acousticDampingSource
+    - selecting all cells
+    - selected 1000 cell(s) with volume 0.0009999999999999992
+Courant Number mean: 0.0007999999999999975 max: 0.0008000000000001592
+
+Starting time loop
+
+fieldAverage fieldAverage:
+    Restarting averaging for fields:
+        U: starting averaging at time 0
+        p: starting averaging at time 0
+
+Courant Number mean: 0.0007999999999999975 max: 0.0008000000000001592
+Time = 2e-06
+
+PIMPLE: iteration 1
+diagonal:  Solving for rho, Initial residual = 0, Final residual = 0, No Iterations 0
+smoothSolver:  Solving for Ux, Initial residual = 0.9999999935251245, Final residual = 0.006871291480738968, No Iterations 1
+[0] #0  Foam::error::printStack(Foam::Ostream&) at ??:?
+[2] #0  Foam::error::printStack(Foam::Ostream&) at ??:?
+[1] #0  Foam::error::printStack(Foam::Ostream&) at ??:?
+[2] #1  Foam::sigSegv::sigHandler(int) at ??:?
+[0] #1  Foam::sigSegv::sigHandler(int) at ??:?
+[1] #1  Foam::sigSegv::sigHandler(int) at ??:?
+[2] #2  ? in /lib/x86_64-linux-gnu/libpthread.so.0
+[1] #2  ? in /lib/x86_64-linux-gnu/libpthread.so.0
+[0] #2  ? in /lib/x86_64-linux-gnu/libpthread.so.0
+[2] #3  Foam::temperatureOutletNSCBCFvPatchField<double>::updateCoeffs() at ??:?
+[1] #3  Foam::temperatureOutletNSCBCFvPatchField<double>::updateCoeffs() at ??:?
+[0] #3  Foam::temperatureOutletNSCBCFvPatchField<double>::updateCoeffs() at ??:?
+[2] #4  Foam::mixedFvPatchField<double>::evaluate(Foam::UPstream::commsTypes) at ??:?
+[0] #4  Foam::mixedFvPatchField<double>::evaluate(Foam::UPstream::commsTypes) at ??:?
+[1] #4  Foam::mixedFvPatchField<double>::evaluate(Foam::UPstream::commsTypes) at ??:?
+[0] #5  Foam::mixedEnergyFvPatchScalarField::updateCoeffs() at ??:?
+[1] #5  Foam::mixedEnergyFvPatchScalarField::updateCoeffs() at ??:?
+[2] #5  Foam::mixedEnergyFvPatchScalarField::updateCoeffs() at ??:?
+[0] #6  Foam::fvMatrix<double>::fvMatrix(Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh> const&, Foam::dimensionSet const&) in /opt/OpenFOAM/OpenFOAM-v2006/platforms/linux64GccDPInt32Opt/bin/rhoPimpleFoam
+[2] #6  Foam::fvMatrix<double>::fvMatrix(Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh> const&, Foam::dimensionSet const&) in /opt/OpenFOAM/OpenFOAM-v2006/platforms/linux64GccDPInt32Opt/bin/rhoPimpleFoam
+[1] #6  Foam::fvMatrix<double>::fvMatrix(Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh> const&, Foam::dimensionSet const&) in /opt/OpenFOAM/OpenFOAM-v2006/platforms/linux64GccDPInt32Opt/bin/rhoPimpleFoam
+[2] #7  Foam::tmp<Foam::fvMatrix<double> > Foam::fv::optionList::operator()<double>(Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh> const&, Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>&, Foam::word const&) in /opt/OpenFOAM/OpenFOAM-v2006/platforms/linux64GccDPInt32Opt/bin/rhoPimpleFoam
+[0] #7  Foam::tmp<Foam::fvMatrix<double> > Foam::fv::optionList::operator()<double>(Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh> const&, Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>&, Foam::word const&) in /opt/OpenFOAM/OpenFOAM-v2006/platforms/linux64GccDPInt32Opt/bin/rhoPimpleFoam
+[1] #7  Foam::tmp<Foam::fvMatrix<double> > Foam::fv::optionList::operator()<double>(Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh> const&, Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>&, Foam::word const&) in /opt/OpenFOAM/OpenFOAM-v2006/platforms/linux64GccDPInt32Opt/bin/rhoPimpleFoam
+[2] #8  ? in /opt/OpenFOAM/OpenFOAM-v2006/platforms/linux64GccDPInt32Opt/bin/rhoPimpleFoam
+[0] #8  ? in /opt/OpenFOAM/OpenFOAM-v2006/platforms/linux64GccDPInt32Opt/bin/rhoPimpleFoam
+[1] #8  ? in /opt/OpenFOAM/OpenFOAM-v2006/platforms/linux64GccDPInt32Opt/bin/rhoPimpleFoam
+[2] #9  __libc_start_main in /lib/x86_64-linux-gnu/libc.so.6
+[0] #9  __libc_start_main in /lib/x86_64-linux-gnu/libc.so.6
+[1] #9  __libc_start_main in /lib/x86_64-linux-gnu/libc.so.6
+[0] #10  ? in /opt/OpenFOAM/OpenFOAM-v2006/platforms/linux64GccDPInt32Opt/bin/rhoPimpleFoam
+[2] #10  ? in /opt/OpenFOAM/OpenFOAM-v2006/platforms/linux64GccDPInt32Opt/bin/rhoPimpleFoam
+[1] #10  ? in /opt/OpenFOAM/OpenFOAM-v2006/platforms/linux64GccDPInt32Opt/bin/rhoPimpleFoam
+srun: error: cas532: tasks 0-2: Segmentation fault
+srun: Terminating job step 9550115.0
+slurmstepd: error: *** STEP 9550115.0 ON cas532 CANCELLED AT 2022-02-08T23:04:55 ***
+srun: error: cas532: task 3: Terminated
+srun: Force Terminated job step 9550115.0
+Execution finished
+Script done

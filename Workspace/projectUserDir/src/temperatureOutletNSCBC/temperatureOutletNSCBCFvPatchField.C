@@ -259,7 +259,7 @@ void Foam::temperatureOutletNSCBCFvPatchField<Type>::updateCoeffs()
 		(
 		 rhoName_
 		);
-
+      
 	const fvPatchVectorField& Up =
 		this->patch().template lookupPatchField<volVectorField, vector>(UName_);
 
@@ -268,6 +268,11 @@ void Foam::temperatureOutletNSCBCFvPatchField<Type>::updateCoeffs()
 
 	label patchi = this->patch().index();
 
+	// Need R of the NRI-NSCBC flow.  Assume R is independent of location
+	// along patch so use face 0
+	scalar R = 287; //1.0/(psip[0]*Tp[0]);
+        Info <<"R:" << R << endl;      
+  
 	// Non-reflecting outflow boundary
 	// If lInf_ defined setup relaxation to the value fieldInf_.
 	if (lInf_ > 0)
@@ -279,7 +284,7 @@ void Foam::temperatureOutletNSCBCFvPatchField<Type>::updateCoeffs()
 			 || ddtScheme == fv::CrankNicolsonDdtScheme<scalar>::typeName
 			)
 			{
-				const scalar R = 8.3143; //J/mol.K
+				//const scalar R = 8.3143; //J/mol.K
 				// Calculate the field relaxation coefficient k (See A2.2.2)
 				const scalarField K(etaAc_*(1.0-sqr(aP/cP))*cP/lInf_);
 				const scalarField L1 = K*pp - K*pInf_;
@@ -292,7 +297,7 @@ void Foam::temperatureOutletNSCBCFvPatchField<Type>::updateCoeffs()
 				this->refValue() =
 					(
 					 field.oldTime().boundaryField()[patchi]
-					 + deltaT * (gamma_ - 1.0)/gamma_ * 0.5 *(L5+L1) / rhop / R * fieldInf_
+					 - deltaT * (gamma_ - 1.0)/gamma_ * 0.5 *(L5+L1) / rhop / R * fieldInf_
 					)/( 1.0 );
 
 				// ref-D.2.3
@@ -300,7 +305,7 @@ void Foam::temperatureOutletNSCBCFvPatchField<Type>::updateCoeffs()
 			}
 		else if (ddtScheme == fv::backwardDdtScheme<scalar>::typeName)
 		{
-			const scalar R = 8.3143; //J/mol.K
+			//const scalar R = 8.3143; //J/mol.K
 			// Calculate the field relaxation coefficient k (See A2.2.2)
 			const scalarField K(etaAc_*(1.0-sqr(aP/cP))*cP/lInf_);
 			const scalarField L1 = K*pp - K*pInf_;
@@ -314,7 +319,7 @@ void Foam::temperatureOutletNSCBCFvPatchField<Type>::updateCoeffs()
 				(
 				 2.0*field.oldTime().boundaryField()[patchi]
                                - 0.5*field.oldTime().oldTime().boundaryField()[patchi]
-				 + deltaT * (gamma_ - 1.0)/gamma_ * 0.5 *(L5+L1) / rhop / R * fieldInf_
+				 - deltaT * (gamma_ - 1.0)/gamma_ * 0.5 *(L5+L1) / rhop / R * fieldInf_
 				)/( 1.5 );
 
 			// ref-D.2.3

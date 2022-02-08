@@ -106,6 +106,7 @@ protected:
         //- Name of the flux transporting the field
         word phiName_;
 
+
         //- Name of the density field used to normalise the mass flux
         //- if necessary
         word rhoName_;
