@@ -271,9 +271,8 @@ void Foam::temperatureOutletNSCBCFvPatchField<Type>::updateCoeffs()
 	// Need R of the NRI-NSCBC flow.  Assume R is independent of location
 	// along patch so use face 0
 	scalar R = 287; //1.0/(psip[0]*Tp[0]);
-        Info <<"R:" << R << endl;      
-  
-	// Non-reflecting outflow boundary
+	
+        // Non-reflecting outflow boundary
 	// If lInf_ defined setup relaxation to the value fieldInf_.
 	if (lInf_ > 0)
 	{

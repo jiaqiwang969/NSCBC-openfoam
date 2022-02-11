@@ -1,0 +1,82 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  6                                     |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+libs ("libpressureOutletNSCBC.so" "libpressureInletNSCBC.so" "libtemperatureOutletNSCBC.so");
+
+application     rhoPimpleFoam; 
+
+startFrom       startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         0.0035;
+
+deltaT          1e-07;
+
+writeControl    runTime;
+//writeControl    adjustableRunTime;
+
+writeInterval   0.00005;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  8;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
+
+adjustTimeStep  yes;
+maxCo           0.2;
+maxDeltaT       0.01;
+
+
+// ************************************************************************* //
+
+functions
+{
+
+///////////////////////////////////////////////////////////////////////////
+     #includeFunc mag(U)
+//minmaxdomain
+//{
+//    type fieldMinMax;
+    
+//    libs ("libfieldFunctionObjects.so");
+
+//    enabled true; //true or false
+
+//    mode component;
+
+//    writeControl timeStep;
+//    writeInterval 1;
+
+//    log true;
+
+//    fields (p U T);
+//}
+
+///////////////////////////////////////////////////////////////////////////
+
+};

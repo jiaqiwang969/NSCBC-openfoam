@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>README.html</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+
+</head>
+
+<body>
+
+<h1>ARAMiS</h1>
+
+<p>The code <strong>ARAMiS</strong> (<strong>A</strong>coustic <strong>R</strong>esponse of <strong>A</strong>nisotropic <strong>M</strong>ult<strong>i</strong>layered <strong>S</strong>tructures) is a tool to calculate the transmission loss, reflection coefficient, or absorption coefficient of any given structure multilayered structure.</p>
+
+<p>The purpose of the project was to study the influence of the instrinsic anisotropy of poroelastic media on the wave propagation within multilayered structures.</p>
+
+<p>The code has been written in Matlab, and compiles in both Matlab and Octave.</p>
+
+<p>This code has been created as an outcome of the Ph.D. thesis entitled <em>On multilayered system dynamics and waves in anisotropic poroelastic media</em> by Juan Parra. The doctoral project was done as an international <em>cotutelle</em> agreement between KTH Royal Institute of Technology (Stockholm, Sweden), and Le Mans Université (Le Mans, France).</p>
+
+<p>All terminology used in the code refers to <a href="Bibliography">the bibliography</a>.</p>
+
+<h2>Conditions of usage</h2>
+
+<p>The use of this software is permitted under the license LGPL-3.0.
+A particular request from the author is that you cite the relevant publications in <a href="Bibliography">the bibliography</a> if you use the code.
+The author may be contacted at <a href="mailto:jppm@kth.se">jppm@kth.se</a>.</p>
+
+<h2>How to</h2>
+
+<h3>Background</h3>
+
+<p>The code relies on the Transfer Matrix Method (TMM). All physical fields are assumed to be a superposition of hamonic plane waves.
+The numerical method, physical and material models can be found in <a href="Bibliography">the bibliography</a>.</p>
+
+<h3>Structure of the code</h3>
+
+<p>The code has 3 structures:
+* <code>in</code> - denotes the inputs
+* <code>L</code> - denotes the material layers
+* <code>out</code> - denotes the output. Note that after the calculations, several fields in the structures <strong>L</strong> are added.</p>
+
+<p>For the code to compute, you need to define:
+* All the elements of the structure <code>in</code> as explained in the following.
+* <code>L.d</code>, <code>L.material.type</code> and <code>L.material.sheet</code> for each layer.</p>
+
+<h4><code>in</code> - input</h4>
+
+<ul>
+<li><code>in.f</code> denotes a vector with frequencies (in Hz),</li>
+<li><code>in.theta_1</code> and <code>in.theta_2</code> denote the angles (in radians) of incidence of the plane waves. See the bibliography for details on these angles. Avoid setting the angles to 0, as numerical instabilities may occur,</li>
+<li><code>in.termination</code> denotes the termination of the problem. Set to <code>'tranmission'</code> if you are interested in the transmission problem, <em>i.e.</em> the last layer if coupled to a semi-infinite fluid on the wave propagation direction. Set to <code>'rigid backing'</code> if you are interested in the absorption problem, <em>i.e.</em> the last layer in coupled to a rigid backing.</li>
+</ul>
+
+
+<h4><code>L</code> - material layers</h4>
+
+<p>For a layer <code>i=1...N</code>:
+* <code>L(i).d</code> denotes the thickness (in m),
+* <code>L(i).material.type</code> denotes the material type, <em>i.e.</em> <code>'fluid'</code>, <code>'solid'</code> or <code>'pem'</code> (poroelastic media),
+* <code>L(i).material.sheet</code> denotes the material properties as stated in the database, located in <code>'/src/Materials'</code>. To define your own material, follow the principle of the material sheets in the repository.</p>
+
+<p>The previous elements of the structure <code>L</code> need to be defined before any calculation is possible.
+After the computation, several elements will appear in the structure L.  Several of them involve the computation of the solution. However the following correspond to physical fields/phenomena:</p>
+
+<ul>
+<li><code>L(i).Alpha</code> is the state matrix as defined in the bibliography.</li>
+<li><code>L(i).statevector</code> contains the physical field variables in the state vector, as defined in the bibliography</li>
+<li><code>L(i).wave</code> contains the elements:
+
+<ul>
+<li><code>q</code>, which denotes the wave amplitudes,</li>
+<li><code>attenuation</code>, which denote the wave attenuations,</li>
+<li><code>length</code>, which denote the wavelengths,</li>
+<li><code>num</code>, which denote the wavenumbers,</li>
+<li><code>pol</code>, which denote the wave polarisations,</li>
+<li><code>slowness</code>, which denote the wave slowness.
+The dimensions of the elements of <code>L(i).wave</code> are (M,f), where <code>M</code> is the number of waves in the medium, and <code>f</code> is the number of frequencies.</li>
+</ul>
+</li>
+<li><code>L(i).disspow</code> contains the powers (in W/m2) dissipated by the different phenomena: <code>struct</code>, <code>th</code>, <code>vis</code> and <code>tot</code>, which are respectively the dissipated power by structural means, by thermal means, by viscous means, as well as the total dissipated power.</li>
+<li><code>L(i).kinpow</code> and <code>L(i).kinen</code> contains the powers (in W/m2) and energies in the layer.</li>
+</ul>
+
+
+<h4><code>out</code> - output</h4>
+
+<ul>
+<li>if <code>in.termination='transmission'</code>, then <code>out.TL</code> denotes the sound transmission loss of the multilayered structure (in dB) per frequency (as defined in <code>in.f</code>).</li>
+<li>if <code>in.termination='rigid backing'</code>, then <code>out.R</code> denotes the reflection coefficient (real and imaginary parts) of the multilayered structure per frequency (as defined in <code>in.f</code>); <code>out.Absoprt</code> denotes the absorption coefficient of the multilayered structure per frequency (as defined in <code>in.f</code>).</li>
+</ul>
+
+
+<h3>Examples</h3>
+
+<p>2 examples are supplied:
+* <code>example_1.m</code>: the absorption coefficient of an anisotropic melamine (poroelastic) layer at normal incidence. The material rotations are explained in the bibliography. Both the absorption coefficient and the dissipated power by structural means are plotted.
+* <code>example_2</code>: the transmisison loss of a multilayered system comprised of two aluminum sheets with an isotropic poroelastic core and an airgap, excited by a plane wave at a 42 deg. incidence. The sound transmission loss of the structure is plotted, as well as the total kinetic power in the poroelastic layer.</p>
+
+<h2>Known problems</h2>
+
+<ul>
+<li>The calculation of powers returns both positive and negative values. This will be corrected in a future update.</li>
+<li>The calculation of the powers and energies in fluid layers returns numerial stabilities and the the values are close to zero.</li>
+</ul>
+
+
+<h1>Acknowlegments</h1>
+
+<p>The following people contributed in no small matter to the development of the code ARAMiS. Their contribution is highly acknowledged.</p>
+
+<ul>
+<li>Prof. Peter Göransson, KTH Royal Institute of Technology, Stockholm, Sweden</li>
+<li>Prof. Olivier Dazel, Le Mans Université, Le Mans, France</li>
+<li>Jacques Cuenca, Siemens Industry Software, Leuven, Belgium / KTH Royal Institute of Technology, Stockholm, Sweden</li>
+<li>Luca Manzari, KTH Royal Institute of Technology, Stockholm, Sweden</li>
+</ul>
+
+
+<h1>Bibliography</h1>
+
+<p>Parra, J. (2016). Acoustic analysis of anisotropic poroelastic multilayered systems. Journal of Applied Physics, 119(8), 84907. https://doi.org/10.1063/1.4942443</p>
+
+<p>Parra, J. (2016). Derivation of the state matrix for dynamic analysis of linear homogeneous media. The Journal of the Acoustical Society of America, 140(2), EL218–EL220. https://doi.org/10.1121/1.4960624</p>
+
+<p>Parra, J. (2016). On multilayered system dynamics and waves in anisotropic poroelastic media [KTH Royal Institute of Technology &amp; Le Mans Université]. ISSN 1651-7660.</p>
+
+</body>
+</html>

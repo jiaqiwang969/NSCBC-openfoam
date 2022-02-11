@@ -1,0 +1,65 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2006                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    location    "0";
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+
+internalField   uniform (1 0 0);
+
+boundaryField
+{
+    inlet
+    {
+        type            codedMixed;
+        refValue        uniform (0 0 0);
+        refGradient     uniform (0 0 0);
+        valueFraction   uniform 1;
+        value           uniform (0 0 0);
+        name            rampedMixed;
+        code            #{
+	    const scalar t = this->db().time().value();
+	    const scalar pi = constant::mathematical::pi;
+             
+            const scalar frequency_=300;
+            const vector amplitude_=vector(1, 0, 0);
+            const vector level_=vector(1, 0, 0);
+         
+            const scalar scale_=1;
+	    this->refValue() =
+		amplitude_*exp(-sqr(t-0.0028)/0.0000018) + level_;
+	    this->refGrad() = Zero;
+	    this->valueFraction() = 1.0;
+	#};
+    }
+    outlet
+    {
+        type            velocityOutletNSCBC;
+        pInf            101325;
+        gamma           1.4;
+        etaAc           1;
+        fieldInf        (1 0 0);
+        lInf            2.25;
+        value           uniform (1 0 0);
+    }
+    frontAndBack
+    {
+        type            empty;
+    }
+}
+
+
+// ************************************************************************* //

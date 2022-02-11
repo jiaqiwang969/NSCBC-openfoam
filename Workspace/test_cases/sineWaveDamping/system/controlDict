@@ -79,6 +79,21 @@ functions
 
         );
     }
+    probes
+    {
+	type           probes;
+	libs           (sampling);
+        name           probes;
+	writeControl   timeStep;
+	writeInterval  100;
+        fields         (p U);
+        interpolationScheme  cell;
+	probeLocations
+	(
+		(1.24 0.0 0.0)
+	);
+	
+    }
 }
 
 // ************************************************************************* //

@@ -1,0 +1,6 @@
+/* dynamicCode:
+ * SHA1 = 0f6a03a0851fcf82d61a7ab27818c8c0ff92ca05
+ */
+mixedFvPatchFieldTemplate.C
+
+LIB = $(PWD)/../platforms/$(WM_OPTIONS)/lib/librampedMixed_0f6a03a0851fcf82d61a7ab27818c8c0ff92ca05
