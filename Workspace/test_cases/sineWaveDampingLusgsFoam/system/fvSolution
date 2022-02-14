@@ -35,8 +35,7 @@ solvers
 }
 
 LUSGS {
-  internalIterations 1;
-  localTimestepping true;
+    internalIterations 10; localTimestepping true; relTol 1.e-3; tolerance 1.e-4;
 }
 
 fieldBounds

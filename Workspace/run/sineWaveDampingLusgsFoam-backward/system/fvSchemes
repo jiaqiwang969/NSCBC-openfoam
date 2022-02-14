@@ -27,7 +27,7 @@ AUSMplusUpFluxCoeffs {
 ddtSchemes
 {
  //default         Euler;
-    default         backward;
+ default         backward;
 }
 
 gradSchemes

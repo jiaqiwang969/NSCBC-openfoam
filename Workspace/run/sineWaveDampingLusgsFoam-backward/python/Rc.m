@@ -2,7 +2,7 @@ clc;
 clear;
 
 numProbes = 11;
-path="/Users/wjq/Documents/07-myFoam/Workspace/run/sineWaveDamping/postProcessing/probes/0/";
+path="/Users/wjq/Documents/05-NSCBC/Workspace/run/sineWaveDampingLusgsFoam-backward/postProcessing/probes/0/";
 idU = fopen(path+'U','r');
 tU = textscan(idU,'%f','Delimiter',{'(',')',' '},'MultipleDelimsAsOne',true,'headerlines',numProbes+2);
 fclose(idU);
