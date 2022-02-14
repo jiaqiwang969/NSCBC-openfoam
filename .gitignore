@@ -2,6 +2,7 @@
 /platforms
 /Workspace/run/*/0.*
 /Workspace/run/*/postProcessing
+/Workspace/run/*/*/postProcessing
 .*.swp
 .DS_Store
 /Workspace/*.sh

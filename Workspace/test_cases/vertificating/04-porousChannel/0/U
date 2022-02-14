@@ -1,0 +1,96 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  7
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (5 0 0);
+
+boundaryField
+{
+    Inlet
+    {
+        type        fixedValue;
+        value       uniform (5 0 0);
+    }
+    
+ /*   Inlet
+{
+    type            codedFixedValue;
+    value           $internalField;
+    redirectType    myParabolicVelocity;
+    name    myParabolicVelocity;
+    code
+    #{
+   //    U(y)		 =  		1.5*U_ave*(1 - (y/h)^2  )
+
+       scalar U_ave = 5, h = 0.001; // input values
+       
+       const fvPatch& boundaryPatch = patch(); 
+       vectorField& field = *this;
+       
+                     forAll(boundaryPatch, faceI)
+        {
+		field[faceI] =  vector( 1.5*U_ave*(1 - Foam::pow(boundaryPatch.Cf()[faceI].y()/h, 2) ),0,0);
+   //    U(y)		 =  		1.5*U_ave*(1 - (y/h)^2  )
+
+	    }
+       
+	    
+   #};
+   
+     	codeOptions
+  	#{
+
+            -I$(LIB_SRC)/finiteVolume/lnInclude \
+            -I$(LIB_SRC)/meshTools/lnInclude
+
+   	#};
+
+  	codeInclude
+   	#{
+      	    #include "fvCFD.H"
+      	    #include <cmath>
+     	    #include <iostream>
+  	#};
+           
+}*/
+
+
+    Outlet
+    {
+        type            zeroGradient;
+    }
+
+    Wall
+    {
+        type            noSlip;
+    }
+
+    symmetry
+    {
+       type        symmetry;
+     //   value       uniform (100 0 0);
+       
+    }
+
+    Frontback
+    {
+        type            empty;
+    }
+
+}
+
+// ************************************************************************* //

@@ -1,0 +1,118 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 8-1ac1210412fb
+Exec   : surfaceFeatures
+Date   : Feb 13 2022
+Time   : 23:35:33
+Host   : "login3.pi.sjtu.edu.cn"
+PID    : 10997
+I/O    : collated (maxThreadFileBufferSize 2e+09)
+         Threading activated since maxThreadFileBufferSize > 0.
+         Requires large enough buffer to collect all data or thread support 
+         enabled in MPI. If thread support cannot be enabled, deactivate
+         threading by setting maxThreadFileBufferSize to 0 in
+         $FOAM_ETC/controlDict
+Case   : /lustre/home/acct-medgm/medgm/05-NSCBC/Workspace/test_cases/05-MRF_stirred_tank
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStamp (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Reading surfaceFeaturesDict
+
+Surface            : "impeller.stl"
+
+
+Feature line extraction is only valid on closed manifold surfaces.
+Statistics:
+Triangles    : 664
+Vertices     : 342
+Bounding Box : (-0.105 -0.029999999 -0.105) (0.105 0.029999999 0.105)
+
+
+Constructing feature set from included angle 150
+Selecting edges purely based on geometric tests: no
+
+Initial feature set:
+    feature points : 32
+    feature edges  : 356
+    of which
+        region edges   : 0
+        external edges : 356
+        internal edges : 0
+
+
+Final feature set:
+points      : 340
+edges       : 356
+boundingBox : (-0.105 -0.029999999 -0.105) (0.105 0.029999999 0.105)
+point classification :
+    convex feature points          :       32
+    concave feature points         :        0
+    mixed feature points           :        0
+    other (non-feature) points     :      308
+edge classification :
+    external (convex angle) edges  :      356
+    internal (concave angle) edges :        0
+    flat region edges              :        0
+    open edges                     :        0
+    multiply connected edges       :        0
+
+Writing extendedFeatureEdgeMesh to "constant/extendedFeatureEdgeMesh/impeller.extendedFeatureEdgeMesh"
+
+Writing featureEdgeMesh to "constant/triSurface/impeller.eMesh"
+
+Surface            : "vessel.stl"
+
+
+Feature line extraction is only valid on closed manifold surfaces.
+Statistics:
+Triangles    : 19070
+Vertices     : 9537
+Bounding Box : (-0.2 -0.15000001 -0.2) (0.2 0.30000001 0.2)
+
+
+Constructing feature set from included angle 150
+Selecting edges purely based on geometric tests: no
+
+Initial feature set:
+    feature points : 76
+    feature edges  : 535
+    of which
+        region edges   : 0
+        external edges : 402
+        internal edges : 133
+
+
+Final feature set:
+points      : 459
+edges       : 535
+boundingBox : (-0.2 -0.050001491 -0.2) (0.2 0.30000001 0.2)
+point classification :
+    convex feature points          :        0
+    concave feature points         :        0
+    mixed feature points           :       76
+    other (non-feature) points     :      383
+edge classification :
+    external (convex angle) edges  :      402
+    internal (concave angle) edges :      133
+    flat region edges              :        0
+    open edges                     :        0
+    multiply connected edges       :        0
+
+Writing extendedFeatureEdgeMesh to "constant/extendedFeatureEdgeMesh/vessel.extendedFeatureEdgeMesh"
+
+Writing featureEdgeMesh to "constant/triSurface/vessel.eMesh"
+
+ExecutionTime = 0.1 s  ClockTime = 0 s
+
+End
+
