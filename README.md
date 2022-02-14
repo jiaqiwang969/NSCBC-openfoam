@@ -16,6 +16,7 @@
 | Backward Scheme & U-waveletWave & NRI-NSCBC       | [sineWaveDamping08](https://github.com/jiaqiwang969/NSCBC-openfoam/tree/main/Workspace/run/31-codeMixed-NRINSCBC-6/python/31.gif) | 2e-6(case07) vs dt=2e-5 (case08)  |
 
 ### 02-sineWaveDamping-rhoPimpleFoam vs LusgsFoam
+The LusgsFoam solver could be found: https://github.com/furstj/myFoam , plase refer it if use it.
 
 | Time scheme           | Link                                                         | Info                                                         |  Time                                                         |
 | --------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
