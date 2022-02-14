@@ -1,7 +1,7 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  2.1.0                                 |
+|  \\    /   O peration     | Version:  2.3.0                                 |
 |   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
@@ -10,44 +10,43 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    location    "system";
-    object      fvSolution;
+    location    "constant";
+    object      thermophysicalProperties;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-solvers
+thermoType
 {
-  rho 
-    {
-      solver diag;
-    }
-
-  rhoU 
-    {
-      solver diag;
-    }
-
-  rhoE 
-    {
-      solver diag;
-    }
-  
+    type            hePsiThermo;
+    mixture         pureMixture;
+    transport       sutherland;
+    thermo          hConst;
+    equationOfState perfectGas;
+    specie          specie;
+    energy          sensibleEnthalpy;
 }
 
-LUSGS {
-    internalIterations 100;
-    localTimestepping true; 
-    relTol 1.e-3;
-    tolerance 1.e-4;
-}
-
-fieldBounds
+mixture
 {
-    rho 0.01 10;
-    p   100 1e6;
-    T   10 800;
+    specie
+    {
+        nMoles      1;
+        molWeight   28.9643899421023;
+    }
+    thermodynamics
+    {
+        Cp          1004.70300000000;
+        Hf          0;
+	Tref        0;
+    }
+    transport
+    {
+        mu           0;
+        Pr           0.72;
+        As          1.4792e-06;
+        Ts          116;
+    }
 }
-
 
 
 // ************************************************************************* //

@@ -1,7 +1,7 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  2.1.0                                 |
+|  \\    /   O peration     | Version:  4.x                                   |
 |   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
@@ -11,43 +11,12 @@ FoamFile
     format      ascii;
     class       dictionary;
     location    "system";
-    object      fvSolution;
+    object      decomposeParDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-solvers
-{
-  rho 
-    {
-      solver diag;
-    }
+numberOfSubdomains  5;
 
-  rhoU 
-    {
-      solver diag;
-    }
-
-  rhoE 
-    {
-      solver diag;
-    }
-  
-}
-
-LUSGS {
-    internalIterations 100;
-    localTimestepping true; 
-    relTol 1.e-3;
-    tolerance 1.e-4;
-}
-
-fieldBounds
-{
-    rho 0.01 10;
-    p   100 1e6;
-    T   10 800;
-}
-
-
+method          scotch;
 
 // ************************************************************************* //
