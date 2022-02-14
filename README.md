@@ -2,7 +2,7 @@
 
 ## Test_cases:
 
-### 01-sineWaveDamping
+### 01-sineWaveDamping-rhoPimpleFoam
 
 | Time scheme           | Link                                                         | Info                                                         |
 | --------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -14,5 +14,17 @@
 | Backward Scheme & p-triWave & NRI-NSCBC       | [sineWaveDamping06](https://github.com/jiaqiwang969/NSCBC-openfoam/tree/main/Workspace/run/oldVertified/24-triWave-table-U-NRINSCBC/python/24.gif) |   |
 | Backward Scheme & U-waveletWave & NRI-NSCBC       | [sineWaveDamping07](https://github.com/jiaqiwang969/NSCBC-openfoam/tree/main/Workspace/run/oldVertified/31-codeMixed-NRINSCBC-5/python/31.gif) |   |
 | Backward Scheme & U-waveletWave & NRI-NSCBC       | [sineWaveDamping08](https://github.com/jiaqiwang969/NSCBC-openfoam/tree/main/Workspace/run/31-codeMixed-NRINSCBC-6/python/31.gif) | 2e-6(case07) vs dt=2e-5 (case08)  |
+
+### 02-sineWaveDamping-rhoPimpleFoam vs LusgsFoam
+
+| Time scheme           | Link                                                         | Info                                                         |  Time                                                         |
+| --------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| sineWaveDampingPimpleFoam-Euler | [sineWaveDamping01](https://github.com/jiaqiwang969/NSCBC-openfoam/blob/main/Workspace/run/sineWaveDampingPimpleFoam-Euler/python/sineWaveDampingPimpleFoam-Euler.gif) | Wave Attenuation |   142.55 s |
+| sineWaveDampingPimpleFoam-backward | [sineWaveDamping02](https://github.com/jiaqiwang969/NSCBC-openfoam/blob/main/Workspace/run/sineWaveDampingPimpleFoam-backward/python/sineWaveDampingPimpleFoam-backward.gif) | Wave no Attenuation | 153.13 s |
+| sineWaveDampingLusgsFoam-Euler | [sineWaveDamping03](https://github.com/jiaqiwang969/NSCBC-openfoam/blob/main/Workspace/run/sineWaveDampingLusgsFoam-Euler/python/sineWaveDampingLusgsFoam-Euler.gif) | Wave Attenuation | 34.11 s |
+| sineWaveDampingLusgsFoam-backward | [sineWaveDamping03](https://github.com/jiaqiwang969/NSCBC-openfoam/blob/main/Workspace/run/sineWaveDampingLusgsFoam-backward/python/sineWaveDampingLusgsFoam-backward.gif) | [numerical error, please ref to here](https://github.com/jiaqiwang969/NSCBC-openfoam/blob/main/Workspace/run/sineWaveDampingLusgsFoam-backward/9604603.out) |  |
+
+
+
 
 
