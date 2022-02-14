@@ -22,7 +22,7 @@
 | sineWaveDampingPimpleFoam-Euler | [sineWaveDamping01](https://github.com/jiaqiwang969/NSCBC-openfoam/blob/main/Workspace/run/sineWaveDampingPimpleFoam-Euler/python/sineWaveDampingPimpleFoam-Euler.gif) | Wave Attenuation |   142.55 s |
 | sineWaveDampingPimpleFoam-backward | [sineWaveDamping02](https://github.com/jiaqiwang969/NSCBC-openfoam/blob/main/Workspace/run/sineWaveDampingPimpleFoam-backward/python/sineWaveDampingPimpleFoam-backward.gif) | Wave no Attenuation, non-linear effect | 153.13 s |
 | sineWaveDampingLusgsFoam-Euler | [sineWaveDamping03](https://github.com/jiaqiwang969/NSCBC-openfoam/blob/main/Workspace/run/sineWaveDampingLusgsFoam-Euler/python/sineWaveDampingLusgsFoam-Euler.gif) | Wave Attenuation | 34.11 s |
-| sineWaveDampingLusgsFoam-backward | [sineWaveDamping03](https://github.com/jiaqiwang969/NSCBC-openfoam/blob/main/Workspace/run/sineWaveDampingLusgsFoam-backward/python/sineWaveDampingLusgsFoam-backward.gif) | [numerical error, please ref to here](https://github.com/jiaqiwang969/NSCBC-openfoam/blob/main/Workspace/run/sineWaveDampingLusgsFoam-backward/9604603.out) |  |
+| sineWaveDampingLusgsFoam-backward | [sineWaveDamping04](https://github.com/jiaqiwang969/NSCBC-openfoam/blob/main/Workspace/run/sineWaveDampingLusgsFoam-backward/python/sineWaveDampingLusgsFoam-backward.gif) | [numerical error, please ref to here](https://github.com/jiaqiwang969/NSCBC-openfoam/blob/main/Workspace/run/sineWaveDampingLusgsFoam-backward/9604603.out) |  |
 
 
 
