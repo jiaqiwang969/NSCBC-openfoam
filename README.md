@@ -27,6 +27,11 @@ The LusgsFoam solver could be found: https://github.com/furstj/myFoam , plase re
 | sineWaveDampingLusgsFoam-backward-iter50 | [sineWaveDamping04](https://github.com/jiaqiwang969/NSCBC-openfoam/blob/main/Workspace/run/sineWaveDampingLusgsFoam-backward-iter50/python/1.gif) | [Timeseries04](https://github.com/jiaqiwang969/NSCBC-openfoam/blob/main/Workspace/run/sineWaveDampingLusgsFoam-backward-iter50/python/p.jpg) | 283s |
 | sineWaveDampingLusgsFoam-backward-iter100 | [sineWaveDamping04](https://github.com/jiaqiwang969/NSCBC-openfoam/blob/main/Workspace/run/sineWaveDampingLusgsFoam-backward-iter100/python/1.gif) | [Timeseries04](https://github.com/jiaqiwang969/NSCBC-openfoam/blob/main/Workspace/run/sineWaveDampingLusgsFoam-backward-iter100/python/p.jpg) | 270s (converged) |
 
+### 03-ductWave 3D test
+| Time scheme           | Link                                                         | Info                                                         |  Time                                                         |
+| --------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| sineWaveDampingPimpleFoam3Dduct-basic | [sineWave3D01](https://github.com/jiaqiwang969/NSCBC-openfoam/blob/main/Workspace/run/sineWaveDampingPimpleFoam3Dduct/python/duct3d-sinewave-render.gif) | 64 cores, waveTransimition boundary condition |   2028 s |
+
 
 
 
