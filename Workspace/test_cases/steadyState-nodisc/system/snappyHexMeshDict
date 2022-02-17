@@ -1,0 +1,271 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      snappyHexMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Which of the steps to run
+castellatedMesh true;
+snap            true;
+addLayers       true;
+
+// Geometry. 
+geometry
+{
+ 
+    blades.stl
+    {
+        type        triSurfaceMesh;
+        name        blades;
+        patchInfo
+        {
+            type wall;
+        }
+    }
+    body.stl
+    {
+        type        triSurfaceMesh;
+        name        body;
+        patchInfo
+        {
+            type wall;
+        }
+    }
+    rotatingZone.stl
+    {
+        type        triSurfaceMesh;
+        name        rotatingZone;
+    }
+
+    box
+    {
+        type    searchableBox;       
+        max     ( 1  1  1);
+        min     (-1 -1 -1);
+    }
+
+}
+
+
+// Settings for the castellatedMesh generation.
+castellatedMeshControls
+{
+
+    // Refinement parameters
+    // ~~~~~~~~~~~~~~~~~~~~~
+
+    maxLocalCells 100000;
+    maxGlobalCells 2000000;
+    minRefinementCells 0;
+    maxLoadUnbalance 0.10;
+    nCellsBetweenLevels 1;
+
+
+    // Explicit feature edge refinement
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    features
+    (
+        {
+            file        "body.eMesh";
+            level       4;
+        }
+        {
+            file        "blades.eMesh";
+            level       4;
+        }
+    );
+
+
+    // Surface based refinement
+    // ~~~~~~~~~~~~~~~~~~~~~~~~
+
+     refinementSurfaces
+    {
+        rotatingZone
+        {
+            level           (3 4);
+            faceType        baffle;
+            cellZone        rotating;
+            faceZone        rotating;
+            cellZoneInside  inside;
+        }
+        body
+        {
+            level       (4 4);
+        }
+        blades
+        {
+            level       (4 4);
+        }
+    }
+
+    // Resolve sharp angles
+    resolveFeatureAngle 30;
+
+
+    // Region-wise refinement
+    // ~~~~~~~~~~~~~~~~~~~~~~
+    refinementRegions
+    {
+        rotatingZone
+        {
+            mode        inside;
+            levels      ((1E15 4));
+        }
+
+	box
+        {
+            mode    inside;
+            levels   ((1e15 3));
+        }
+    }
+
+    // Mesh selection
+    // ~~~~~~~~~~~~~~
+    locationInMesh (0.1 1e-3 1e-3);
+    allowFreeStandingZoneFaces false;
+}
+
+
+
+// Settings for the snapping.
+snapControls
+{
+    nSmoothPatch 3;
+    tolerance 4.0; // 1.0;
+    nSolveIter 300;
+    nRelaxIter 5;
+}
+
+
+
+// Settings for the layer addition.
+addLayersControls
+{
+    relativeSizes true;
+
+    layers
+    {
+        blades
+        {
+            nSurfaceLayers 3;
+            expansionRatio 1.2;
+            finalLayerThickness 0.3;
+        }
+        body
+        {
+            nSurfaceLayers 3;
+            expansionRatio 1.2;
+            finalLayerThickness 0.3;
+        }
+    }
+
+    expansionRatio 1.0;
+    finalLayerThickness 0.3;
+    minThickness 0.1;
+    nGrow 0;
+
+    // Advanced settings
+
+    featureAngle 175;
+    nRelaxIter 3;
+    nSmoothSurfaceNormals 1;
+    nSmoothNormals 3;
+    nSmoothThickness 10;
+    maxFaceThicknessRatio 0.5;
+    maxThicknessToMedialRatio 0.3;
+    minMedialAxisAngle 90;
+    nBufferCellsNoExtrude 0;
+
+    nLayerIter 50;
+}
+
+
+
+// Generic mesh quality settings. At any undoable phase these determine
+// where to undo.
+meshQualityControls
+{
+    //- Maximum non-orthogonality allowed. Set to 180 to disable.
+    maxNonOrtho 70;
+
+    //- Max skewness allowed. Set to <0 to disable.
+    maxBoundarySkewness 20;
+    maxInternalSkewness 4;
+
+    //- Max concaveness allowed. Is angle (in degrees) below which concavity
+    //  is allowed. 0 is straight face, <0 would be convex face.
+    //  Set to 180 to disable.
+    maxConcave 80;
+
+    //- Minimum pyramid volume. Is absolute volume of cell pyramid.
+    //  Set to a sensible fraction of the smallest cell volume expected.
+    //  Set to very negative number (e.g. -1E30) to disable.
+    minVol 1e-13;
+
+    //- Minimum quality of the tet formed by the face-centre
+    //  and variable base point minimum decomposition triangles and
+    //  the cell centre. This has to be a positive number for tracking
+    //  to work. Set to very negative number (e.g. -1E30) to
+    //  disable.
+    //     <0 = inside out tet,
+    //      0 = flat tet
+    //      1 = regular tet
+    minTetQuality -1; // 1e-30;
+
+    //- Minimum face area. Set to <0 to disable.
+    minArea -1;
+
+    //- Minimum face twist. Set to <-1 to disable. dot product of face normal
+    //  and face centre triangles normal
+    minTwist 0.001;
+
+    //- Minimum normalised cell determinant
+    //  1 = hex, <= 0 = folded or flattened illegal cell
+    minDeterminant 0.0001;
+
+    //- minFaceWeight (0 -> 0.5)
+    minFaceWeight 0.01;
+
+    //- minVolRatio (0 -> 1)
+    minVolRatio 0.01;
+
+    //must be >0 for Fluent compatibility
+    minTriangleTwist -1;
+
+
+    // Advanced
+
+    //- Number of error distribution iterations
+    nSmoothScale 4;
+    //- Amount to scale back displacement at error points
+    errorReduction 0.75;
+
+    // Optional : some meshing phases allow usage of relaxed rules.
+    // See e.g. addLayersControls::nRelaxedIter.
+    relaxed
+    {
+        //- Maximum non-orthogonality allowed. Set to 180 to disable.
+        maxNonOrtho 75;
+    }
+}
+
+
+
+// Merge tolerance. Is fraction of overall bounding box of initial mesh.
+// Note: the write tolerance needs to be higher than this.
+mergeTolerance 1e-6;
+
+
+// ************************************************************************* //

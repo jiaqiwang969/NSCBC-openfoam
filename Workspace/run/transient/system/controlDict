@@ -1,0 +1,66 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+libs            ("libturbulenceModelSchemes.so"); 
+
+application     pimpleFoam;
+
+startFrom       latestTime;
+startTime       0;
+stopAt          endTime;
+endTime         0.25;
+deltaT          1.e-5;
+writeControl    adjustableRunTime ;
+writeInterval   2.5e-4;
+purgeWrite    0;
+writeFormat    ascii;
+writePrecision  7;
+writeCompression on;
+timeFormat      general;
+timePrecision   6;
+runTimeModifiable    true;
+adjustTimeStep  yes;
+maxCo           5.0;
+
+functions
+{
+    forcesBlades
+    {
+        type forces;
+        libs ( "libforces.so" );
+        patches (blades);
+        rho     rhoInf;
+        rhoInf  1000;
+        UName   U;
+        log     on;
+        enabled         true;
+        writeControl   timeStep;
+        writeInterval  1;
+        CofR (0 0 0);
+    }
+
+    yPlusPump
+    {
+        type            yPlus;
+        libs ("libfieldFunctionObjects.so");
+        writeControl   adjustableRunTime ;
+        writeInterval  1e-3;
+        patches         ("blades rotor body");
+
+     }
+}
+// ************************************************************************* //

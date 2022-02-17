@@ -3,6 +3,7 @@
 /Workspace/run/*/0.*
 /Workspace/run/*/postProcessing
 /Workspace/run/*/*/postProcessing
+/Workspace/run/*/constant/polymesh
 .*.swp
 .DS_Store
 /Workspace/*.sh

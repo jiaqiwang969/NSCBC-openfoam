@@ -1,0 +1,28 @@
+#!/bin/sh
+cd ${0%/*} || exit 1                        # Run from this directory
+. $WM_PROJECT_DIR/bin/tools/CleanFunctions  # Tutorial clean functions
+
+##################################################################################
+############           CENTRIFUGAL PUMP TUTORIAL BY CFD-TRAINING      ############
+############                      www.cfd-training.com                ############
+##################################################################################
+
+echo "----------> Create .foam file for paraview"
+touch pump.foam
+echo "----------> Create background mesh with blockMesh"
+blockMesh > log.blockMesh
+echo "----------> Run surfaceFeatureExtract"
+surfaceFeatureExtract > log.surfaceFeatureExtract
+echo "----------> Decompose case on 20 cores"
+decomposePar -force > log.decomposePar
+echo "----------> Run snappyHexMesh on 20 cores"
+mpirun -np 20 snappyHexMesh -parallel -overwrite > log.snappyHexMesh
+echo "----------> Reconstruct mesh to /constant directory"
+reconstructParMesh -constant > log.reconstructParMesh
+echo "----------> Delete old directory created for meshing"
+rm -rf process*
+rm -rf 0
+echo "----------> Create AMI patches from snappyHexMesh faceZone"
+createPatch -overwrite > log.createPatch
+
+#------------------------------------------------------------------------------

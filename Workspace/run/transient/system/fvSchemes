@@ -1,0 +1,71 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1806                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSchemes;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+ddtSchemes
+{
+    default         CrankNicolson 0.9;
+}
+
+gradSchemes
+{
+    default         Gauss linear;
+    grad(U)         cellLimited Gauss linear 1;
+    grad(k)         cellLimited Gauss linear 1;
+    grad(omega)     cellLimited Gauss linear 1;        
+}
+
+divSchemes
+{
+    default         none;
+    div(phi,U)      Gauss DEShybrid
+        linear                        // scheme 1
+        linearUpwind grad(U)          // scheme 2
+        delta
+        0.65                          // DES coefficient, typically = 0.65
+        50                            // Reference velocity scale
+        2                             // Reference length scale
+        0                             // Minimum sigma limit (0-1)
+        1                             // Maximum sigma limit (0-1)
+        1e-3;                         // Limiter of B function, typically 1e-03
+
+    div(phi,k)       Gauss limitedLinear 1;
+    div(phi,omega)   Gauss limitedLinear 1;
+
+    div((nuEff*dev2(T(grad(U))))) Gauss linear;
+}
+
+laplacianSchemes
+{
+    default         Gauss linear corrected;
+}
+
+interpolationSchemes
+{
+    default         linear;
+}
+
+snGradSchemes
+{
+    default         corrected;
+}
+
+wallDist
+{
+    method         meshWave;
+}
+
+// ************************************************************************* //

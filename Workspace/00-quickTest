@@ -1,0 +1,31 @@
+#!/bin/bash -l
+#echo "fileName: $0";
+#echo "old parameter: $1";
+#echo "new parameter: $2";
+
+#sed -i 's,'$1','$2',g' D-cloneadaptCase.sh
+#sed -i 's,'$1','$2',g' E-decomposePar.sh
+#sed -i 's,'$1','$2',g' F2-runFoam.sh
+#sed -i 's,'$1','$2',g' F3-reconstructPar.sh
+#sed -i 's,'$1','$2',g' G1-sampling.sh
+#sed -i 's,'$1','$2',g' G2-pythonProcessing.sh
+
+
+bash 00-clean.sh
+bash 01-cloneadaptCase-steadyState.sh
+bash 02-decomposePar-steadyState-block.sh
+sbatch 03-parallel-snappyHexMesh-steadyState.sh
+printf "waiting"
+sleep 10s
+while ! grep -Fxq "Script done" *.out;
+do
+ sleep 2s
+ printf "."
+done
+rename .out .txt *
+bash 04-reconstructParMesh-steadyState.sh
+#bash 05-creatPatch-steadyState.sh
+# claculation
+bash 06-decomposePar-steadyState.sh
+
+

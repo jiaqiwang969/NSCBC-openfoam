@@ -1,0 +1,22 @@
+#!/bin/sh
+cd ${0%/*} || exit 1                        # Run from this directory
+. $WM_PROJECT_DIR/bin/tools/CleanFunctions  # Tutorial clean functions
+
+##################################################################################
+############           CENTRIFUGAL PUMP TUTORIAL BY CFD-TRAINING      ############
+############                      www.cfd-training.com                ############
+##################################################################################
+
+echo "----------> Restore 0 Dir"
+rm -rf 0 
+cp -R 0.orig 0
+echo "----------> Decompose case on 20 cores"
+decomposePar -force > log.decomposePar
+echo "----------> RenumberMesh for parallelisation optimization "
+mpirun -np 20 renumberMesh -parallel -overwrite > log.renumberMesh
+(echo "----------> Run de solver simpleFoam on 40 cores the :" && date)
+mpirun -np 20 simpleFoam -parallel > log.simpleFoam
+(echo "----------> End of solver calculation the :" && date)
+echo "----------> Reconstruct latest result"
+reconstructPar -latestTime> log.reconstructPar
+#------------------------------------------------------------------------------
