@@ -18,7 +18,7 @@ FoamFile
 dimensions      [0 1 -1 0 0 0 0];
 
 
-internalField   uniform (1 0 0);
+internalField   uniform (0 0 1);
 
 boundaryField
 {
@@ -36,8 +36,8 @@ boundaryField
 	    const scalar pi = constant::mathematical::pi;
              
             const scalar frequency_=3000;
-            const vector amplitude_=vector(1, 0, 0);
-            const vector level_=vector(1, 0, 0);
+            const vector amplitude_=vector(0, 0, 1);
+            const vector level_=vector(0, 0, 1);
          
             const scalar scale_=1;
 	    this->refValue() =
@@ -52,7 +52,7 @@ boundaryField
     {
         type            waveTransmision;
         gamma           1.4;
-        fieldInf        (1 0 0);
+        fieldInf        (0 0 1);
         lInf            10;
         value           $internalField;
     }

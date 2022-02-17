@@ -52,11 +52,11 @@ namespace Foam
 // * * * * * * * * * * * * * * * Global Functions  * * * * * * * * * * * * * //
 
 // dynamicCode:
-// SHA1 = 63cd80aea5fb11094980d31a9e0fe994437d1854
+// SHA1 = e33069c7bdad77a291dfe1477dfa9444c0219723
 //
 // unique function name that can be checked if the correct library version
 // has been loaded
-extern "C" void rampedMixed_63cd80aea5fb11094980d31a9e0fe994437d1854(bool load)
+extern "C" void rampedMixed_e33069c7bdad77a291dfe1477dfa9444c0219723(bool load)
 {
     if (load)
     {
@@ -188,13 +188,13 @@ void rampedMixedMixedValueFvPatchVectorField::updateCoeffs()
     }
 
 //{{{ begin code
-    #line 35 "/lustre/home/acct-medgm/medgm/05-NSCBC/Workspace/run/sineWaveDampingPimpleFoam3Dduct/0/U.boundaryField.inlet"
+    #line 35 "/dssg/home/acct-medgm/medgm/05-NSCBC/Workspace/run/sineWaveDampingPimpleFoam3Dduct/0/U.boundaryField.inlet"
 const scalar t = this->db().time().value();
 	    const scalar pi = constant::mathematical::pi;
              
             const scalar frequency_=3000;
-            const vector amplitude_=vector(1, 0, 0);
-            const vector level_=vector(1, 0, 0);
+            const vector amplitude_=vector(0, 0, 1);
+            const vector level_=vector(0, 0, 1);
          
             const scalar scale_=1;
 	    this->refValue() =

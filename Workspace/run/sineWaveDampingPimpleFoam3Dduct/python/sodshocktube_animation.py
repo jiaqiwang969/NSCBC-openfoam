@@ -26,8 +26,8 @@ for time in np.linspace(0.0002,0.0292,30):
     ##pressure plot
     plt.figure(figsize=(10,6))
     plt.plot(cols[:,0],cols[:,3],c='red',label='pre - openfoam')
-    plt.plot([0,10],[101320,101320],c='blue',label='base')
-    plt.xlim([0,10])
+    plt.plot([-1,1],[101320,101320],c='blue',label='base')
+    plt.xlim([-1,1])
     plt.ylim([100260,102380])
     plt.legend(loc=0)
     plt.title('shockTube model-p: T={}'.format("%.4f" % time))
@@ -43,8 +43,8 @@ for time in np.linspace(0.0002,0.0292,30):
     ##pressure plot
     plt.figure(figsize=(10,6))
     plt.plot(cols[:,0],cols[:,2],c='red',label='pre - openfoam')
-    plt.plot([0,10],[0,0])
-    plt.xlim([0,10])
+    plt.plot([-1,1],[0,0])
+    plt.xlim([-1,1])
     plt.ylim([-5,5])
     plt.legend(loc=0)
     plt.title('shockTube model-U: T={}'.format("%.4f" % time))
@@ -60,7 +60,7 @@ for time in np.linspace(0.0002,0.0292,30):
     ##pressure plot
     plt.figure(figsize=(10,6))
     plt.plot(cols[:,0],cols[:,1],c='red',label='pre - openfoam')
-    plt.xlim([0,10])
+    plt.xlim([-1,1])
     plt.ylim([299,301])
     plt.legend(loc=0)
     plt.title('shockTube model-T: T={}'.format("%.4f" % time))

@@ -51,6 +51,35 @@ maxCo           0.3;
 
 maxDeltaT       1;
 
+functions
+{
 
+    #includeFunc mag(U)
+  probes
+    {
+        type           probes;
+        libs           (sampling);
+        name           probes;
+        writeControl   timeStep;
+        writeInterval  1;
+        fields         (p U);
+        interpolationScheme  cell;
+        probeLocations
+        (
+                (0.0 0.0 -1.0)
+                (0.0 0.0 -0.8)
+                (0.0 0.0 -0.6)
+                (0.0 0.0 -0.4)
+                (0.0 0.0 -0.2)
+                (0.0 0.0 0.0)
+                (0.0 0.0 0.2)
+                (0.0 0.0 0.4)
+                (0.0 0.0 0.6)
+                (0.0 0.0 0.8)
+                (0.0 0.0 1.0)
+        );
+
+    }
+}
 
 // ************************************************************************* //

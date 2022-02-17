@@ -64,7 +64,7 @@ class rampedMixedMixedValueFvPatchVectorField
 public:
 
     //- SHA1 representation of the code content
-    static constexpr const char* const SHA1sum = "63cd80aea5fb11094980d31a9e0fe994437d1854";
+    static constexpr const char* const SHA1sum = "e33069c7bdad77a291dfe1477dfa9444c0219723";
 
     //- Runtime type information
     TypeName("rampedMixed");
