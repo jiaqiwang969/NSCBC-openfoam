@@ -1,0 +1,1091 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2006                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _b45f8f6f58-20200629 OPENFOAM=2006
+Arch   : "LSB;label=32;scalar=64"
+Exec   : /opt/OpenFOAM/OpenFOAM-v2006/platforms/linux64GccDPInt32Opt/bin/postProcess -func sampleDict
+Date   : Feb 18 2022
+Time   : 09:34:41
+Host   : sylogin1.pi.sjtu.edu.cn
+PID    : 883702
+I/O    : collated (maxThreadFileBufferSize 0)
+         Threading not activated since maxThreadFileBufferSize = 0.
+         Writing may run slowly for large file sizes.
+Case   : /dssg/home/acct-medgm/medgm/05-NSCBC-Z16/Workspace/run/sineWaveDampingPimpleFoam3Dduct-finer
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStamp (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libvelocityOutletNSCBC.so"
+libvelocityOutletNSCBC.so: cannot open shared object file: No such file or directory
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libwaveTransmision.so"
+libwaveTransmision.so: cannot open shared object file: No such file or directory
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libpressureOutletNSCBC.so"
+libpressureOutletNSCBC.so: cannot open shared object file: No such file or directory
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libpressureInletNSCBC.so"
+libpressureInletNSCBC.so: cannot open shared object file: No such file or directory
+--> FOAM Warning : 
+    From void* Foam::dlLibraryTable::openLibrary(const Foam::fileName&, bool)
+    in file db/dynamicLibrary/dlLibraryTable/dlLibraryTable.C at line 65
+    Could not load "libtemperatureOutletNSCBC.so"
+libtemperatureOutletNSCBC.so: cannot open shared object file: No such file or directory
+Create mesh for time = 0
+
+--> FOAM Warning : 
+    From void Foam::particle::locate(const vector&, const vector*, Foam::label, bool, const Foam::string&)
+    in file particle/particle.C at line 485
+    Particle initialised with a location outside of the mesh when tracking from centre (0.007679724165876681 -0.007799582286958255 -0.9921874906131908) of cell 153767 to position (0 -1.033057595211351e-18 -1)
+Reading set description:
+    data
+
+Time = 0
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0002
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0004
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0006
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0008
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.001
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0012
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0014
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0016
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0018
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.002
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0022
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0024
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0026
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0028
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.003
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0032
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0034
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0036
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0038
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.004
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0042
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0044
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0046
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0048
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.005
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0052
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0054
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0056
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0058
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.006
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0062
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0064
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0066
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0068
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.007
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0072
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0074
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0076
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0078
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.008
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0082
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0084
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0086
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0088
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.009
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0092
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0094
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0096
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0098
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.01
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0102
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0104
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0106
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0108
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.011
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0112
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0114
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0116
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0118
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.012
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0122
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0124
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0126
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0128
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.013
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0132
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0134
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0136
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0138
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.014
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0142
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0144
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0146
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0148
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.015
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0152
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0154
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0156
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0158
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.016
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0162
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0164
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0166
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0168
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.017
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0172
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0174
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0176
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0178
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.018
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0182
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0184
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0186
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0188
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.019
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0192
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0194
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0196
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0198
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.02
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0202
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0204
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0206
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0208
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.021
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0212
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0214
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0216
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0218
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.022
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0222
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0224
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0226
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0228
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.023
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0232
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0234
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0236
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0238
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.024
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0242
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0244
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0246
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0248
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.025
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0252
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0254
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0256
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0258
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.026
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0262
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0264
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0266
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0268
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.027
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0272
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0274
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0276
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0278
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.028
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0282
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0284
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0286
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0288
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.029
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+Time = 0.0292
+
+Reading fields:
+    volScalarField: T mag(U) p
+
+Executing functionObjects
+
+End
+

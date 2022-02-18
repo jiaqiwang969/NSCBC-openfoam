@@ -1,0 +1,887 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2006                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _b45f8f6f58-20200629 OPENFOAM=2006
+Arch   : "LSB;label=32;scalar=64"
+Exec   : /opt/OpenFOAM/OpenFOAM-v2006/platforms/linux64GccDPInt32Opt/bin/reconstructParMesh -constant
+Date   : Feb 18 2022
+Time   : 00:53:10
+Host   : sylogin1.pi.sjtu.edu.cn
+PID    : 784586
+I/O    : collated (maxThreadFileBufferSize 0)
+         Threading not activated since maxThreadFileBufferSize = 0.
+         Writing may run slowly for large file sizes.
+Case   : /dssg/home/acct-medgm/medgm/05-NSCBC-Z64/Workspace/run/sineWaveDampingPimpleFoam3Dduct-finer
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStamp (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+This is an experimental tool which tries to merge individual processor
+meshes back into one master mesh. Use it if the original master mesh has
+been deleted or if the processor meshes have been modified (topology change).
+This tool will write the resulting mesh to a new time step and construct
+xxxxProcAddressing files in the processor meshes so reconstructPar can be
+used to regenerate the fields on the master mesh.
+
+Not well tested & use at your own risk!
+
+Merge tolerance : 1e-07
+Write tolerance : 1e-16
+Doing geometric matching on correct procBoundaries only.
+This assumes a correct decomposition.
+Found 64 processor directories
+
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor0"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor1"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor2"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor3"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor4"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor5"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor6"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor7"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor8"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor9"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor10"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor11"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor12"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor13"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor14"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor15"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor16"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor17"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor18"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor19"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor20"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor21"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor22"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor23"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor24"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor25"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor26"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor27"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor28"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor29"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor30"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor31"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor32"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor33"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor34"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor35"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor36"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor37"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor38"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor39"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor40"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor41"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor42"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor43"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor44"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor45"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor46"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor47"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor48"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor49"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor50"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor51"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor52"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor53"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor54"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor55"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor56"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor57"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor58"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor59"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor60"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor61"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor62"
+Reading database "sineWaveDampingPimpleFoam3Dduct-finer/processor63"
+Time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor0" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor1" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor2" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor3" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor4" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor5" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor6" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor7" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor8" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor9" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor10" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor11" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor12" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor13" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor14" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor15" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor16" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor17" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor18" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor19" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor20" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor21" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor22" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor23" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor24" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor25" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor26" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor27" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor28" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor29" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor30" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor31" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor32" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor33" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor34" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor35" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor36" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor37" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor38" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor39" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor40" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor41" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor42" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor43" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor44" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor45" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor46" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor47" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor48" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor49" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor50" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor51" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor52" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor53" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor54" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor55" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor56" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor57" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor58" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor59" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor60" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor61" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor62" for time = constant
+
+Reading points from "sineWaveDampingPimpleFoam3Dduct-finer/processor63" for time = constant
+
+Overall mesh bounding box  : (-0.2999949005464674 -0.2997998893260956 -1) (0.2999949005464674 0.2997998893260956 1)
+Relative tolerance         : 1e-07
+Absolute matching distance : 2.172442785431942e-07
+
+Merging mesh 0 with 1
+Merging mesh 2 with 3
+Merging mesh 4 with 5
+Merging mesh 6 with 7
+Merging mesh 8 with 9
+Merging mesh 10 with 11
+Merging mesh 12 with 13
+Merging mesh 14 with 15
+Merging mesh 16 with 17
+Merging mesh 18 with 19
+Merging mesh 20 with 21
+Merging mesh 22 with 23
+Merging mesh 24 with 25
+Merging mesh 26 with 27
+Merging mesh 28 with 29
+Merging mesh 30 with 31
+Merging mesh 32 with 33
+Merging mesh 34 with 35
+Merging mesh 36 with 37
+Merging mesh 38 with 39
+Merging mesh 40 with 41
+Merging mesh 42 with 43
+Merging mesh 44 with 45
+Merging mesh 46 with 47
+Merging mesh 48 with 49
+Merging mesh 50 with 51
+Merging mesh 52 with 53
+Merging mesh 54 with 55
+Merging mesh 56 with 57
+Merging mesh 58 with 59
+Merging mesh 60 with 61
+Merging mesh 62 with 63
+Merging mesh 0 with 2
+Merging mesh 4 with 6
+Merging mesh 8 with 10
+Merging mesh 12 with 14
+Merging mesh 16 with 18
+Merging mesh 20 with 22
+Merging mesh 24 with 26
+Merging mesh 28 with 30
+Merging mesh 32 with 34
+Merging mesh 36 with 38
+Merging mesh 40 with 42
+Merging mesh 44 with 46
+Merging mesh 48 with 50
+Merging mesh 52 with 54
+Merging mesh 56 with 58
+Merging mesh 60 with 62
+Merging mesh 0 with 4
+Merging mesh 8 with 12
+Merging mesh 16 with 20
+Merging mesh 24 with 28
+Merging mesh 32 with 36
+Merging mesh 40 with 44
+Merging mesh 48 with 52
+Merging mesh 56 with 60
+Merging mesh 0 with 8
+Merging mesh 16 with 24
+Merging mesh 32 with 40
+Merging mesh 48 with 56
+Merging mesh 0 with 16
+Merging mesh 32 with 48
+Merging mesh 0 with 32
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor0" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor1" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor2" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor3" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor4" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor5" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor6" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor7" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor8" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor9" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor10" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor11" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor12" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor13" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor14" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor15" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor16" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor17" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor18" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor19" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor20" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor21" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor22" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor23" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor24" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor25" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor26" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor27" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor28" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor29" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor30" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor31" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor32" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor33" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor34" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor35" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor36" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor37" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor38" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor39" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor40" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor41" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor42" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor43" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor44" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor45" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor46" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor47" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor48" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor49" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor50" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor51" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor52" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor53" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor54" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor55" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor56" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor57" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor58" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor59" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor60" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor61" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor62" for time = constant
+
+
+Reading mesh to add from "sineWaveDampingPimpleFoam3Dduct-finer/processor63" for time = constant
+
+
+mergeSharedPoints : detected 0 points that are to be merged.
+
+Writing merged mesh to "/dssg/home/acct-medgm/medgm/05-NSCBC-Z64/Workspace/run/sineWaveDampingPimpleFoam3Dduct-finer/constant"
+
+Reconstructing the addressing from the processor meshes to the newly reconstructed mesh
+
+Reading processor 0 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor0"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor0/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor0/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor0/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor0/constant/polyMesh"
+
+Reading processor 1 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor1"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor1/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor1/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor1/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor1/constant/polyMesh"
+
+Reading processor 2 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor2"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor2/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor2/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor2/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor2/constant/polyMesh"
+
+Reading processor 3 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor3"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor3/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor3/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor3/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor3/constant/polyMesh"
+
+Reading processor 4 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor4"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor4/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor4/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor4/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor4/constant/polyMesh"
+
+Reading processor 5 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor5"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor5/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor5/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor5/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor5/constant/polyMesh"
+
+Reading processor 6 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor6"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor6/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor6/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor6/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor6/constant/polyMesh"
+
+Reading processor 7 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor7"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor7/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor7/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor7/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor7/constant/polyMesh"
+
+Reading processor 8 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor8"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor8/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor8/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor8/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor8/constant/polyMesh"
+
+Reading processor 9 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor9"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor9/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor9/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor9/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor9/constant/polyMesh"
+
+Reading processor 10 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor10"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor10/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor10/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor10/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor10/constant/polyMesh"
+
+Reading processor 11 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor11"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor11/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor11/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor11/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor11/constant/polyMesh"
+
+Reading processor 12 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor12"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor12/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor12/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor12/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor12/constant/polyMesh"
+
+Reading processor 13 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor13"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor13/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor13/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor13/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor13/constant/polyMesh"
+
+Reading processor 14 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor14"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor14/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor14/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor14/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor14/constant/polyMesh"
+
+Reading processor 15 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor15"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor15/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor15/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor15/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor15/constant/polyMesh"
+
+Reading processor 16 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor16"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor16/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor16/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor16/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor16/constant/polyMesh"
+
+Reading processor 17 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor17"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor17/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor17/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor17/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor17/constant/polyMesh"
+
+Reading processor 18 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor18"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor18/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor18/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor18/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor18/constant/polyMesh"
+
+Reading processor 19 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor19"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor19/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor19/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor19/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor19/constant/polyMesh"
+
+Reading processor 20 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor20"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor20/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor20/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor20/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor20/constant/polyMesh"
+
+Reading processor 21 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor21"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor21/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor21/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor21/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor21/constant/polyMesh"
+
+Reading processor 22 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor22"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor22/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor22/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor22/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor22/constant/polyMesh"
+
+Reading processor 23 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor23"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor23/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor23/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor23/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor23/constant/polyMesh"
+
+Reading processor 24 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor24"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor24/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor24/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor24/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor24/constant/polyMesh"
+
+Reading processor 25 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor25"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor25/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor25/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor25/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor25/constant/polyMesh"
+
+Reading processor 26 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor26"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor26/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor26/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor26/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor26/constant/polyMesh"
+
+Reading processor 27 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor27"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor27/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor27/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor27/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor27/constant/polyMesh"
+
+Reading processor 28 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor28"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor28/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor28/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor28/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor28/constant/polyMesh"
+
+Reading processor 29 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor29"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor29/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor29/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor29/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor29/constant/polyMesh"
+
+Reading processor 30 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor30"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor30/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor30/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor30/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor30/constant/polyMesh"
+
+Reading processor 31 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor31"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor31/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor31/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor31/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor31/constant/polyMesh"
+
+Reading processor 32 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor32"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor32/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor32/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor32/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor32/constant/polyMesh"
+
+Reading processor 33 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor33"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor33/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor33/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor33/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor33/constant/polyMesh"
+
+Reading processor 34 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor34"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor34/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor34/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor34/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor34/constant/polyMesh"
+
+Reading processor 35 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor35"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor35/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor35/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor35/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor35/constant/polyMesh"
+
+Reading processor 36 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor36"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor36/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor36/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor36/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor36/constant/polyMesh"
+
+Reading processor 37 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor37"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor37/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor37/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor37/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor37/constant/polyMesh"
+
+Reading processor 38 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor38"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor38/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor38/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor38/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor38/constant/polyMesh"
+
+Reading processor 39 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor39"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor39/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor39/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor39/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor39/constant/polyMesh"
+
+Reading processor 40 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor40"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor40/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor40/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor40/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor40/constant/polyMesh"
+
+Reading processor 41 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor41"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor41/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor41/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor41/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor41/constant/polyMesh"
+
+Reading processor 42 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor42"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor42/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor42/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor42/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor42/constant/polyMesh"
+
+Reading processor 43 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor43"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor43/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor43/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor43/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor43/constant/polyMesh"
+
+Reading processor 44 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor44"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor44/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor44/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor44/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor44/constant/polyMesh"
+
+Reading processor 45 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor45"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor45/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor45/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor45/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor45/constant/polyMesh"
+
+Reading processor 46 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor46"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor46/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor46/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor46/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor46/constant/polyMesh"
+
+Reading processor 47 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor47"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor47/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor47/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor47/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor47/constant/polyMesh"
+
+Reading processor 48 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor48"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor48/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor48/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor48/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor48/constant/polyMesh"
+
+Reading processor 49 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor49"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor49/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor49/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor49/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor49/constant/polyMesh"
+
+Reading processor 50 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor50"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor50/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor50/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor50/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor50/constant/polyMesh"
+
+Reading processor 51 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor51"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor51/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor51/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor51/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor51/constant/polyMesh"
+
+Reading processor 52 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor52"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor52/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor52/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor52/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor52/constant/polyMesh"
+
+Reading processor 53 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor53"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor53/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor53/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor53/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor53/constant/polyMesh"
+
+Reading processor 54 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor54"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor54/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor54/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor54/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor54/constant/polyMesh"
+
+Reading processor 55 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor55"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor55/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor55/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor55/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor55/constant/polyMesh"
+
+Reading processor 56 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor56"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor56/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor56/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor56/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor56/constant/polyMesh"
+
+Reading processor 57 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor57"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor57/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor57/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor57/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor57/constant/polyMesh"
+
+Reading processor 58 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor58"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor58/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor58/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor58/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor58/constant/polyMesh"
+
+Reading processor 59 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor59"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor59/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor59/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor59/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor59/constant/polyMesh"
+
+Reading processor 60 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor60"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor60/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor60/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor60/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor60/constant/polyMesh"
+
+Reading processor 61 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor61"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor61/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor61/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor61/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor61/constant/polyMesh"
+
+Reading processor 62 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor62"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor62/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor62/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor62/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor62/constant/polyMesh"
+
+Reading processor 63 mesh from "sineWaveDampingPimpleFoam3Dduct-finer/processor63"
+Writing pointProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor63/constant/polyMesh"
+Writing faceProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor63/constant/polyMesh"
+Writing cellProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor63/constant/polyMesh"
+Writing boundaryProcAddressing to "sineWaveDampingPimpleFoam3Dduct-finer/processor63/constant/polyMesh"
+
+
+End
+

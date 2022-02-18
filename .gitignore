@@ -9,6 +9,8 @@
 /Workspace/*.sh
 /Workspace/*.md
 /Workspace/*.txt
-
+/Workspace/run/*/python/T-*.png
+/Workspace/run/*/python/p-*.png
+/Workspace/run/*/python/U-*.png
 
 
