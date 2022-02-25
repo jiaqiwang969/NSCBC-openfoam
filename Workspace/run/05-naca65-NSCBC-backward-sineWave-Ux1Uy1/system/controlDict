@@ -1,0 +1,55 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2006                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+libs ("libvelocityOutletNSCBCx.so" "libvelocityOutletNSCBCy.so" "libvelocityOutletNSCBCz.so"  "libwaveTransmision.so" "libpressureOutletNSCBC.so" "libtemperatureOutletNSCBC.so");
+application     rhoPimpleFoam;
+
+startFrom    latestTime;
+
+startTime    0;
+
+stopAt          endTime;
+
+endTime    0.0192;
+
+deltaT     1.0e-6;
+
+writeControl    adjustable;
+
+writeInterval    1.0e-4;
+
+purgeWrite    0;
+
+writeFormat    ascii;
+
+writePrecision   8;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable    true;
+
+adjustTimeStep  yes;
+
+maxCo           1.0;
+
+maxDeltaT       1e-4;
+
+
+
+// ************************************************************************* //

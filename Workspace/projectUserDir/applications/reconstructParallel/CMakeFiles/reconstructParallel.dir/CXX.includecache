@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/dssg/home/acct-medgm/medgm/05-NSCBC-prove/Workspace/projectUserDir/applications/reconstructParallel/src/main.cpp
+stdio.h
+-
+stdlib.h
+-
+algorithm
+-
+map
+-
+string
+-
+thread
+-
+vector
+-
+

@@ -10,6 +10,7 @@ fluidThermo& thermo = pThermo();
 thermo.validate(args.executable(), "h", "e");
 
 volScalarField& p = thermo.p();
+volScalarField& T = thermo.T();
 
 volScalarField rho
 (
@@ -57,6 +58,92 @@ autoPtr<compressible::turbulenceModel> turbulence
 );
 
 #include "createDpdt.H"
+
+
+Info<< "Creating field pMean\n" << endl;
+volScalarField pMean
+(
+    IOobject
+    (
+        "pMean",
+        runTime.timeName(),
+        mesh,
+        IOobject::READ_IF_PRESENT,
+        IOobject::AUTO_WRITE
+    ),
+    mesh,
+    dimensionedScalar(p.dimensions())
+);
+Info<< "Creating field pFluc\n" << endl;
+volScalarField pFluc
+(
+    IOobject
+    (
+        "pFluc",
+        runTime.timeName(),
+        mesh,
+        IOobject::READ_IF_PRESENT,
+        IOobject::AUTO_WRITE
+    ),
+    mesh,
+    dimensionedScalar(p.dimensions())
+);
+
+//Info<< "Creating field pAcoustic\n" << endl;
+//volScalarField pAcoustic
+//(
+//    IOobject
+//    (
+//        "pAcoustic",
+//        runTime.timeName(),
+//        mesh,
+//        IOobject::MUST_READ,
+//        IOobject::AUTO_WRITE
+//    ),
+//    mesh
+//);
+
+//Info<< "Creating field cInf\n" << endl;
+//volScalarField cInf
+//(
+//    IOobject
+//    (
+//        "cInf",
+//        runTime.timeName(),
+//        mesh
+//    ),
+//    mesh,
+//    dimensionedScalar(U.dimensions())
+//);
+//cInf = sqrt(thermo.Cp()/thermo.Cv()*(thermo.Cp()-thermo.Cv())*T);
+scalar timeIndex = 1;
+
+IOdictionary acousticSettings
+(
+    IOobject
+    (
+        "acousticSettings",
+        runTime.constant(),
+        mesh,
+        IOobject::MUST_READ_IF_MODIFIED,
+        IOobject::NO_WRITE
+    )
+);
+
+dimensionedScalar tAc
+(
+    "tAc",
+    dimTime,
+    acousticSettings.lookup("tAc")
+);
+
+dimensionedScalar nPass
+(
+    "nPass",
+    dimless,
+    acousticSettings.lookup("nPass")
+);
+
 
 #include "createK.H"
 

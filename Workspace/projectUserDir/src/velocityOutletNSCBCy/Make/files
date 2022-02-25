@@ -1,0 +1,2 @@
+velocityOutletNSCBCyFvPatchFields.C
+LIB = $(FOAM_USER_LIBBIN)/libvelocityOutletNSCBCy

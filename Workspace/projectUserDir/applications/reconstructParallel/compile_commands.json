@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/dssg/home/acct-medgm/medgm/05-NSCBC-mini/Workspace/projectUserDir/platforms/linux64GccDPInt32Opt/bin/reconstructParallel-master",
+  "command": "/usr/bin/c++  -I/dssg/home/acct-medgm/medgm/05-NSCBC-mini/Workspace/projectUserDir/platforms/linux64GccDPInt32Opt/bin/reconstructParallel-master  -pthread -std=c++14 -O3 -march=native -o CMakeFiles/reconstructParallel.dir/src/main.cpp.o -c /dssg/home/acct-medgm/medgm/05-NSCBC-mini/Workspace/projectUserDir/platforms/linux64GccDPInt32Opt/bin/reconstructParallel-master/src/main.cpp",
+  "file": "/dssg/home/acct-medgm/medgm/05-NSCBC-mini/Workspace/projectUserDir/platforms/linux64GccDPInt32Opt/bin/reconstructParallel-master/src/main.cpp"
+}
+]

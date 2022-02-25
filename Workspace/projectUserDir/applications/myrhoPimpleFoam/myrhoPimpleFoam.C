@@ -189,7 +189,9 @@ int main(int argc, char *argv[])
         }
 
         rho = thermo.rho();
-
+  
+        #include "acousticSolver.H"
+  
         runTime.write();
 
         runTime.printExecutionTime(Info);

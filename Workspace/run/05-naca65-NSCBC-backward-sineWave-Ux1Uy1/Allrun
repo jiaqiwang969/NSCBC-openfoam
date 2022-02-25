@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# number of processors if provided
+NP=${1:-1}
+
+# simulation directory
+case=$(pwd)/
+
+# image location
+image="../../of2006-py1.6-cpu.sif"
+
+
+# singularity commands for serial and parallel execution
+runSerial="singularity run ${image}"
+runParallel="mpirun -np ${NP} singularity run ${image}"
+runBash="singularity exec ${image} bash -c"
+
+
+
+# preprocessing
+#echo "Running blockMesh on " $(pwd)
+#$runSerial "blockMesh" $case > ${case}log.blockMesh 2>&1
+echo "Running decomposePar on " $case
+$runSerial "decomposePar" $case > ${case}log.decomposePar 2>&1
+#$runBash ". /usr/lib/openfoam/openfoam2006/bin/tools/RunFunctions && restore0Dir -processor"
+touch ${case}post.foam
+
+# execute solver
+echo "Running rhoPimpleFoam on " $case
+$runParallel "rhoPimpleFoam -parallel" $case > ${case}log.rhoPimpleFoam 2>&1
