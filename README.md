@@ -1,6 +1,6 @@
 # NSCBC-Openfoam project
-Sponsor：Dong
-Acknowledge：Cheng Shiyi
+- Sponsor：Dong
+- Acknowledge：[Cheng](https://blog.csdn.net/weixin_39124457/article/details/120152679?spm=1001.2014.3001.5502)
 
 ## Test_cases:
 
