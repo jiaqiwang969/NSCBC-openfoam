@@ -1,4 +1,7 @@
 # NSCBC-Openfoam project
+- Aim: Reproduce the Nonreflecting boundary condition in paper “Partially reflecting and non-reflecting boundary conditions for simulation of compressible viscous flow”
+- Ref: see [here](https://github.com/jiaqiwang969/NSCBC-openfoam/tree/main/ref)
+- New: 1. add backward NRBC scheme; 
 - Sponsor：Dong
 - Acknowledge：[Cheng](https://blog.csdn.net/weixin_39124457/article/details/120152679?spm=1001.2014.3001.5502)
 
