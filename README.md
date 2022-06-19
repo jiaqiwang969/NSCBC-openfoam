@@ -18,6 +18,8 @@
 - cP: calculated sound speed
 - aP/cP: calculated Mach number
 
+<img src="https://cdn.mathpix.com/snip/images/YDPs2Tb3rYAfN-VkFiPXL7O8YWgV5oKSzz6fYGO8Yt4.original.fullsize.png" />
+by G. Daviller
 
 
 
