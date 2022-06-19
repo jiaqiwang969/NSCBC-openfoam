@@ -5,6 +5,22 @@
 - Sponsor：Dong
 - Acknowledge：[Cheng](https://blog.csdn.net/weixin_39124457/article/details/120152679?spm=1001.2014.3001.5502)
 
+
+
+## parameter
+
+```
+				const scalarField K(etaAc_*(1.0-sqr(aP/cP))*cP/lInf_);
+```
+- K:calculated relaxation constant
+- etaAc_ $\approx$ 0.27 (to balance the dirft(etaAc<0.27) and non-reflect effectetaAc>0.27))
+- lInf_: streamwise extent of the computational domain
+- cP: calculated sound speed
+- aP/cP: calculated Mach number
+
+
+
+
 ## Test_cases:
 
 ### 01-sineWaveDamping-rhoPimpleFoam
